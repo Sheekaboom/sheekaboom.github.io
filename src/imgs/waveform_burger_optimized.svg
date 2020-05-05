@@ -1,0 +1,8 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="107.76mm" height="98.84mm" version="1.1" viewBox="0 0 107.76 98.84" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(.093929 .021727)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="7.5">
+  <path id="sine_wave" d="m3.8932 18.167s21.167-32.128 50.271 0.18899c29.104 32.317 49.515-0.37798 49.515-0.37798"/>
+  <path id="square_wave" d="m3.5152 50.333v-11.906h50.271v25.135h49.704v-13.229"/>
+  <path id="triangle_wave" d="m3.7042 81.969 24.946-12.095 50.271 24.757 24.946-12.473"/>
+ </g>
+</svg>

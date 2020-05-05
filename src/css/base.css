@@ -1,0 +1,51 @@
+/* Our base color schemes (dark and light) */
+
+:root{
+    /* Default color scheme */
+    --text-color: #000;
+    --background-color: #ddd;
+    
+    /* Light mode mode */
+    --text-color-light: #000;
+    --background-color-light: #fff;
+
+    /* Dark mode mode */
+    --text-color-dark: #ddd;
+    --background-color-dark: #000;
+}
+
+html{
+    min-height: 100%;
+}
+
+body{
+    background: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+button{
+    border-style:solid;
+    border-radius: 3px;
+    border-width: 1px;
+}
+
+button:hover{
+    border-style:dotted;
+}
+
+/* Now define light mode */
+@media (prefers-color-scheme:light){
+    body{
+        background: var(--background-color-light);
+        color: var(--text-color-light);
+    }
+} 
+
+/* Now define dark mode */
+@media (prefers-color-scheme:dark){
+    body{
+        background: var(--background-color-dark);
+        color: var(--text-color-dark);
+    }
+} 
