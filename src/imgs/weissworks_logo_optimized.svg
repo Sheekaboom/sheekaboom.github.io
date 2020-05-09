@@ -1,0 +1,58 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="110.26mm" height="87.473mm" version="1.1" viewBox="0 0 110.26 87.473" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient10770">
+   <stop stop-color="#fff" offset="0"/>
+   <stop stop-color="#fff" stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <radialGradient id="radialGradient10772" cx="115.65" cy="-5230.6" r="43.649" gradientTransform="matrix(-3.1184 .0050181 -.020747 -1.4314 349.26 -7466.3)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10774" cx="115.65" cy="-4355.1" r="43.649" gradientTransform="matrix(-3.1184 .0060021 -.00089666 -1.4314 453.87 -6213)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10776" cx="115.65" cy="-3479.9" r="43.649" gradientTransform="matrix(-3.1184 .006117 -.020747 -1.4314 385.58 -4960.4)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10778" cx="115.65" cy="-2604.6" r="43.649" gradientTransform="matrix(-3.1184 .0059961 -.020747 -1.4314 403.74 -3707.4)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10780" cx="115.65" cy="-1729.1" r="43.649" gradientTransform="matrix(-3.1184 .0059947 -.018342 -1.4313 426.06 -2454.1)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10782" cx="115.65" cy="-853.81" r="43.649" gradientTransform="matrix(-3.1184 .0059961 -.007968 -1.4314 450.97 -1201.3)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10784" cx="115.65" cy="-5980.8" r="43.649" gradientTransform="matrix(-3.1184 .0049543 -.0056113 -1.4314 424.22 -8539.9)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10786" cx="115.65" cy="21.625" r="43.649" gradientTransform="matrix(-3.1184 .0059957 -.0056108 -1.4314 457.9 51.772)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10788" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52099 -.26602 -139.11 31596 7722.1)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10790" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52145 -.26625 -139.11 31596 7722)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10792" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52396 -.26754 -139.11 31596 7721.7)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10794" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52657 -.26887 -139.11 31596 7721.4)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10796" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52517 -.26815 -139.11 31596 7721.6)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10798" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52706 -.26912 -139.11 31596 7721.3)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10800" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52401 -.26756 -139.11 31596 7721.7)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <radialGradient id="radialGradient10802" cx="115.65" cy="55.79" r=".5" gradientTransform="matrix(-272.23 .52341 -.26726 -139.11 31596 7721.8)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient10770"/>
+  <filter id="filter11128" x="-.25088" y="-.41699" width="1.5018" height="1.834" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="10.821179"/>
+  </filter>
+  <filter id="filter11237" x="-.0051377" y="-.018309" width="1.0103" height="1.0366" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.16872374"/>
+  </filter>
+  <filter id="filter11281" x="-.005384" y="-.019098" width="1.0108" height="1.0382" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.17651297"/>
+  </filter>
+ </defs>
+ <g transform="translate(-7.5988 -3.8433)">
+  <rect transform="matrix(.70923 0 0 .72044 10.13 10.411)" x="22.402" y="16.854" width="103.52" height="62.282" filter="url(#filter11128)" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".62125"/>
+  <g id="grid" fill="none" stroke-dasharray="0.5, 1" stroke-width=".5">
+   <path d="m87.076 21.513v69.554" stroke="url(#radialGradient10802)"/>
+   <path d="m76.041 21.513v69.554" stroke="url(#radialGradient10802)"/>
+   <path d="m65.006 21.513v69.554" stroke="url(#radialGradient10800)"/>
+   <path d="m53.971 21.513v69.554" stroke="url(#radialGradient10798)"/>
+   <path d="m42.937 21.513v69.554" stroke="url(#radialGradient10796)"/>
+   <path d="m31.902 21.513v69.554" stroke="url(#radialGradient10794)"/>
+   <path d="m20.867 21.513v69.554" stroke="url(#radialGradient10792)"/>
+   <path d="m9.8322 21.513v69.554" stroke="url(#radialGradient10790)"/>
+   <path d="m97.13 21.513v69.554" stroke="url(#radialGradient10788)"/>
+   <path d="m97.13 21.513h-87.298" stroke="url(#radialGradient10786)"/>
+   <path d="m97.13 91.067h-87.298" stroke="url(#radialGradient10784)"/>
+   <path d="m97.13 31.656h-87.298" stroke="url(#radialGradient10782)"/>
+   <path d="m97.13 41.799h-87.298" stroke="url(#radialGradient10780)"/>
+   <path d="m97.13 51.942h-87.298" stroke="url(#radialGradient10778)"/>
+   <path d="m97.13 62.086h-87.298" stroke="url(#radialGradient10776)"/>
+   <path d="m97.13 72.229h-87.298" stroke="url(#radialGradient10774)"/>
+   <path d="m97.13 82.372h-87.298" stroke="url(#radialGradient10772)"/>
+  </g>
+  <path id="top_trace" d="m17.828 28.394h11.893v21.649h17.64v-22.05h1.7373v22.047h16.197v-22.113l31.348 0.0348" fill="none" filter="url(#filter11237)" stroke="#00e258" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".98268" stroke-width="1.25"/>
+  <path id="bot_trace" d="m18.521 38.956h39.397v21.914h17.038l-0.29528-22.019h1.678l0.23199 22.135 15.93 0.0464v-22.182h4.702" fill="none" filter="url(#filter11281)" stroke="#00dbf9" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"/>
+ </g>
+</svg>
