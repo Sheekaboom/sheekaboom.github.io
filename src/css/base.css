@@ -3,15 +3,21 @@
 :root{
     /* Default color scheme */
     --text-color: #000;
+    --text-color-accent: #555;
     --background-color: #ddd;
+    --background-accent-color: #888;
     
     /* Light mode mode */
     --text-color-light: #000;
+    --text-color-accent-light: #555;
     --background-color-light: #fff;
+    --background-accent-color-dark: #888;
 
     /* Dark mode mode */
     --text-color-dark: #ddd;
+    --text-color-accent-dark: #888;
     --background-color-dark: #000;
+    --background-accent-color-dark: #555;
 }
 
 html{
@@ -28,6 +34,10 @@ button{
     border-style:solid;
     border-radius: 3px;
     border-width: 1px;
+}
+
+a{
+    text-decoration: none;
 }
 
 button:hover{
