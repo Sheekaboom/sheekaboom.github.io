@@ -2,22 +2,63 @@
 
 :root{
     /* Default color scheme */
-    --text-color: #000;
-    --text-color-accent: #555;
-    --background-color: #ddd;
-    --background-accent-color: #888;
+    --text-color-default: #000;
+    --text-accent-color-default: #555;
+    --background-color-default: #ddd;
+    --background-accent-color-default: #888;
     
     /* Light mode mode */
     --text-color-light: #000;
-    --text-color-accent-light: #555;
+    --text-accent-color-light: #555;
     --background-color-light: #fff;
-    --background-accent-color-dark: #888;
+    --background-accent-color-light: #888;
 
     /* Dark mode mode */
     --text-color-dark: #ddd;
-    --text-color-accent-dark: #888;
+    --text-accent-color-dark: #888;
     --background-color-dark: #000;
     --background-accent-color-dark: #555;
+
+    /* Set to default olor mode */
+    --text-color:var(--text-color-default);
+    --text-accent-color: var(--text-accent-color-default);
+    --background-color: var(--background-color-default);
+    --background-accent-color: var(--background-accent-color-default);
+
+}
+
+/* Preferred Media color mode */
+@media (prefers-color-scheme:dark) {
+    :root{
+        --text-color:var(--text-color-dark);
+        --text-accent-color: var(--text-accent-color-dark);
+        --background-color: var(--background-color-dark);
+        --background-accent-color: var(--background-accent-color-dark);
+    }
+}
+
+@media (prefers-color-scheme:light) {
+    :root{
+        --text-color:var(--text-color-light);
+        --text-accent-color: var(--text-accent-color-light);
+        --background-color: var(--background-color-light);
+        --background-accent-color: var(--background-accent-color-light);
+    }
+}
+
+/* Allow color mode override */
+:root[data-theme='dark'] {
+    --text-color:var(--text-color-dark);
+    --text-accent-color: var(--text-accent-color-dark);
+    --background-color: var(--background-color-dark);
+    --background-accent-color: var(--background-accent-color-dark);
+  }
+
+:root[data-theme='light'] {
+    --text-color:var(--text-color-light);
+    --text-accent-color: var(--text-accent-color-light);
+    --background-color: var(--background-color-light);
+    --background-accent-color: var(--background-accent-color-light);
 }
 
 html{
@@ -30,6 +71,10 @@ body{
     min-height: 100vh;
 }
 
+div{
+    display:inline-block;
+}
+
 button{
     border-style:solid;
     border-radius: 3px;
@@ -40,22 +85,28 @@ a{
     text-decoration: none;
 }
 
+/* Fit image height to parent container by default */
+img{
+    height:100%;
+    width:auto;
+}
+
 button:hover{
     border-style:dotted;
 }
 
-/* Now define light mode */
+/* Now define light mode 
 @media (prefers-color-scheme:light){
     body{
         background: var(--background-color-light);
         color: var(--text-color-light);
     }
-} 
+} */
 
-/* Now define dark mode */
+/* Now define dark mode 
 @media (prefers-color-scheme:dark){
     body{
         background: var(--background-color-dark);
         color: var(--text-color-dark);
     }
-} 
+} */
