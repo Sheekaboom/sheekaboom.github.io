@@ -5,13 +5,13 @@
     --text-color-default: #000;
     --text-accent-color-default: #555;
     --background-color-default: #ddd;
-    --background-accent-color-default: #888;
+    --background-accent-color-default: #aaa;
     
     /* Light mode mode */
     --text-color-light: #000;
     --text-accent-color-light: #555;
     --background-color-light: #fff;
-    --background-accent-color-light: #888;
+    --background-accent-color-light: #aaa;
 
     /* Dark mode mode */
     --text-color-dark: #ddd;
@@ -68,17 +68,28 @@ html{
 body{
     background: var(--background-color);
     color: var(--text-color);
-    min-height: 100vh;
+    margin: 0px;
 }
 
 div{
     display:inline-block;
 }
 
+/* Default buttons */
 button{
     border-style:solid;
     border-radius: 3px;
     border-width: 1px;
+}
+button:hover{
+    border-style:dotted;
+}
+
+select{
+    background: var(--background-color);
+    color: var(--text-color);
+    border-radius: 3px;
+    border-color: var(--background-accent-color);
 }
 
 a{
@@ -91,22 +102,5 @@ img{
     width:auto;
 }
 
-button:hover{
-    border-style:dotted;
-}
 
-/* Now define light mode 
-@media (prefers-color-scheme:light){
-    body{
-        background: var(--background-color-light);
-        color: var(--text-color-light);
-    }
-} */
 
-/* Now define dark mode 
-@media (prefers-color-scheme:dark){
-    body{
-        background: var(--background-color-dark);
-        color: var(--text-color-dark);
-    }
-} */

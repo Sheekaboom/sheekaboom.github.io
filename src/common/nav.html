@@ -7,32 +7,17 @@
     $('#common_navbar_links').slideToggle({direction:'left'})
   }
 </script>
-<nav class="common-navbar">
+<nav id="common_navbar">
     <div id="common_navbar_burger_div">
-      <button id="common_navbar_burger" onclick="toggleNavbarLinks()" class='common-navbar-burger common-navbar-burger-light' aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
+      <button id="common_navbar_burger" onclick="toggleNavbarLinks()"  aria-controls="common_navbar_links" aria-expanded="false" aria-label="Toggle navigation">
       </button>
     </div>
-    <div  id="common_navbar_links" class="common-navbar-links">
+    <div  id="common_navbar_links">
       <ul>
         <li><a href="index.html">Home </a></li>
         <li><a href="#">Features</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="about.html">About</a></li>
-
-        <!-- User settings -->
-        <li><div>
-          Theme:
-          <select id='common_navbar_theme_selector' onchange="themeSelectHandler(this)">
-            <option value='default'>System</option>
-            <option value='light'>Light</option>
-            <option value='dark'>Dark</option>
-          </select>
-          <script>
-            // update the selector to the correct value
-            var theme_value = document.getElementsByTagName('html')[0].getAttribute('data-theme');
-            document.getElementById('common_navbar_theme_selector').value = theme_value;
-          </script>
-        </div></li>
       </ul>
     </div>
     <div id='common_navbar_logo'>

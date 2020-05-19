@@ -1,6 +1,44 @@
-<footer>
+<footer id='common_footer'>
+
+  <script>
+    $(function(){
+      // load our navbar burger (svg so it can be edited)
+      $('#common_footer_settings_button').load('/imgs/settings_icon_optimized.svg');
+    });
+    function toggleFooterSettings(){
+      $('#common_footer_settings').slideToggle({direction:'left'})
+    }
+  </script>
+
+  <div id='common_footer_div'>
+
     <!-- Copyright -->
-    <div class='common-footer'>© 2020 Copyright:
+    <div id='common_footer_copyright'>© 2020 Copyright |
       <a href="https://www.WeissWorks.dev/"> WeissWorks.dev</a>
     </div>
+
+    <div id='common_footer_settings_button_div'>
+      <button id="common_footer_settings_button" onclick="toggleFooterSettings()"  aria-controls="common_footer_settings" aria-expanded="false" aria-label="Toggle settings menu">
+      
+      </button>
+    </div>
+
+    <div id='common_footer_settings'>
+      <!-- Settings for the theme -->
+      <div id='common_footer_theme_setting' class='common-footer-setting'>
+        Theme: <br>
+        <select id='common_navbar_theme_selector' onchange="themeSelectHandler(this)">
+          <option value='default'>System</option>
+          <option value='light'>Light</option>
+          <option value='dark'>Dark</option>
+        </select>
+        <script>
+          // update the selector to the correct value
+          var theme_value = document.getElementsByTagName('html')[0].getAttribute('data-theme');
+          document.getElementById('common_navbar_theme_selector').value = theme_value;
+        </script>
+      </div>
+    </div>
+
+  </div>
 </footer>

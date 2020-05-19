@@ -3,13 +3,11 @@ $(function(){
     initializeUserSettings();
 
     // navigation bar and components
-    $('#common_navbar').load('/common/nav.html'); //navigation bar
+    $('#common_navbar_placeholder').load('/common/nav.html'); //navigation bar
 
     // footer and components
-    $('#common_footer').load('/common/footer.html'); //page footer
+    $('#common_footer_placeholder').load('/common/footer.html'); //page footer
 
-    // update the UI to the current user settings
-    window.onload = initializeUIUserSettings();
 });
 
 /*
@@ -30,16 +28,4 @@ function initializeUserSettings(){
       }
       document.getElementsByTagName('html')[0].setAttribute(user_settings[i],setting_value);
     }
-
 }
-
-/*
-@brief this will set all UI components on the screen to the correct values.forEach
-For example this will set the theme selector button to the current theme
-*/
-function initializeUIUserSettings(){
-    // Get the theme for setting out selector
-    var theme_value = document.getElementsByTagName('html')[0].getAttribute('data-theme');
-    document.getElementById('common_navbar_theme_selector').value = theme_value;
-}
-

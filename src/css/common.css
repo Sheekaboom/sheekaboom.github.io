@@ -1,82 +1,114 @@
 
-/* Setup of the parent div for the navbar */
-#common_navbar{
-    width: 100%
-
-}
-
-
-/* Navbar setup */
-.common-navbar{
+/*********************/
+/* Header definition */
+/*********************/
+/* Navbar parent div */
+#common_navbar_placeholder{
     width: 100%;
-    height: 60px;
+    position:relative;
     background: var(--background-accent-color);
 }
-
-
-/* Logo config */
-#common_navbar_logo{
-    display:inline-block;
-    height: 100%; 
-    width: 50%;
-    float: right;
+/* Navbar setup */
+#common_navbar{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: auto 20px;
+    flex-direction: row;
 }
-#common_navbar_logo img{
-    float:right;
-    height: 100%; 
-    margin: 0 20px;
-}
-
-
 /* Navbar Burger Setup. */
 /* we use important to overwrite SVG styles */
-.common-navbar-burger{
+#common_navbar_burger_div{margin: 10px 10px 10px 0;}
+#common_navbar_burger{
+    background: var(--background-accent-color); 
+    border-color: var(--text-accent-color);
     border-radius: 3px;
     border-style: solid;
     border-width: 1px;
-    display:inline-block;
     padding: 5px;
-    margin: 0px 20px;
+    height:42px;
+    width:42px;
+}
+#common_navbar_burger svg{width: 30px !important;height: 30px !important;}
+#common_navbar_burger g{stroke:var(--text-color) !important;}
+#common_navbar_links{
+    display:none;
+    align-self:stretch;
+    height:auto;
+    color:var(--text-color);
+    background:var(--background-accent-color);
+}
+#common_navbar_links ul{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height:100%;
+    padding:0;
+    margin:0;
+    list-style:none;
+    background:var(--background-accent-color);
+}
+#common_navbar_links li{
+    padding:0 10px;
+    height:100%;
+    display:flex;
+    align-items:center;
+}
+#common_navbar_links li:hover{background:var(--background-color);}
+#common_navbar_links a{color: var(--text-color);}
+/* Logo config */
+#common_navbar_logo{
+    display:inline-block;
+    height: 60px;
+    width: auto;
+    margin-left: auto;
+}
+#common_navbar_logo img{height: 100%; }
+
+/*********************/
+/* Footer definition */
+/*********************/
+#common_footer{
+    width:100%;
+    background:var(--background-accent-color);
+    bottom: 0;
+    position: fixed;
+    height: 45px;
+    display:flex;
+}
+#common_footer_div{
+    width:100%;
+    margin:0px 20px;
+    display:flex;
+    align-items:center;
+}
+#common_footer_settings_button_div{
+    margin-left:auto;
+}
+#common_footer_settings{
+    display:none;
+    position:absolute;
+    bottom:100%;
+    right:0;
+    background:var(--background-accent-color);
+    border-radius:3px 0 0 0;
+}
+.common-footer-setting{
+    padding:5px;
+}
+#common_footer a{
+    color:var(--text-accent-color);
+}
+#common_footer_settings_button{
     background: var(--background-accent-color); 
     border-color: var(--text-accent-color);
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    height:38px;
+    width:39px;
+    padding: 2px;
 }
-.common-navbar-burger svg{
-    width: 30px !important;
-    height: auto !important;
-}
-.common-navbar-burger g{
-    stroke:var(--text-color) !important; 
-}
-.common-navbar-links{
-    display:none;
-    border-radius: 5px;
-    opacity: 90%;
-    position: absolute;
-    margin:3px;
-    padding:5px;
-    text-align: left;
-    color:var(--text-color)
-}
-.common-navbar-links ul{
-    padding:0;
-    margin:0;
-}
-.common-navbar-links li{
-    background-image: linear-gradient(to right, var(--text-accent-color), #00000000); 
-    margin: 15px;
-    padding: 8px;
-    border-radius: 5px
-}
-}
-.common-navbar-links a{
-    color: var(--text-color);
-    padding:0;
-    margin:0;
-}
+#common_footer_settings_button svg{width: 30px !important;height: 30px !important;}
+#common_footer_settings_button path{stroke:var(--text-color) !important; stroke-width: 3px;}
 
-/* Footer definition */
-
-.common-footer{
-    width:100%;
-    text-align:center;
-}
