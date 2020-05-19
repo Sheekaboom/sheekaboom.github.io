@@ -39,23 +39,41 @@
     background:var(--background-accent-color);
 }
 #common_navbar_links ul{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     height:100%;
     padding:0;
     margin:0;
-    list-style:none;
+    position:relative;
+    left:0;
     background:var(--background-accent-color);
 }
 #common_navbar_links li{
     padding:0 10px;
     height:100%;
-    display:flex;
+    display:inline-flex;
+    left:0;
     align-items:center;
 }
+/*
+#common_navbar_links ul{
+    height:100%;
+    padding:0;
+    margin:0;
+    position:absolute;
+    left:0;
+    top:100%;
+    background:var(--background-accent-color);
+}
+#common_navbar_links li{
+    background:var(--background-accent-color);
+    padding:0 10px;
+    height:100%;
+    display:flex;
+    left:0;
+    align-items:center;
+}*/
 #common_navbar_links li:hover{background:var(--background-color);}
 #common_navbar_links a{color: var(--text-color);}
+
 /* Logo config */
 #common_navbar_logo{
     display:inline-block;
