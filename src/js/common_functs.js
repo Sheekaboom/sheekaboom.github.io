@@ -1,9 +1,3 @@
-/*
-@brief Open/Close the navigation bar list
-*/
-function toggleNavbarList(){
-    $('#common_navbar_links').slideToggle({direction:'left'})
-}
 
 /*
 @brief Set the website theme by setting 'data-theme' attribute of <html>

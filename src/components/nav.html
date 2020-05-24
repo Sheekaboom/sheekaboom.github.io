@@ -3,16 +3,36 @@
     // load our navbar burger (svg so it can be edited)
     $('#common_navbar_burger').load('/imgs/waveform_burger_optimized.svg');
   });
+  // Toggle the links in the navbar
   function toggleNavbarLinks(){
-    $('#common_navbar_links').slideToggle()
+    //move navigation links;
+    var nav_links = document.querySelector('#common_navbar_links');
+    nav_links.classList.toggle('common-navbar-links-closed');
+    nav_links.classList.toggle('common-navbar-links-open');
+    // move burger
+    var burger = document.querySelector('#common_navbar_burger');
+    burger.classList.toggle('common-navbar-burger-closed');
+    var opened = burger.classList.toggle('common-navbar-burger-open');
+    // add close listener
+    if(opened==True){
+      addMenuCloseListener()
+    }
+  }
+  // close menu listener
+  function menuCloseListener(){
+    if(!target.closest('#common_navbar')){ //if outside the navbar
+        toggleNavbarLinks(); // toggle the links
+        document.getElementsByTagName('body')[0].addEventListener('click',menuCloseListener);
+    }
+  }
+  function addMenuCloseListener(){
+    document.getElementsByTagName('body')[0].addEventListener('click',menuClosesListener);
   }
 </script>
 <nav id="common_navbar">
-    <div id="common_navbar_burger_div">
-      <button id="common_navbar_burger" onclick="toggleNavbarLinks()"  aria-controls="common_navbar_links" aria-expanded="false" aria-label="Toggle navigation">
+      <button id="common_navbar_burger" class="common-navbar-burger-closed" onclick="toggleNavbarLinks()"  aria-controls="common_navbar_links" aria-expanded="false" aria-label="Toggle navigation">
       </button>
-    </div>
-    <div  id="common_navbar_links">
+    <div  id="common_navbar_links" class='common-navbar-links-closed'>
       <ul>
         <li><a href="index.html">Home </a></li>
         <li><a href="#">Features</a></li>

@@ -3,7 +3,14 @@
   <script>
     $(function(){
       // load our navbar burger (svg so it can be edited)
-      $('#common_footer_settings_button').load('/imgs/settings_icon_optimized.svg');
+      myxml = new XMLHttpRequest();
+      myxml.addEventListener("load", 
+        function(){
+          document.querySelector('#common_footer_settings_button').innerHTML = this.responseText;
+        });
+      myxml.open("GET", '/imgs/settings_icon_optimized.svg');
+      myxml.send();
+      //$('#common_footer_settings_button').load('/imgs/settings_icon_optimized.svg');
     });
     function toggleFooterSettings(){
       $('#common_footer_settings').slideToggle({direction:'left'})
