@@ -3,7 +3,7 @@
 /* Header definition */
 /*********************/
 /* Navbar parent div */
-#common_navbar_placeholder{
+#common_navbar{
     width: 100%;
     height:60px;
     position:relative;
@@ -11,7 +11,7 @@
     box-shadow:0 0 15px 2px var(--background-accent-color);
 }
 /* Navbar setup */
-#common_navbar{
+#common_navbar_container{
     display: flex;
     height:100%;
     flex-wrap: nowrap;
@@ -21,7 +21,6 @@
 }
 /* Navbar Burger Setup. */
 /* we use important to overwrite SVG styles */
-#common_navbar_burger_div{margin: 10px 10px 10px 0;}
 #common_navbar_burger{
     background: var(--background-accent-color); 
     border-color: var(--text-accent-color);
@@ -32,7 +31,7 @@
 }
 .common-navbar-burger-open{height:0;width:0;padding:0;opacity:0;transition-delay:0;}
 .common-navbar-burger-closed{height:42px;width:42px;padding:5px;opacity:100%;transition-delay:1s;}
-#common_navbar_burger svg{width: 100% !important;height: 100% !important;}
+#common_navbar_burger svg{width: 30px !important;height: 100% !important;}
 #common_navbar_burger g{stroke:var(--text-color) !important;}
 
 #common_navbar_links{
@@ -50,7 +49,6 @@
     margin:0;
     position:relative;
     left:0;
-    background:var(--background-accent-color);
 }
 #common_navbar_links li{
     padding:0 10px;
@@ -100,7 +98,7 @@
     height: 45px;
     display:flex;
 }
-#common_footer_div{
+#common_footer_container{
     width:100%;
     margin:0px 20px;
     display:flex;
