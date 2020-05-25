@@ -8,7 +8,7 @@ function setTheme(theme_value){
     document.getElementsByTagName('html')[0].setAttribute('data-theme',theme_value); 
     // store to viable location
     if (typeof(Storage) !== "undefined") { // set the user values
-        localStorage.setItem('data-theme',theme_value);
+        sessionStorage.setItem('data-theme',theme_value);
     } else { //otherwise use cookies
         document.cookie = "data-theme="+theme_value+";path=/";
     }

@@ -15,19 +15,20 @@
       burger.classList.toggle('common-navbar-burger-closed');
       var opened = burger.classList.toggle('common-navbar-burger-open');
       // add close listener
-      if(opened==True){
-        addMenuCloseListener()
+      if(opened==true){
+        addNavbarMenuCloseListener();
+        console.log('Menu Close Listener added');
       }
     }
     // close menu listener
-    function menuCloseListener(){
-      if(!target.closest('#common_navbar')){ //if outside the navbar
+    function navbarMenuCloseListener(){
+      if(!event.target.closest('#common_navbar')){ //if outside the navbar
           toggleNavbarLinks(); // toggle the links
-          document.getElementsByTagName('body')[0].addEventListener('click',menuCloseListener);
+          document.getElementsByTagName('html')[0].removeEventListener('click',navbarMenuCloseListener);
       }
     }
-    function addMenuCloseListener(){
-      document.getElementsByTagName('body')[0].addEventListener('click',menuClosesListener);
+    function addNavbarMenuCloseListener(){
+      document.getElementsByTagName('html')[0].addEventListener('click',navbarMenuCloseListener);
     }
   </script>
   <div id='common_navbar_container'>

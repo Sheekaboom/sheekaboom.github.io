@@ -25,7 +25,7 @@ function initializeUserSettings(){
     // set the values from storage
     for(i=0;i<user_settings.length;i++){
       if (typeof(Storage) !== "undefined") { // set the user values
-        var setting_value = localStorage.getItem(user_settings[i]) || default_user_setting_values[i];
+        var setting_value = sessionStorage.getItem(user_settings[i]) || default_user_setting_values[i];
       } else {
         var setting_value = getCookie(user_settings);
       }

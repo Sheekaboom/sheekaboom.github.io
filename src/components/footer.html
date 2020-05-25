@@ -13,7 +13,23 @@
       //$('#common_footer_settings_button').load('/imgs/settings_icon_optimized.svg');
     });
     function toggleFooterSettings(){
-      $('#common_footer_settings').slideToggle({direction:'left'})
+      var footer_settings = document.querySelector('#common_footer_settings');
+      footer_settings.classList.toggle('common-footer-settings-closed');
+      var opened = footer_settings.classList.toggle('common-footer-settings-open');
+      if(opened==true){
+        addSettingsMenuCloseListener();
+        console.log('Settings Close Listener added');
+      }
+    }
+    // close menu listener
+    function settingsMenuCloseListener(){
+      if(!event.target.closest('#common_footer')){ //if outside the footer
+          toggleFooterSettings(); // toggle the links
+          document.getElementsByTagName('html')[0].removeEventListener('click',settingsMenuCloseListener);
+      }
+    }
+    function addSettingsMenuCloseListener(){
+      document.getElementsByTagName('html')[0].addEventListener('click',settingsMenuCloseListener);
     }
   </script>
 
@@ -30,9 +46,9 @@
       </button>
     </div>
 
-    <div id='common_footer_settings'>
+    <div id='common_footer_settings' class='common-footer-settings-closed'>
       <!-- Settings for the theme -->
-      <div id='common_footer_theme_setting' class='common-footer-setting'>
+      <div id='common_footer_theme_setting'>
         Theme: <br>
         <select id='common_navbar_theme_selector' onchange="themeSelectHandler(this)">
           <option value='default'>System</option>
