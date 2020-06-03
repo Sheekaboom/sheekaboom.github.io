@@ -29,6 +29,7 @@
     border-width: 1px;
     transition: 0.5s ease-out;
 }
+#common_navbar_burger:hover{border-style:dotted;}
 .common-navbar-burger-open{height:0;width:0;padding:0;opacity:0;transition-delay:0;}
 .common-navbar-burger-closed{height:42px;width:42px;padding:5px;opacity:100%;transition-delay:1s;}
 #common_navbar_burger svg{width: 30px !important;height: 100% !important;}
@@ -51,14 +52,21 @@
     left:0;
 }
 #common_navbar_links li{
-    padding:0 10px;
     height:100%;
-    display:inline-flex;
+    width:75px;
+    display:inline-block;
     left:0;
     align-items:center;
 }
-#common_navbar_links li:hover{background:var(--background-color);}
-#common_navbar_links a{color: var(--text-color);}
+.common-navbar-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content: center;
+    height:100%;
+    width:100%;
+    color: var(--text-color);
+}
+.common-navbar-link:hover{background:var(--background-color);}
 
 /* Logo config */
 #common_navbar_logo{
@@ -67,7 +75,8 @@
     width: auto;
     margin-left: auto;
 }
-#common_navbar_logo img{height: 100%; }
+#common_navbar_logo img{height: 100%;}
+
 
 /*********************/
 /* Footer definition */
