@@ -41,3 +41,34 @@ function getCookie(cname) {
     }
     return "";
   }
+
+/*
+@brief Save data from a html table. If its an input, grab the value,
+  otherwise we will get innerHTML
+@note this assumes row 1 has table headers that are our label keys
+*/
+function table2json(table){
+  //first get all of our rows
+  var table_rows = table.querySelectorAll('tr');
+  //Now extract the names from each of our rows
+  var col_names = [];
+  var table_data = {};
+  var table_headers = table_rows[0].querySelectorAll('th');
+  for(var i=0;i<table_headers.length;i++){
+    col_names.push(table_headers[i].innerHTML);
+    table_data[table_headers[i].innerHTML] = []; //also initialize the arrays
+  }
+  //Now extract the data
+  for(var r=1;r<table_rows.length;r++){//go through each row
+    var row_data = table_rows[r].querySelectorAll('td');
+    for(var c=0;c<row_data.length;c++){//go through each column
+      if(row_data[c].getElementsByTagName('input').length>0){
+        table_data[col_names[c]].push(row_data[c].querySelector('input').value);
+      }else{
+        table_data[col_names[c]].push(row_data[c].innerHTML);
+      }
+    }
+  }
+  return table_data;
+}
+
