@@ -1,0 +1,72 @@
+
+.color_selection{
+    display:flex;
+    align-items:center;
+    justify-items:center;
+    width:100px;
+    height:100px;
+    border-width:0;
+    border-radius:5px;
+    padding:0;
+}
+
+.color_viewer{
+    display:inline-block;
+    padding:10%;
+}
+
+#desired_and_mixed_color{
+    display:flex;
+}
+
+#desired_color{
+    border:0;
+    padding:0;
+}
+
+#mixed_color{
+    border:0;
+    padding:0;
+}
+
+input[type='color']{
+    background-color:var(--background-color);
+    color:var(--text-color);
+    border-width:0;
+    padding:0 5%;
+    margin:0;
+}
+
+table{
+    table-layout:fixed;
+    border-collapse: collapse;
+    border-style:solid;
+    border-width:1px;
+    border-radius:5px;
+    border-color:var(--border-color);
+    width:100%;
+    text-align:center;
+}
+th{
+    border-style:solid;
+    border-width:1px;
+    border-color:var(--border-color);
+}
+td{
+    border-style:dotted solid;
+    border-width:1px;
+    border-color:var(--border-color);
+}
+
+table input[type='number']{
+    padding: 0 5px;
+    max-width:50px;
+    width:75%;
+    margin:0 10px;
+}
+
+input[type='color']{
+    width:75%;
+    min-width:50px;
+}
+

@@ -10,24 +10,29 @@
     --text-accent-color-default: #555;
     --background-color-default: #ddd;
     --background-accent-color-default: #aaa;
+    --border-color-default:#aaa;
     
     /* Light mode mode */
     --text-color-light: #000;
     --text-accent-color-light: #555;
     --background-color-light: #fff;
     --background-accent-color-light: #aaa;
+    --border-color-light:#aaa;
 
     /* Dark mode mode */
     --text-color-dark: #ddd;
     --text-accent-color-dark: #888;
     --background-color-dark: #000;
     --background-accent-color-dark: #555;
+    --border-color-dark:#555;
 
-    /* Set to default olor mode */
+
+    /* Set to default color mode */
     --text-color:var(--text-color-default);
     --text-accent-color: var(--text-accent-color-default);
     --background-color: var(--background-color-default);
     --background-accent-color: var(--background-accent-color-default);
+    --border-color:var(--border-color-default);
 
 }
 
@@ -38,6 +43,7 @@
         --text-accent-color: var(--text-accent-color-dark);
         --background-color: var(--background-color-dark);
         --background-accent-color: var(--background-accent-color-dark);
+        --border-color: var(--border-color-dark);
     }
 }
 
@@ -47,6 +53,7 @@
         --text-accent-color: var(--text-accent-color-light);
         --background-color: var(--background-color-light);
         --background-accent-color: var(--background-accent-color-light);
+        --border-color: var(--border-color-light);
     }
 }
 
@@ -56,6 +63,7 @@
     --text-accent-color: var(--text-accent-color-dark);
     --background-color: var(--background-color-dark);
     --background-accent-color: var(--background-accent-color-dark);
+    --border-color: var(--border-color-dark);
   }
 
 :root[data-theme='light'] {
@@ -63,6 +71,15 @@
     --text-accent-color: var(--text-accent-color-light);
     --background-color: var(--background-color-light);
     --background-accent-color: var(--background-accent-color-light);
+    --border-color: var(--border-color-light);
+}
+
+:root[data-theme='matrix'] {
+    --text-color:#00ff00;
+    --text-accent-color: #009b00;
+    --background-color: #000000;
+    --background-accent-color: #030303;
+    --border-color: #000099;
 }
 
 html{
@@ -114,9 +131,12 @@ p {
 
 /* Default buttons */
 button{
+    background:var(--background-accent-color);
+    color:var(--text-color);
     border-style:solid;
     border-radius: 3px;
     border-width: 1px;
+    border-color:var(--border-color);
 }
 button:hover{
     border-style:dotted;
@@ -139,5 +159,14 @@ img{
     width:auto;
 }
 
+input{
+    padding:0;
+    margin:0;
+    background-color:var(--background-color);
+    border-style:dotted;
+    border-color:var(--border-color);
+    width:100%;
+    color:var(--text-color);
+}
 
 

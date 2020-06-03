@@ -9,6 +9,8 @@
     position:relative;
     background: var(--background-accent-color);
     box-shadow:0 0 15px 2px var(--background-accent-color);
+    border-color:var(--border-color);
+    border-bottom-style:solid;
 }
 /* Navbar setup */
 #common_navbar_container{
@@ -88,6 +90,8 @@
     position: fixed;
     height: 45px;
     display:flex;
+    border-color:var(--border-color);
+    border-top-style:solid;
 }
 #common_footer_container{
     width:100%;
