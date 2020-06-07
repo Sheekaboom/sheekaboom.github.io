@@ -110,6 +110,8 @@
     padding:5px;
     background:var(--background-accent-color);
     border-radius:3px 0 0 0;
+    border-color:var(--border-color);
+    border-style: solid none none solid;
     transition: 0.5s;
 }
 .common-footer-settings-open{transform:translateX(0)}
