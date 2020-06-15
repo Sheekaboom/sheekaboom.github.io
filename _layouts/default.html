@@ -5,21 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Optional JavaScript -->
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  
     <!-- Load in common elements -->
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
     <script src='/js/common_functs.js'></script>
     <script src='/js/initialize_page.js'></script>
 
-    <title>Weiss Works: Home</title>
+    <title>Weiss Works: Homepage</title>
 
   </head>
-
+  
   <body>
-
+    
     <!-- Autofilled header -->
     <header>
       <html-import id='common_navbar_placeholder' src='/components/nav.html' alt='Navigation Bar'></html-import>
@@ -27,11 +28,7 @@
     
     <!-- Main Page Content -->
     <main role="main">
-      <br><br><br><br><br><br><h1>Welcome</h1> <br><br><br><br><br><br>
-      <p>
-      This site is very much still under construction. It is currently working as a development 
-      platform to learn web development.
-      </p>
+      {{ content }}
     </main>
 
     <!-- Autofilled footer -->
@@ -40,6 +37,5 @@
     </footer>
 
   </body>
-  
-</html>
 
+</html>
