@@ -3,13 +3,13 @@
   <script>
     $(function(){
       // load our navbar burger (svg so it can be edited)
-      myxml = new XMLHttpRequest();
+      /*myxml = new XMLHttpRequest();
       myxml.addEventListener("load", 
         function(){
           document.querySelector('#common_footer_settings_button').innerHTML = this.responseText;
         });
       myxml.open("GET", '/imgs/settings_icon_optimized.svg');
-      myxml.send();
+      myxml.send();*/
       //$('#common_footer_settings_button').load('/imgs/settings_icon_optimized.svg');
     });
     function toggleFooterSettings(){
@@ -42,7 +42,7 @@
 
     <div id='common_footer_settings_button_div'>
       <button id="common_footer_settings_button" onclick="toggleFooterSettings()"  aria-controls="common_footer_settings" aria-expanded="false" aria-label="Toggle settings menu">
-      
+      {% include assets/settings_icon_optimized.svg %}
       </button>
     </div>
 
