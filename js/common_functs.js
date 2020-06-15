@@ -179,5 +179,29 @@ function cmyk2rgb(cmyk){
   var r = 255 * (1 - cmyk[0]) * (1 - cmyk[3]);
   var g = 255 * (1 - cmyk[1]) * (1 - cmyk[3]);
   var b = 255 * (1 - cmyk[2]) * (1 - cmyk[3]);
-  return [r,g,b]
+  return [r,g,b];
+}
+
+/*
+@brief convert RGB to CMY
+@param[in] rgb - (0,255) rgb value
+@return cmy [0,1]
+*/
+function rgb2cmy(rgb){
+  var c = 1-(rgb[0]/255);
+  var m = 1-(rgb[1]/255);
+  var y = 1-(rgb[2]/255);
+  return [c,m,y];
+}
+
+/*
+@brief convert CMY to rgb
+@param[in] cmy - CMY value [0,1]
+@return rgb value (0,255)
+*/
+function cmy2rgb(cmy){
+  var r = 255*(1-cmy[0]);
+  var g = 255*(1-cmy[1]);
+  var b = 255*(1-cmy[2]);
+  return [r,g,b];
 }

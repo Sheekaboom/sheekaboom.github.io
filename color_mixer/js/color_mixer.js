@@ -104,22 +104,42 @@ function calculate_desired_color(){
     var table_vals = table2json(document.querySelector('#user_colors_table'));
 
     //Extract the colors into a array and convert to CMYK
+    /*
     var cvals = [];
     var mvals = [];
     var yvals = [];
     var kvals = [];
+    */
+    //rvals = []; gvals = []; bvals = [];
+    cvals = []; mvals = []; yvals = [];
     for(c of table_vals['Color']){
+        var cur_cmy = rgb2cmy(hex2rgb(c));
+        cvals.push(cur_cmy[0]);
+        mvals.push(cur_cmy[1]);
+        yvals.push(cur_cmy[2]);
+        /*
+        var cur_rgb = hex2rgb(c)
+        rvals.push(cur_rgb[0]);
+        gvals.push(cur_rgb[1]);
+        bvals.push(cur_rgb[2]);
+        */
+        /*
         var cur_cmyk = rgb2cmyk(hex2rgb(c));
-        cvals.push(cur_cmyk[0]);
-        mvals.push(cur_cmyk[1]);
-        yvals.push(cur_cmyk[2]);
-        kvals.push(cur_cmyk[3]);
+        cvals.push(cur_cmyk[0]/total_count);
+        mvals.push(cur_cmyk[1]/total_count);
+        yvals.push(cur_cmyk[2]/total_count);
+        kvals.push(cur_cmyk[3]/total_count);
+        */
     }
 
     //Now lets solve for our count using ml-fcnnls
-    var X = new mlMatrix.Matrix([cvals,mvals,yvals,kvals]); //color list
-    var cmyk_desired = rgb2cmyk(desired_color);
-    var counts = fcnnlsVector(X,cmyk_desired);
+    //var X = new mlMatrix.Matrix([cvals,mvals,yvals,kvals]); //color list
+    //var X = new mlMatrix.Matrix([rvals,gvals,bvals]); //color list
+    var X = new mlMatrix.Matrix([cvals,mvals,yvals]); //color list
+    //var cmyk_desired = rgb2cmyk(desired_color);
+    //var counts = fcnnlsVector(X,cmyk_desired);
+    //var counts = fcnnlsVector(X,desired_color);
+    var counts = fcnnlsVector(X,rgb2cmy(desired_color));
 
     //normalize to sum to total_count
     var count_sum = counts.reduce((a,b)=>a+b);
