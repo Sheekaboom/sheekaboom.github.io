@@ -1,4 +1,5 @@
-
+---
+---
 /*********************/
 /* Header definition */
 /*********************/
@@ -83,12 +84,16 @@
 /*********************/
 /* Footer definition */
 /*********************/
+footer{
+    min-height:45px;
+}
+
 #common_footer{
     width:100%;
     background:var(--background-accent-color);
-    bottom: 0;
-    position: fixed;
     height: 45px;
+    position:absolute;
+    bottom: 0;
     display:flex;
     border-color:var(--border-color);
     border-top-style:solid;
@@ -110,6 +115,8 @@
     padding:5px;
     background:var(--background-accent-color);
     border-radius:3px 0 0 0;
+    border-color:var(--border-color);
+    border-style: solid none none solid;
     transition: 0.5s;
 }
 .common-footer-settings-open{transform:translateX(0)}

@@ -1,39 +1,50 @@
+---
+---
 /* Our base color schemes (dark and light) */
 
 :root{
     /* Default fonts */
+    
+
+    /* THEME - DEFAULT */
+    /* Colors */
+    --text-color: #000;
+    --text-accent-color: #555;
+    --background-color: #ddd;
+    --background-accent-color: #aaa;
+    --border-color:#aaa;
+    --background-image: None;
+    /* Fonts */
     --text-font: Arial, Helvetica, sans-serif;
     --header-font: "Courier New", Courier, monospace;
 
-    /* Default color scheme */
-    --text-color-default: #000;
-    --text-accent-color-default: #555;
-    --background-color-default: #ddd;
-    --background-accent-color-default: #aaa;
-    --border-color-default:#aaa;
-    
-    /* Light mode mode */
-    --text-color-light: #000;
-    --text-accent-color-light: #555;
-    --background-color-light: #fff;
-    --background-accent-color-light: #aaa;
-    --border-color-light:#aaa;
-
-    /* Dark mode mode */
+    /* THEME - DARK */
     --text-color-dark: #ddd;
     --text-accent-color-dark: #888;
     --background-color-dark: #000;
     --background-accent-color-dark: #555;
     --border-color-dark:#555;
 
+    /* THEME - LIGHT */
+    --text-color-light: #000;
+    --text-accent-color-light: #555;
+    --background-color-light: #fff;
+    --background-accent-color-light: #aaa;
+    --border-color-light:#aaa;
 
-    /* Set to default color mode */
-    --text-color:var(--text-color-default);
-    --text-accent-color: var(--text-accent-color-default);
-    --background-color: var(--background-color-default);
-    --background-accent-color: var(--background-accent-color-default);
-    --border-color:var(--border-color-default);
+    /* Other themes should be set like:
 
+    :root[data-theme=theme_name] {
+        --text-color: ###;
+        --text-accent-color: ###;
+        --background-color: ###;
+        --background-accent-color: ###;
+        --border-color: ###;
+        --background-image: None;
+        --text-font: Arial, Helvetica, sans-serif;
+        --header-font: "Courier New", Courier, monospace;
+    }
+    */
 }
 
 /* Preferred Media color mode */
@@ -44,6 +55,7 @@
         --background-color: var(--background-color-dark);
         --background-accent-color: var(--background-accent-color-dark);
         --border-color: var(--border-color-dark);
+        --background-image: None;
     }
 }
 
@@ -54,10 +66,11 @@
         --background-color: var(--background-color-light);
         --background-accent-color: var(--background-accent-color-light);
         --border-color: var(--border-color-light);
+        --background-image: None;
     }
 }
 
-/* Allow color mode override */
+/* Here we have themes for overriding */
 :root[data-theme='dark'] {
     --text-color:var(--text-color-dark);
     --text-accent-color: var(--text-accent-color-dark);
@@ -82,17 +95,25 @@
     --border-color: #000099;
 }
 
+:root[data-theme='contrast'] {
+    --text-color:#fff;
+    --text-accent-color: #fae291;
+    --background-color: #030303;
+    --background-accent-color: #030303;
+    --border-color: #5ecace;
+}
+
 html{
-    min-height: 100%;
+    max-width: 100vw;
+    overflow-x:hidden;
 }
 body{
+    min-height: 100vh;
+    position:relative;
     background: var(--background-color);
     color: var(--text-color);
     margin: 0; padding: 0;
     font-family: var(--text-font);
-}
-main{
-    padding:20px;
 }
 /*https://stackoverflow.com/questions/6805482/css3-transition-animation-on-load*/
 @keyframes slideInFromLeft {
@@ -103,15 +124,14 @@ h1,h2,h3,h4,h5{
     animation: 1s ease-out 0s 1 slideInFromLeft;
     font-family: var(--header-font);
 }
-/*h1{animation-duration:1.3s}
-h2{animation-duration:1.0s}
-h3{animation-duration:0.7s}
-h4{animation-duration:0.4s}
-h5{animation-duration:0.1s}*/
+
 main{
-    margin-bottom: 75px;
-    margin-left:5%;
-    margin-right:5%;
+    padding:20px;
+    margin:{
+        bottom:75px;
+        left:5%;
+        right:5%;
+    }
     max-width:700px;
 }
 

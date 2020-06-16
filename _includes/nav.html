@@ -1,8 +1,8 @@
 <nav id="common_navbar">
   <script>
     $(function(){
-      // load our navbar burger (svg so it can be edited)
-      $('#common_navbar_burger').load('/imgs/waveform_burger_optimized.svg');
+      /*// load our navbar burger (svg so it can be edited)
+      $('#common_navbar_burger').load('/imgs/waveform_burger_optimized.svg');*/
     });
     // Toggle the links in the navbar
     function toggleNavbarLinks(){
@@ -33,18 +33,20 @@
   </script>
   <div id='common_navbar_container'>
     <button id="common_navbar_burger" class="common-navbar-burger-closed" onclick="toggleNavbarLinks()"  aria-controls="common_navbar_links" aria-expanded="false" aria-label="Toggle navigation">
+    {% include assets/waveform_burger_optimized.svg %}
     </button>
     <div  id="common_navbar_links" class='common-navbar-links-closed'>
       <ul>
-        <li><a class='common-navbar-link' href="/index.html">Home </a></li>
-        <li><a class='common-navbar-link' href="/projects.html">Projects</a></li>
-        <li><a class='common-navbar-link' href="/about.html">About</a></li>
+        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link index.md %}">Home </a></li>
+        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link projects/index.md %}">Projects</a></li>
+        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link blog/index.md %}">Blog</a></li>
+        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link about.md %}">About</a></li>
       </ul>
     </div>
     
     <div id='common_navbar_logo'>
       <a href='/index.html'>
-      <img src="/imgs/weissworks_logo_optimized.svg" alt="WeissWorks Logo">
+      <img src="/assets/weissworks_logo_optimized.svg" alt="WeissWorks Logo">
       </a>
     </div>
 

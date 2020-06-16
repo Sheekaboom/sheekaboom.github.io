@@ -12,10 +12,19 @@
     <!-- Load in common elements -->
     <link rel="stylesheet" type="text/css" href="/css/base.css">
     <link rel="stylesheet" type="text/css" href="/css/common.css">
-    <link rel="stylesheet" type="text/css" href="css/color_mixer.css">
+    <link rel="stylesheet" type="text/css" href="../css/color_mixer.css">
     <script src='/js/common_functs.js'></script>
     <script src='/js/initialize_page.js'></script>
     <script src='js/color_mixer.js'></script>
+
+    <!-- NNLS Solver Library -->
+    <script src="https://cdn.jsdelivr.net/npm/ml-fcnnls@1.1.0/fcnnls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ml-matrix@6.5.0/matrix.umd.min.js"></script>
+
+    <!-- Initialize the page -->
+    <script>
+      window.onload = initialize_mixer;
+    </script>
 
     <title>Color Mixer</title>
 
@@ -65,6 +74,8 @@
         <div id='desired_color_and_header' class='color_viewer'>
           <h2>Desired Color</h2>
           <input type='color' name='desired_color' id='desired_color' class='color_selection' value='#555555'>
+          <button onclick='calculate_desired_color()'>Calculate</button>
+          <input type='number' min=0 value=100 id='desired_total_count'>
         </div>
 
         <div id='mixed_color_and_header' class='color_viewer'>
@@ -78,24 +89,28 @@
       <!-- Colors Available for Mixing -->
       <div id='user_colors'>
         <!-- Color Table -->
-        <table id='user_colors_table' oninput="update_mixed_color(this)">
-          <template id='user_colors_table_row_template'>
-            <tr>
-              <td contenteditable=True>Blue</td>
-              <td><input type='color' value='#0000ff'></td>
-              <td><input type='number' min=0 placeholder='###'></td>
-              <td><button onclick='remove_color_row(this)'>Trash</button></td>
-            </tr>
-          </template>
-          <tr>
-            <th>Name</th><th>Color</th><th>Count</th><th>Delete</th>
-          </tr>
+        <template id='user_colors_table_row_template'>
           <tr>
             <td contenteditable=True>Blue</td>
             <td><input type='color' value='#0000ff'></td>
             <td><input type='number' min=0 placeholder='###'></td>
             <td><button onclick='remove_color_row(this)'>Trash</button></td>
           </tr>
+        </template>
+        <table id='user_colors_table' oninput="update_mixed_color(this)">
+          <thead>
+            <tr>
+              <th>Name</th><th>Color</th><th>Count</th><th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable=True>Blue</td>
+              <td><input type='color' value='#0000ff'></td>
+              <td><input type='number' min=0 placeholder='###'></td>
+              <td><button onclick='remove_color_row(this)'>Trash</button></td>
+            </tr>
+          </tbody>
         </table>
 
         <!-- Add/Save Colors -->
