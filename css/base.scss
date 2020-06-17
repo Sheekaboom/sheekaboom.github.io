@@ -105,7 +105,6 @@
 
 html{
     max-width: 100vw;
-    overflow-x:hidden;
 }
 body{
     min-height: 100vh;
@@ -115,6 +114,8 @@ body{
     margin: 0; padding: 0;
     font-family: var(--text-font);
 }
+html, body{overflow-x:hidden}
+
 /*https://stackoverflow.com/questions/6805482/css3-transition-animation-on-load*/
 @keyframes slideInFromLeft {
     0% {transform: translateX(-100%);}
