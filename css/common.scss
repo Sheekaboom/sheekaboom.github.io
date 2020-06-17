@@ -30,7 +30,7 @@
     border-radius: 3px;
     border-style: solid;
     border-width: 1px;
-    transition: 0.5s ease-out;
+    transition: 0.25s ease-out;
 }
 #common_navbar_burger:hover{border-style:dotted;}
 .common-navbar-burger-open{height:0;width:0;padding:0;opacity:0;transition-delay:0;}
@@ -43,9 +43,9 @@
     background:var(--background-accent-color);
     align-self:stretch;
     height:auto;
-    transition:1s ease-out;
+    transition:0.5s ease-out;
 }
-.common-navbar-links-closed{transform:translateX(-100vw);transition-delay:0.5s;}
+.common-navbar-links-closed{transform:translateX(-100vw);transition-delay:0.25s;}
 .common-navbar-links-open{transform:translateX(0);transition-delay:0;}
 #common_navbar_links ul{
     height:100%;
