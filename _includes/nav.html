@@ -35,14 +35,6 @@
     <button id="common_navbar_burger" class="common-navbar-burger-closed" onclick="toggleNavbarLinks()"  aria-controls="common_navbar_links" aria-expanded="false" aria-label="Toggle navigation">
     {% include assets/waveform_burger_optimized.svg %}
     </button>
-    <div  id="common_navbar_links" class='common-navbar-links-closed'>
-      <ul>
-        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link index.md %}">Home </a></li>
-        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link projects/index.md %}">Projects</a></li>
-        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link blog/index.md %}">Blog</a></li>
-        <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link about.md %}">About</a></li>
-      </ul>
-    </div>
     
     <div id='common_navbar_logo'>
       <a href='/index.html'>
@@ -51,4 +43,14 @@
     </div>
 
   </div>
+
+  <div  id="common_navbar_links" class='common-navbar-links-closed'>
+    <ul>
+      <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link index.md %}">Home </a></li>
+      <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link projects/index.md %}">Projects</a></li>
+      <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link blog/index.md %}">Blog</a></li>
+      <li><a class='common-navbar-link' href="{{ site.baseurl }}{% link about.md %}">About</a></li>
+    </ul>
+  </div>
+
 </nav>
