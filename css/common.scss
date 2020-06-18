@@ -69,22 +69,20 @@
         style:solid;
     }
 }
-@media (min-width: 500px){ // None mobile
+
+@media (min-width: 500px){ // Non-mobile
     #common_navbar_links li{
         height:100%;
         display:inline-block;
         width: 75px;
         background:none;
     }
-    #common_navbar_links ul{
-        height:100%;
-    }
-    #common_navbar_links{
-        height:100%;
-    }
+    #common_navbar_links ul{height:100%;}
+    #common_navbar_links{height:100%;}
     .common-navbar-links-closed{transform:translateX(-100vw);transition-delay:0.25s;}
     .common-navbar-links-open{transform:translateX(0);transition-delay:0;}
 }
+
 .common-navbar-link{
     display:inline-flex;
     align-items:center;
