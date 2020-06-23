@@ -13,6 +13,34 @@ function setTheme(theme_value){
         document.cookie = "data-theme="+theme_value+";path=/";
     }
 }
+
+/*@brief extract our theme information colors into a dictionary*/
+function getTheme(){
+
+  // initialize and get the name
+  var theme_info = {};
+  theme_info['name'] = document.querySelector('html').getAttribute('data-theme');
+
+  //now get css variables
+  var css_var_names = [
+      '--text-color',
+      '--text-accent-color',
+      '--background-color',
+      '--background-accent-color',
+      '--border-color',
+      '--background-image',
+      '--text-font',
+      '--header-font'
+  ]
+
+  // now get the current style values
+  for(i=0;i<css_var_names.length;i++){
+    let var_val = getComputedStyle(document.body).getPropertyValue(css_var_names[i]);
+    theme_info[css_var_names[i].replace('--','').replace(new RegExp('-', 'g'),'_')] = var_val
+  }
+  return theme_info;
+}
+
 /*
 @brief Change the current theme from a <select> item
 @param[in] select_item - <select> html item to set theme from

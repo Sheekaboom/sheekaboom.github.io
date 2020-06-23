@@ -70,29 +70,87 @@ function synthesize_data(mag,x,y,z,az,el,freq){
 var freq = 28e9;
 var lam_2 = frequency2wavelength(freq)/2;
 // Now lets put a little test together
-var x = math.multiply([0,1,2,3,4,5],lam_2);
+var x = math.multiply(math.range(0,16).toArray(),lam_2);
 var y = math.multiply(x,0);
 var z = math.multiply(x,0);
 
 // synthesize incident
-var vals = synthesize_data(1,x,y,z,Math.PI/8,0,freq);
+var vals = synthesize_data(1,x,y,z,0,0,freq);
 var weights = math.ones(vals.length).toArray();
 
 // sweep angles
 var az_vals = deg2rad(math.range(-90,90));
+var el_vals = deg2rad(math.range(-90,90));
 
 // beamform data
-var bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
+var init_bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
 
-function updateBeamformedData(){
+function updateBeamformedE2D(){
+
+    let plot_div = document.querySelector('#beamformE_2D');
 
     let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
-    let cur_el = 0;
+    let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
     let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
 
-    let bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
-    Plotly.deleteTraces(TESTER,0); //remove trace
-    Plotly.addTraces( TESTER, {
+    // update 1D azimuth sweep
+    let az_bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
+    Plotly.deleteTraces(plot_div,0); //remove trace
+    Plotly.addTraces(plot_div, {x:az_vals.toArray(),y: math.abs(az_bf_vals).toArray()});
+    //Plotly.deleteTraces(beamformE_2D_polar,0); //remove trace
+    //Plotly.addTraces( beamformE_2D_polar, {theta:rad2deg(az_vals.toArray()),r:math.abs(az_bf_vals).toArray(),type:'scatterpolar'});
+}
+
+function updateBeamformedH2D(){
+
+    let plot_div = document.querySelector('#beamformH_2D');
+
+    let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
+    let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
+    let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+
+    // update 2D azimuth sweep
+    let el_bf_vals = el_vals.map(el=>beamform(vals,x,y,z,0,el,weights,freq));
+    Plotly.deleteTraces(plot_div,0); //remove trace
+    Plotly.addTraces(plot_div, {
         x: az_vals.toArray(),
-        y: math.abs(bf_vals).toArray()});
+        y: math.abs(el_bf_vals).toArray()});
+}
+
+function updateBeamformed2D(){updateBeamformedE2D();updateBeamformedH2D();}
+
+
+// 3D things
+
+// sweep angles
+var az_vals_3d = deg2rad(math.range(-90,90,5));
+var el_vals_3d = deg2rad(math.range(-90,90,5));
+
+// meshgrid the values
+var az_mesh = [];
+for(i=0;i<el_vals_3d.toArray().length;i++){az_mesh = math.concat(az_mesh,az_vals_3d.toArray())}
+var el_mesh = [];
+for(i=0;i<az_vals_3d.toArray().length;i++){el_mesh = math.concat(el_mesh,math.multiply(el_vals_3d._data[i],math.ones(az_vals_3d.size())));}
+
+function updateBeamformed3D(){
+
+    let plot_div = document.querySelector('#beamformPattern_3D');
+
+    let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
+    let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
+    let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+
+    // update 2D azimuth sweep
+    var bf_vals = [];
+    for(i=0;i<el_mesh.length;i++){
+        bf_vals.push(beamform(vals,x,y,z,az_mesh[i],el_mesh[i],weights,freq));
+    }  
+
+    var mesh_size = [az_vals_3d.size()[0],el_vals_3d.size()[0]]
+    Plotly.deleteTraces(plot_div,0); //remove trace
+    Plotly.addTraces(plot_div, {
+        x: math.reshape(az_mesh,mesh_size),
+        y: math.reshape(el_mesh,mesh_size),
+        z: math.reshape(math.abs(bf_vals),mesh_size),
+        type:'surface'});
 }
