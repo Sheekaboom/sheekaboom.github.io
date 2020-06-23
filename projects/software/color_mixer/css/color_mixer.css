@@ -12,11 +12,13 @@
 
 .color_viewer{
     display:inline-block;
-    padding:10%;
+    padding:10px 10%;
+    width:100px;
 }
 
 #desired_and_mixed_color{
     display:flex;
+    flex-wrap:wrap;
 }
 
 #desired_color{
@@ -65,7 +67,7 @@ table input[type='number']{
     margin:0 10px;
 }
 
-input[type='color']{
+table input[type='color']{
     width:75%;
     min-width:50px;
 }

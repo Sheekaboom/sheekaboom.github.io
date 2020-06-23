@@ -1,0 +1,69 @@
+---
+title: Phased Array Designer
+layout: default
+permalink: /:categories/:title:output_ext
+---
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjs@7.0.1/dist/math.min.js"></script>
+
+<!--link rel="stylesheet" type="text/css" href="{{ site.baseurl }}array_designer/css/color_mixer.css"-->
+<script src='{{ site.baseurl }}array_designer/js/generic.js'></script>
+<script src='{{ site.baseurl }}array_designer/js/beamform.js'></script>
+
+<!-- Some Plotly stuff -->
+<script>
+	var base_plotly_layout = {
+	margin: { t: 0 },
+	paper_bgcolor: 'rgba(0,0,0,0)',
+	plot_bgcolor: 'rgba(0,0,0,0)',
+	'layout.polar.bgcolor':'rgba(0,0,0,0)',
+	'layout.polar.angularaxis.direction':'clockwise'};
+</script>
+
+<h1>Phased Array Design Tool</h1>
+
+<h2>Steering Angle Control</h2>
+<div id='array_steering_input'>
+	<label for='az_angle_slider'>Azimuth Angle</label>
+	<input type="range" min="-90" max="90" value="0" class="slider" id="az_angle_slider"
+					onmouseup="updateBeamformed2D()" ontouchend="updateBeamformed2D()">
+	<label for='el_angle_slider'>Elevation Angle</label>
+	<input type="range" min="-90" max="90" value="0" class="slider" id="el_angle_slider" 
+					onmouseup="updateBeamformed2D()" ontouchend="updateBeamformed2D()">
+</div>
+
+
+<h2>1D Planar Cuts</h2>
+<h3>Azimuth Cut (El=0)</h3>
+<div id="beamformE_2D" style="width:100%;height:50vw;"></div>
+<script>
+	var plot_div = document.getElementById('beamformE_2D');
+	Plotly.newPlot(plot_div, [{x:[0],y:[0]}], base_plotly_layout);
+	updateBeamformedE2D();
+</script>
+<!--div id="beamformE_2D_polar" style="width:100%;height:50vw;"></div>
+<script>
+	beamformE_2D_polar = document.getElementById('beamformE_2D_polar');
+	Plotly.newPlot(beamformE_2D_polar, [{r:[0],theta:[0],type:'scatterpolar'}], base_plotly_layout);
+	updateBeamformedEfield1D();
+</script-->
+
+<h3>Elevation Cut (Az=0)</h3>
+<div id="beamformH_2D" style="width:100%;height:50vw;"></div>
+<script>
+	var plot_div = document.getElementById('beamformH_2D');
+	Plotly.newPlot(plot_div, [{x:[0],y:[0] }], base_plotly_layout);
+	updateBeamformedH2D();
+</script>
+
+<h2>3D Radiation Pattern</h2>
+
+<div id="beamformPattern_3D" style="width:100%px;height:100vw;"></div>
+<script>
+var data = [{z: [[0,0],[0,0]],type: 'surface'}];
+Plotly.newPlot('beamformPattern_3D', data, base_plotly_layout);
+updateBeamformed3D();
+</script>
+<button onclick="updateBeamformed3D()">Calculate 3D Pattern</button>
+
