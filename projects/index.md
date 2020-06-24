@@ -8,11 +8,6 @@ layout: default
 
 # Projects
 
-## Academic
-
-- None Yet!
-
-
 ## Software
 
 <ul>
@@ -29,9 +24,39 @@ layout: default
 
 ## Carpentry
 
-- None Yet!
+<ul>
+    {% assign cat_name = 'carpentry' %}
+    {% for post in my_categories %}
+        {% if post.categories contains cat_name %}
+            <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
 
+## Academic
+
+<ul>
+    {% assign cat_name = 'academic' %}
+    {% for post in my_categories %}
+        {% if post.categories contains cat_name %}
+            <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
 
 ## Other
 
-- None Yet!
+<ul>
+    {% assign cat_name = 'other' %}
+    {% for post in my_categories %}
+        {% if post.categories contains cat_name %}
+            <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

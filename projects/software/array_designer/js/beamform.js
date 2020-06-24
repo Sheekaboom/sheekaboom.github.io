@@ -96,7 +96,7 @@ function updateBeamformedE2D(){
     // update 1D azimuth sweep
     let az_bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
     Plotly.deleteTraces(plot_div,0); //remove trace
-    Plotly.addTraces(plot_div, {x:az_vals.toArray(),y: math.abs(az_bf_vals).toArray()});
+    Plotly.addTraces(plot_div, {x:az_vals.toArray(),y: lin2db(math.abs(az_bf_vals).toArray())});
     //Plotly.deleteTraces(beamformE_2D_polar,0); //remove trace
     //Plotly.addTraces( beamformE_2D_polar, {theta:rad2deg(az_vals.toArray()),r:math.abs(az_bf_vals).toArray(),type:'scatterpolar'});
 }
@@ -114,7 +114,7 @@ function updateBeamformedH2D(){
     Plotly.deleteTraces(plot_div,0); //remove trace
     Plotly.addTraces(plot_div, {
         x: az_vals.toArray(),
-        y: math.abs(el_bf_vals).toArray()});
+        y: lin2db(math.abs(el_bf_vals).toArray())});
 }
 
 function updateBeamformed2D(){updateBeamformedE2D();updateBeamformedH2D();}
@@ -151,6 +151,8 @@ function updateBeamformed3D(){
     Plotly.addTraces(plot_div, {
         x: math.reshape(az_mesh,mesh_size),
         y: math.reshape(el_mesh,mesh_size),
-        z: math.reshape(math.abs(bf_vals),mesh_size),
-        type:'surface'});
+        z: math.reshape(lin2db(math.abs(bf_vals)),mesh_size),
+        type:'surface',
+        cmin:-60,
+        cmax:5});
 }
