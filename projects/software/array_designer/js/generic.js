@@ -24,7 +24,15 @@ function rad2deg(val){return math.multiply(val,180/Math.PI);}
 function frequency2wavelength(freq){return math.divide(SPEED_OF_LIGHT,freq);}
 
 /*@brief convert linear to dB*/
-function lin2db(val){return 20*math.log10(val);}
+function lin2db(val){return math.multiply(20,math.log10(val));}
 
-/*@brief convert linear to dB*/
-function lin2db(val){return math.pow(10,math.divide(val,20));}
+/*@brief convert dB to linear*/
+function db2lin(val){return math.pow(10,math.divide(val,20));}
+
+/*@brief change mag/az/el data to cartesian values*/
+function azel2cart(mag,az,el){
+    var x = math.multiply(mag,math.cos(az),math.cos(el));
+    var y = math.multiply(mag,math.sin(az),math.cos(el));
+    var z = math.multiply(mag,math.sin(el));
+    return [x,y,z];
+}

@@ -40,6 +40,7 @@ permalink: /:categories/:title:output_ext
 <script>
 	var plot_div = document.getElementById('beamformE_2D');
 	Plotly.newPlot(plot_div, [{x:[0],y:[0]}], base_plotly_layout);
+	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
 	updateBeamformedE2D();
 </script>
 <!--div id="beamformE_2D_polar" style="width:100%;height:50vw;"></div>
@@ -54,15 +55,17 @@ permalink: /:categories/:title:output_ext
 <script>
 	var plot_div = document.getElementById('beamformH_2D');
 	Plotly.newPlot(plot_div, [{x:[0],y:[0] }], base_plotly_layout);
+	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
 	updateBeamformedH2D();
 </script>
 
 <h2>3D Radiation Pattern</h2>
 
-<div id="beamformPattern_3D" style="width:100%px;height:100vw;"></div>
+<div id="beamformPattern_3D" style="width:100%px;height:50vw;"></div>
 <script>
 var data = [{z: [[0,0],[0,0]],type: 'surface'}];
 Plotly.newPlot('beamformPattern_3D', data, base_plotly_layout);
+Plotly.relayout(plot_div,{'scene.zaxis.range':[-60,5]})
 updateBeamformed3D();
 </script>
 <button onclick="updateBeamformed3D()">Calculate 3D Pattern</button>
