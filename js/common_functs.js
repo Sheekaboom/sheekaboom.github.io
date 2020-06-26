@@ -50,6 +50,43 @@ function themeSelectHandler(select_item){
     setTheme(theme_str);
 }
 
+/******************************************************************/
+/**********************/
+/* Language Filtering */
+/**********************/
+/*
+@brief filter language in the main text
+*/
+function filterLanguage(){
+  // filter all text on page
+  filter_obj = { // this contains RegExp():'replace' values
+    'fudge'            : /\bfuck\b/ig,
+    'darn'             : /\bdamn\b/ig,
+    'shoot'            : /\bshit\b/ig,
+    'booty'            : /\bass(hole)*\b/ig,
+    'pain in the butt' : /\bbitch\b/ig,
+    'unpleasant-thing' : /\bdick\b/ig,
+  }
+  var body_text = document.querySelector('main').innerHTML;
+  for(rep_val in filter_obj){
+    body_text = body_text.replace(filter_obj[rep_val],rep_val)
+  }
+  document.querySelector('main').innerHTML = body_text;
+}
+
+/*
+@brief handler for language filter selector
+*/
+function languageFilterHandler(){
+  var lang_filt_state = document.querySelector('#language_filter_checkbox').checked;
+  document.getElementsByTagName('html')[0].setAttribute('data-language-filter',lang_filt_state);
+  sessionStorage.setItem('data-language-filter',lang_filt_state);
+  if(lang_filt_state){filterLanguage();}
+  document.getElementById('language_filter_checkbox').checked = lang_filt_state;
+}
+
+
+/******************************************************************/
 /*
 @brief get a cookie value
 @cite https://www.w3schools.com/js/js_cookies.asp

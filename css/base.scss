@@ -1,5 +1,6 @@
 ---
 ---
+
 /* Our base color schemes (dark and light) */
 
 :root{
@@ -124,16 +125,19 @@ html, body{overflow-x:hidden}
 h1,h2,h3,h4,h5{
     animation: 1s ease-out 0s 1 slideInFromLeft;
     font-family: var(--header-font);
-}
-
-main{
-    padding:20px;
     margin:{
         bottom:75px;
         left:5%;
         right:5%;
     }
     max-width:700px;
+}
+
+main{
+    margin:{
+        top:75px;
+        bottom:75px;
+    }
 }
 
 div{
@@ -148,6 +152,13 @@ p {
     animation:0.5s ease-out 0s 1 fadeInAndUp;
     text-align: justify;
     line-height:1.5;
+    padding:20px;
+    margin:{
+        bottom:75px;
+        left:5%;
+        right:5%;
+    }
+    max-width:700px;
 }
 
 /* Default buttons */
@@ -190,4 +201,13 @@ input{
     color:var(--text-color);
 }
 
+
+/* navbar config */ 
+@import 'navbar';
+
+/* footer config */
+@import 'footer';
+
+/* formatting of posts */
+@import 'post_container'
 

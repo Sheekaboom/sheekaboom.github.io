@@ -20,10 +20,11 @@ While most of the posts in here are informational and family friendly, I don't m
 {% assign my_category_name = 'blog' %}
 {% assign my_categories = site.categories[my_category_name] %}
 
-<ul>
+<div class='post_item_list'>
+  <span class='post_item_list_shim'></span>
   {% for post in my_categories %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
+    <a href="{{ post.url }}" class='post_item'>
+      <p class='post_item_title'>{{ post.title }}</p>
+    </a>
   {% endfor %}
-</ul>
+</div>

@@ -19,8 +19,8 @@ $(function(){
 function initializeUserSettings(){
     
     // list of user settings and default values
-    var user_settings = ['data-theme'];
-    var default_user_setting_values = ['default'];
+    var user_settings = ['data-theme','data-language-filter'];
+    var default_user_setting_values = ['default',false];
 
     // set the values from storage
     for(i=0;i<user_settings.length;i++){
