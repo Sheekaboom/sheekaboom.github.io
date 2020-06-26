@@ -1,7 +1,6 @@
----
----
+
 /*********************/
-/* Header definition */
+/* Navbar definition */
 /*********************/
 /* Navbar parent div */
 #common_navbar{
@@ -106,62 +105,3 @@
     margin-left: auto;
 }
 #common_navbar_logo img{height: 100%;}
-
-
-/*********************/
-/* Footer definition */
-/*********************/
-footer{
-    min-height:45px;
-}
-
-#common_footer{
-    width:100%;
-    background:var(--background-accent-color);
-    height: 45px;
-    position:absolute;
-    bottom: 0;
-    display:flex;
-    border-color:var(--border-color);
-    border-top-style:solid;
-}
-#common_footer_container{
-    width:100%;
-    margin:0px 20px;
-    display:flex;
-    align-items:center;
-}
-#common_footer_settings_button_div{
-    margin-left:auto;
-}
-#common_footer_settings{
-    display:block;
-    position:absolute;
-    bottom:100%;
-    right:0;
-    padding:5px;
-    background:var(--background-accent-color);
-    border-radius:3px 0 0 0;
-    border-color:var(--border-color);
-    border-style: solid none none solid;
-    transition: 0.5s;
-}
-.common-footer-settings-open{transform:translateX(0)}
-.common-footer-settings-closed{transform: translateX(100%);}
-
-#common_footer a{
-    color:var(--text-accent-color);
-}
-#common_footer_settings_button{
-    background: var(--background-accent-color); 
-    border-color: var(--text-accent-color);
-    border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
-    height:38px;
-    width:39px;
-    padding: 2px;
-}
-#common_footer_settings_button svg{width: 30px !important;height: 30px !important;}
-#common_footer_settings_button path{stroke:var(--text-color) !important; stroke-width: 3px;}
-

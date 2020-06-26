@@ -2,3 +2,7 @@ name: My Jekyll Website
 
 plugins:
   - jekyll-sitemap
+
+sass:
+  sass_dir: _sass
+  style: compressed

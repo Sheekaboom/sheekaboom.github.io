@@ -59,8 +59,23 @@
         </select>
         <script>
           // update the selector to the correct value
-          var theme_value = document.getElementsByTagName('html')[0].getAttribute('data-theme');
+          var theme_value = document.querySelector('html').getAttribute('data-theme');
           document.getElementById('common_navbar_theme_selector').value = theme_value;
+        </script>
+      </div>
+      <hr>
+      <div id='language_filter_setting'>
+        Language<br>Filter: <br>
+        <div class='switch-container'>
+          <label class="switch">
+            <input id='language_filter_checkbox' type="checkbox" onchange='languageFilterHandler()'>
+            <span class="slider"></span>
+          </label>
+        </div>
+        <script>
+          var lang_filt_state = document.querySelector('html').getAttribute('data-language-filter');
+          document.getElementById('language_filter_checkbox').checked = lang_filt_state;
+          languageFilterHandler();
         </script>
       </div>
     </div>
