@@ -79,8 +79,8 @@ function filterLanguage(){
 */
 function languageFilterHandler(){
   var lang_filt_state = document.querySelector('#language_filter_checkbox').checked;
-  document.getElementsByTagName('html')[0].setAttribute('data-language-filter',lang_filt_state);
   sessionStorage.setItem('data-language-filter',lang_filt_state);
+  document.getElementsByTagName('html')[0].setAttribute('data-language-filter',lang_filt_state);
   if(lang_filt_state){filterLanguage();}
   document.getElementById('language_filter_checkbox').checked = lang_filt_state;
 }

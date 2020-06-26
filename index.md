@@ -11,12 +11,28 @@ platform to learn web development.
 
 # Latest Posts
 
-Coming Soon
+<div class='post_item_list'>
+  <span class='post_item_list_shim'></span>
+  {% for post in site.categories['blog'] limit:3 %}
+    <a href="{{ post.url }}" class='post_item'>
+      <p class='post_item_title'>{{ post.title }}</p>
+    </a>
+  {% endfor %}
+  <span class='post_item_list_shim'></span>
+</div>
 
 
 # Latest Projects
 
-Coming Soon
+<div class='post_item_list'>
+  <span class='post_item_list_shim'></span>
+  {% for post in site.categories['projects'] limit:3 %}
+    <a href="{{ post.url }}" class='post_item'>
+      <p class='post_item_title'>{{ post.title }}</p>
+    </a>
+  {% endfor %}
+  <span class='post_item_list_shim'></span>
+</div>
 
 <!--
 You can use HTML elements in Markdown, such as the comment element, and they won't

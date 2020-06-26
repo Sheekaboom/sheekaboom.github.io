@@ -36,13 +36,14 @@
 
 
 .post_item{
+    text-decoration:none;
     display:inline-flex;
     justify-content:center;
     height:150px;
-    width:100px;
-    min-width:100px;
+    width:150px;
+    min-width:150px;
     padding:5px;
-    margin:20px;
+    margin:10px;
     background: var(--background-accent-color);
     border:{
         width:3px;

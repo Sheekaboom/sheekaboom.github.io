@@ -10,17 +10,18 @@ layout: default
 
 ## Software
 
-<ul>
-    {% assign cat_name = 'software' %}
-    {% for post in my_categories %}
-        {% if post.categories contains cat_name %}
-            <li>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-</ul>
-
+<div class='post_item_list'>
+  <span class='post_item_list_shim'></span>
+  {% assign cat_name = 'software' %}
+  {% for post in my_categories %}
+    {% if post.categories contains cat_name %}
+        <a href="{{ post.url }}" class='post_item'>
+        <p class='post_item_title'>{{ post.title }}</p>
+        </a>
+    {% endif %}
+  {% endfor %}
+  <span class='post_item_list_shim'></span>
+</div>
 
 ## Carpentry
 
