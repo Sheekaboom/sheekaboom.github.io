@@ -1,17 +1,30 @@
 
 <style>
- #email_container div{display:inline-block;} 
- #email_container{display:inline-flex;}
+ #email_container{display:inline-flex;text-decoration:underline;}
+ #email_container:hover{color:var(--text-accent-color);}
+ .email_secion{display:inline-block}
 </style>
+<script>
+    function emailOnclickHandler(email_container){
+        var sect_count = 6;
+        var email_address = "";
+        for(i=0;i<sect_count;i++){
+            email_address += email_container.querySelector('#email_sect_'+i).innerText;
+        }
+        //console.log(email_address);
+        //now mailto redirect
+        window.location.href = "mailto:"+email_address;
+    }
+</script>
 <!-- This is pretty mixed up... If you go through the trouble to scrape this
     You either built some nice software, or care way to much about my contact info -->
-<div id='email_container'>
-    <div id='email_sect_5' style='order:5;'>.dev</div>
-    <div id='email_sect_0' style='order:0;'>al</div>
-    <div id='email_sect_2' style='order:2;'>@we</div>
-    <div id='email_sect_3' style='order:3;'>iss</div>
-    <div id='email_sect_1' style='order:1;'>ec</div>
-    <div id='email_sect_4' style='order:4;'>works</div>
-</div>
+<span id='email_container' onclick='emailOnclickHandler(this)'>
+    <span class='email_section' id='email_sect_5' style='order:5;'>.dev</span>
+    <span class='email_section' id='email_sect_0' style='order:0;'>al</span>
+    <span class='email_section' id='email_sect_2' style='order:2;'>@we</span>
+    <span class='email_section' id='email_sect_3' style='order:3;'>iss</span>
+    <span class='email_section' id='email_sect_1' style='order:1;'>ec</span>
+    <span class='email_section' id='email_sect_4' style='order:4;'>works</span>
+</span>
 <!-- Lets see if we catch any spambots -->
-<p style="display:none;"><a href='mailto:spamsRus@weissworks.dev'>spamsRus@weissworks.dev</a></p>
+<a href='mailto:spamsRus@weissworks.dev' style='display:none;'>spamsRus@weissworks.dev</a>
