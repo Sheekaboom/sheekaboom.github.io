@@ -1,17 +1,6 @@
-$(function(){
-    // initialize the user settings
-    initializeUserSettings();
 
-    // navigation bar and components
-    //$('#common_navbar_div').load('/components/nav.html'); //navigation bar
-
-    // footer and components
-    //$('#common_footer_div').load('/components/footer.html'); //page footer
-
-    // load any <html-import> statements (e.g. navigation, footer)
-    import_html_modules();
-
-});
+// initialize the user settings
+initializeUserSettings();
 
 /*
 @brief Initialize user settings on each page

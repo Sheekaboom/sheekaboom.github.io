@@ -2,28 +2,28 @@
 /* @author Alec Weiss               */
 /* @date 6-2020                     */
 
-export {filter_language,languageFilterEventListener};
+export {languageFilterEventListener,set_language_filter};
 
 var filter_dict_nice = { // this contains RegExp():'replace' values
-      'fudge'            : /\bfuck\b/ig,
-      'darn'             : /\bdamn\b/ig,
-      'shoot'            : /\bshit\b/ig,
+      'fudge'            : /\bfuck/ig,
+      'darn'             : /\bdamn/ig,
+      'shoot'            : /\bshit/ig,
       'booty'            : /\bass(hole)*\b/ig,
-      'pain in the butt' : /\bbitch\b/ig,
-      'unpleasant-thing' : /\bdick\b/ig,
+      'pain in the butt' : /\bbitch/ig,
+      'unpleasant-thing' : /\bdick/ig,
     };
 
 /*
 @brief filter language in the main text
 @param[in] element - element to filter
 */
-function filter_language(element){
+function filter_children(element){
     // filter anything in headers or paragraphs on the page
     var filter_types = ['p','h1','h2','h3','h4','h5'];
     for(var ft of filter_types){
         var filter_elems = element.querySelectorAll(ft);
         for(var fe of filter_elems){
-            apply_language_filter(fe,filter_dict_nice);
+            filter_language(fe,filter_dict_nice);
         }
     }
 }
@@ -31,7 +31,7 @@ function filter_language(element){
 /*
 @brief apply the language filter given a filter_dict
 */
-function apply_language_filter(element,filter_dict){
+function filter_language(element,filter_dict){
     var myhtml = element.innerHTML;
     for(var rep_val in filter_dict){
         myhtml = myhtml.replace(filter_dict[rep_val],rep_val)
@@ -51,7 +51,7 @@ function set_language_filter(filter_state){
 
     // now run the filter if we turned on the value
     if(filter_state==true){
-        filter_language(document.querySelector('main'));
+        filter_children(document.querySelector('main'));
     }
 }
 
