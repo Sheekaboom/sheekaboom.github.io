@@ -1,17 +1,6 @@
 <div id='common_footer'>
 
   <script>
-    $(function(){
-      // load our navbar burger (svg so it can be edited)
-      /*myxml = new XMLHttpRequest();
-      myxml.addEventListener("load", 
-        function(){
-          document.querySelector('#common_footer_settings_button').innerHTML = this.responseText;
-        });
-      myxml.open("GET", '/imgs/settings_icon_optimized.svg');
-      myxml.send();*/
-      //$('#common_footer_settings_button').load('/imgs/settings_icon_optimized.svg');
-    });
     function toggleFooterSettings(){
       var footer_settings = document.querySelector('#common_footer_settings');
       footer_settings.classList.toggle('common-footer-settings-closed');
@@ -47,10 +36,17 @@
     </div>
 
     <div id='common_footer_settings' class='common-footer-settings-closed'>
+      <!-- add our event listeners-->
+      <script type='module'>
+        import {themeEventListener} from '/js/modules/Theming.js';
+        document.querySelector('#common_navbar_theme_selector').addEventListener('change',themeEventListener);
+        import {languageFilterEventListener} from '/js/modules/LanguageFilter.js';
+        document.querySelector('#language_filter_checkbox').addEventListener('change',languageFilterEventListener);
+      </script>
       <!-- Settings for the theme -->
       <div id='common_footer_theme_setting'>
         Theme: <br>
-        <select id='common_navbar_theme_selector' onchange="themeSelectHandler(this)">
+        <select id='common_navbar_theme_selector'>
           <option value='default'>System</option>
           <option value='light'>Light</option>
           <option value='dark'>Dark</option>
@@ -68,14 +64,13 @@
         Language<br>Filter: <br>
         <div class='switch-container'>
           <label class="switch">
-            <input id='language_filter_checkbox' type="checkbox" onchange='languageFilterHandler()'>
+            <input id='language_filter_checkbox' type="checkbox" >
             <span class="slider"></span>
           </label>
         </div>
         <script>
           var lang_filt_state = document.querySelector('html').getAttribute('data-language-filter');
           document.getElementById('language_filter_checkbox').checked = lang_filt_state;
-          languageFilterHandler();
         </script>
       </div>
     </div>
