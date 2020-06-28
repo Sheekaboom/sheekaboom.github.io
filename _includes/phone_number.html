@@ -1,14 +1,35 @@
 <style>
-    #phone_number_container{display:inline-flex;} 
+    #phone_number_container{display:inline-flex;transition-duration:1s;} 
+    #phone_number_container:hover{color:var(--text-accent-color);}
     .phone_section{display:inline-block;}
    </style>
+    <script>
+    function phoneOnclickHandler(phone_container){
+        var sect_count = 6;
+        var phone = "";
+        for(i=0;i<sect_count;i++){
+            phone += phone_container.querySelector('#phone_sect_'+i).innerText;
+        }
+        //console.log(email_address);
+        //now mailto redirect
+        window.location.href = "tel:"+phone;
+    }
+</script>>
    <!-- This is pretty mixed up... If you go through the trouble to scrape this
     You either built some nice software, or care way to much about my contact info -->
    <span id='phone_number_container'>
-       <span class='phone_section' id='phone_sect_5' style='order:5;'>39</span>
-       <span class='phone_section' id='phone_sect_2' style='order:2;'>2</span>
-       <span class='phone_section' id='phone_sect_3' style='order:3;'>79</span>
-       <span class='phone_section' id='phone_sect_1' style='order:1;'>0)-</span>
-       <span class='phone_section' id='phone_sect_4' style='order:4;'>-33</span>
-       <span class='phone_section' id='phone_sect_0' style='order:0;'>(97</span>
+       <span class='phone_section' id='phone_sect_5'>39</span>
+       <span class='phone_section' id='phone_sect_2'>2</span>
+       <span class='phone_section' id='phone_sect_3'>79</span>
+       <span class='phone_section' id='phone_sect_1'>0)-</span>
+       <span class='phone_section' id='phone_sect_4'>-33</span>
+       <span class='phone_section' id='phone_sect_0'>(97</span>
    </span>
+
+   <script>
+       var phone_sections = document.querySelector('#phone_number_container').children;
+       for(i=0;i<phone_sections.length;i++){
+           let cur_sect = phone_sections[i];
+           cur_sect.style.order = cur_sect.id[cur_sect.id.length-1];
+       }
+   </script>
