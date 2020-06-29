@@ -7,8 +7,8 @@ export {languageFilterEventListener,set_language_filter};
 var filter_dict_nice = { // this contains RegExp():'replace' values
       'fudge'            : /\bfuck/ig,
       'darn'             : /\bdamn/ig,
-      'shoot'            : /\bshit/ig,
-      'booty'            : /\bass(hole)*\b/ig,
+      'shoot'            : /\b(bull)*shit/ig,
+      'booty'            : /\b(dumb)*ass(es|hole[s]*)*\b/ig,
       'pain in the butt' : /\bbitch/ig,
       'unpleasant-thing' : /\bdick/ig,
     };

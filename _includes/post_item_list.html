@@ -1,0 +1,14 @@
+<!-- Item list template the variable 'post_item_list' must be assigned before this using assign -->
+
+<div class='post_item_list'>
+    <span class='post_item_list_shim'></span>
+    {% for post_item in post_item_list %}
+      <a href="{{ post_item.url }}" class='post_item'>
+        <p class='post_item_title'>{{ post_item.title }}</p>
+        {% if post_item.icon %}
+        <img src='{{ post_item.icon }}' class='post_item_icon'>
+        {% endif %}
+      </a>
+    {% endfor %}
+    <span class='post_item_list_shim'></span>
+  </div>

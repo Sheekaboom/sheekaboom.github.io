@@ -47,8 +47,4 @@ In the summer, I enjoy biking, hiking, and camping.
 I also enjoy canyoneering in Utah. Some of my favorites out there include slot canyons in Escalante and Zion.
 Recently I have picked back up SCUBA diving which was something I originally started when I was about 12.
      
-<!--
-You can use HTML elements in Markdown, such as the comment element, and they won't
-be affected by a markdown parser. However, if you create an HTML element in your
-markdown file, you cannot use markdown syntax within that element's contents.
--->
+

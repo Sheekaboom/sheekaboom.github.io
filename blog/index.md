@@ -3,6 +3,11 @@ title: Blog
 layout: default
 ---
 
+# Blog Posts
+
+{% assign post_item_list = site.categories['blog'] %}
+{% include post_item_list.html %}
+
 # Disclaimer
 
 <p>
@@ -17,17 +22,3 @@ corrections, or to just say hi at {% include email.html %}.
 
 While most of the posts in here are informational and family friendly, I don't mind using profanity to get my point across. So, if you don't like that... well I guess don't read the blog. Enjoy!
 
-# Blog Posts
-
-{% assign my_category_name = 'blog' %}
-{% assign my_categories = site.categories[my_category_name] %}
-
-<div class='post_item_list'>
-  <span class='post_item_list_shim'></span>
-  {% for post in my_categories %}
-    <a href="{{ post.url }}" class='post_item'>
-      <p class='post_item_title'>{{ post.title }}</p>
-    </a>
-  {% endfor %}
-  <span class='post_item_list_shim'></span>
-</div>

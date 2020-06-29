@@ -4,35 +4,20 @@ layout: default
 ---
 
 # Welcome
-<!--# {{ page.title }}-->
 
-This site is very much still under construction. It is currently working as a development 
-platform to learn web development.
+Hello! Welcome to my site. This site serves as a place to hold blog posts, my previous projects, and serves as a platform to learn web development. This site isare continuously being improved, so check back in the future for new features, projects, and blog posts!
 
 # Latest Posts
 
-<div class='post_item_list'>
-  <span class='post_item_list_shim'></span>
-  {% for post in site.categories['blog'] limit:3 %}
-    <a href="{{ post.url }}" class='post_item'>
-      <p class='post_item_title'>{{ post.title }}</p>
-    </a>
-  {% endfor %}
-  <span class='post_item_list_shim'></span>
-</div>
+{% assign post_item_list = site.categories['blog'] | slice: 0,3 %}
+{% include post_item_list.html %}
 
 
 # Latest Projects
 
-<div class='post_item_list'>
-  <span class='post_item_list_shim'></span>
-  {% for post in site.categories['projects'] limit:3 %}
-    <a href="{{ post.url }}" class='post_item'>
-      <p class='post_item_title'>{{ post.title }}</p>
-    </a>
-  {% endfor %}
-  <span class='post_item_list_shim'></span>
-</div>
+{% assign post_item_list = site.categories['projects'] | slice: 0,3 %}
+{% include post_item_list.html %}
+
 
 <!--
 You can use HTML elements in Markdown, such as the comment element, and they won't
