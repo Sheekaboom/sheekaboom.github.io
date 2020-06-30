@@ -1,5 +1,7 @@
+export {azel2uvw,deg2rad,rad2deg,lin2db,db2lin};
+export {frequency2wavelength,azel2cart};
 
-SPEED_OF_LIGHT = 299792458;
+export const SPEED_OF_LIGHT = 299792458;
 
 /*
 @brief convert azimuth elevation to UVW coordinates

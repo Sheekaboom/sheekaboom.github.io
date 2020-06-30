@@ -160,6 +160,19 @@ p {
     max-width:700px;
 }
 
+.par_form {
+    animation:0.5s ease-out 0s 1 fadeInAndUp;
+    text-align: justify;
+    line-height:1.5;
+    padding:20px;
+    margin:{
+        bottom:20px;
+        left:5%;
+        right:5%;
+    }
+    max-width:700px;
+}
+
 /* Default buttons */
 button{
     background:var(--background-accent-color);

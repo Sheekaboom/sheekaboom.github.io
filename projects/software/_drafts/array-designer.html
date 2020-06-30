@@ -3,13 +3,15 @@ title: Phased Array Designer
 layout: default
 permalink: /:categories/:title:output_ext
 ---
-
+<!-- Plotly and Math -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjs@7.0.1/dist/math.min.js"></script>
 
 <!--link rel="stylesheet" type="text/css" href="{{ site.baseurl }}array_designer/css/color_mixer.css"-->
-<script src='{{ site.baseurl }}array_designer/js/generic.js'></script>
-<script src='{{ site.baseurl }}array_designer/js/beamform.js'></script>
+<script type='module' src='{{ site.baseurl }}array_designer/js/Array_UI.js'></script>
+
+<!-- Specific CSS -->
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}array_designer/css/array_designer.css">
 
 <!-- Some Plotly stuff -->
 <script>
@@ -17,31 +19,84 @@ permalink: /:categories/:title:output_ext
 	margin: { t: 0 },
 	paper_bgcolor: 'rgba(0,0,0,0)',
 	plot_bgcolor: 'rgba(0,0,0,0)',
-	'layout.polar.bgcolor':'rgba(0,0,0,0)',
-	'layout.polar.angularaxis.direction':'clockwise'};
+	};
 </script>
 
 <h1>Phased Array Design Tool</h1>
 
+<h2>Array Builder</h2>
+  
+  <h3>Build From Template</h3>
+  <div id='operating_frequency_div' class='input_div'>
+	<label for='operating_frequency' class='input_label'>F</label>
+	<input type=number id='operating_frequency' class='large_input' value=28e9>
+  </div>
+
+
+  <h3>Element Positions</h3>
+
+  <div id="beamformPattern_3D" style="width:100%px;height:50vw;"></div>
+  <script type='module'>
+  var data = [{z: [[0,0],[0,0]],type: 'surface'}];
+  Plotly.newPlot('beamformPattern_3D', data, base_plotly_layout);
+  Plotly.relayout(plot_div,{'scene.zaxis.range':[-60,5]})
+  </script>
+
+  <div id='user_array_elements' class='par_form'>
+    <!-- Color Table -->
+    <template id='user_element_table_row_template'>
+		<tr>
+			<td >0</td>
+			<td><input type='number' placeholder='###'></td> <!-- X -->
+			<td><input type='number' placeholder='###'></td> <!-- Y -->
+			<td><input type='number' placeholder='###'></td> <!-- Z -->
+			<td><input type='number' placeholder='###'></td> <!-- Phase -->
+			<td><input type='number' placeholder='###'></td> <!-- Weight -->
+			<td><button>Trash</button></td>
+		</tr>
+    </template>
+    <table id='user_element_table'>
+      <thead>
+        <tr>
+          <th>ID</th><th>X (m)</th><th>Y (m)</th><th>Z (m)</th><th>Phase</th><th>Weight</th><th></th></tr>
+        </tr>
+      </thead>
+      <tbody>
+		<!-- add with add_element_row -->
+      </tbody>
+    </table>
+
+    <!-- Add/Save Colors -->
+    <div id='user_element_buttons'>
+      <button id='add_element_button'>Add</button>
+	</div>
+  </div>
+
 <h2>Steering Angle Control</h2>
-<div id='array_steering_input'>
-	<label for='az_angle_slider'>Azimuth Angle</label>
-	<input type="range" min="-90" max="90" value="0" class="slider" id="az_angle_slider"
-					onmouseup="updateBeamformed2D()" ontouchend="updateBeamformed2D()">
-	<label for='el_angle_slider'>Elevation Angle</label>
-	<input type="range" min="-90" max="90" value="0" class="slider" id="el_angle_slider" 
-					onmouseup="updateBeamformed2D()" ontouchend="updateBeamformed2D()">
+
+<div id='array_steering_input' class='par_form'>
+	<label for='az_angle_slider' class='slider_label'>Operating Frequency </label>
+	<input class='freq_input' id='operating_frequency' type="number" min="0" step="1" value='0'>
+	<br><br>
+	<label for='az_angle_slider' class='slider_label'>Azimuth Angle </label>
+	<input class='steer_angle_counter' id='az_angle_count' type="number" min="-90" max="90" step="1" value='0'>
+	<input type="range" min="-90" max="90" value="0" class="steer_angle_slider" id="az_angle_slider">
+	<label for='el_angle_slider' class='slider_label'>Elevation Angle</label>
+	<input class='steer_angle_counter' id='el_angle_count' type="number" min="-90" max="90" step="1" value='0'>
+	<input type="range" min="-90" max="90" value="0" class="steer_angle_slider" id="el_angle_slider">
 </div>
 
 
 <h2>1D Planar Cuts</h2>
-<h3>Azimuth Cut (El=0)</h3>
+<h3>Azimuth Cut (El=
+<input class='steer_angle_counter' id='e_cut_plot_angle' type="number" min="-90" max="90" step="1" value='0'>
+)
+</h3>
 <div id="beamformE_2D" style="width:100%;height:50vw;"></div>
 <script>
 	var plot_div = document.getElementById('beamformE_2D');
 	Plotly.newPlot(plot_div, [{x:[0],y:[0]}], base_plotly_layout);
 	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
-	updateBeamformedE2D();
 </script>
 <!--div id="beamformE_2D_polar" style="width:100%;height:50vw;"></div>
 <script>
@@ -50,23 +105,28 @@ permalink: /:categories/:title:output_ext
 	updateBeamformedEfield1D();
 </script-->
 
-<h3>Elevation Cut (Az=0)</h3>
+<h3>Elevation Cut (Az=
+<input class='steer_angle_counter' id=h_cut_plot_angle type="number" 
+min="-90" max="90" step="1" value='0' onchange='updateBeamformedE2D()'/>)</h3>
 <div id="beamformH_2D" style="width:100%;height:50vw;"></div>
 <script>
 	var plot_div = document.getElementById('beamformH_2D');
 	Plotly.newPlot(plot_div, [{x:[0],y:[0] }], base_plotly_layout);
 	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
-	updateBeamformedH2D();
 </script>
 
 <h2>3D Radiation Pattern</h2>
 
-<div id="beamformPattern_3D" style="width:100%px;height:50vw;"></div>
+<!--div id="beamformPattern_3D" style="width:100%px;height:50vw;"></div>
 <script>
 var data = [{z: [[0,0],[0,0]],type: 'surface'}];
 Plotly.newPlot('beamformPattern_3D', data, base_plotly_layout);
 Plotly.relayout(plot_div,{'scene.zaxis.range':[-60,5]})
 updateBeamformed3D();
 </script>
-<button onclick="updateBeamformed3D()">Calculate 3D Pattern</button>
+<button onclick="updateBeamformed3D()">Calculate 3D Pattern</button-->
 
+<script type='module'>
+	import {updateBeamformed2D} from './array_designer/js/Array_UI.js';
+	updateBeamformed2D();
+</script>

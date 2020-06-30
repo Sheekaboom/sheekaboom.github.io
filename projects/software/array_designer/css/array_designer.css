@@ -1,0 +1,27 @@
+
+
+.steer_angle_counter{
+    display:inline-block;
+    width:50px;
+    font-size:17px;
+}
+
+.steer_angle_slider{
+    display:block;
+    width:100%;
+}
+
+.slider_label{
+    display:inline-block;
+    width:175px;
+}
+
+.freq_input{
+    display:inline-block;
+    font-size:17px;
+    width:110px;
+}
+
+.large_input{
+    width
+}

@@ -2,6 +2,8 @@
 /* @author Alec Weiss               */
 /* @date 6-2020                     */
 
+export {table2json,json2table,set_table_from_json,add_row,del_row};
+
 /*
 @brief Save data from a html table. If its an input, grab the value,
   otherwise we will get innerHTML
@@ -80,8 +82,8 @@ function table2json(table){
     var header_str = Array.prototype.map.call(table_headers,v=>v.textContent);
     var object_keys = Object.keys(object);
     var object_len = object[object_keys[0]].length;
-    for(r=0;r<object_len;r++){//fill each row
-      for(k of object_keys){//fill the data for corresponding columns
+    for(var r=0;r<object_len;r++){//fill each row
+      for(var k of object_keys){//fill the data for corresponding columns
         var c = header_str.indexOf(k);
         var d = table_rows[r].querySelectorAll('td')[c] 
         var v = object[k][r];
@@ -92,5 +94,27 @@ function table2json(table){
         }
       }
     }
+  }
+
+  /*
+  @brief Add a row to a table given a template
+  @param[in] table - table to add row to
+  @param[in] template - template for the row
+  @note This adds the row into the <tbody> tag
+  @return added row element
+  */
+  function add_row(table,template){
+    var clone = template.content.cloneNode(true);
+    table.querySelector('tbody').appendChild(clone); //returns empty document fragment
+    return table.rows[table.rows.length-1];
+  }
+
+  /*
+  @brief remove a row from a table
+  @param[in] row_elem - row element to remove
+  */
+  function del_row(row_elem){
+    var mytable = row_elem.parentElement;
+    mytable.removeChild(row_elem);
   }
   
