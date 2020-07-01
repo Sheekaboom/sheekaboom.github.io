@@ -35,11 +35,20 @@ permalink: /:categories/:title:output_ext
 
   <h3>Element Positions</h3>
 
-  <div id="beamformPattern_3D" style="width:100%px;height:50vw;"></div>
+  <div id="element_position_plot" style="width:100%px;height:50vw;"></div>
   <script type='module'>
-  var data = [{z: [[0,0],[0,0]],type: 'surface'}];
-  Plotly.newPlot('beamformPattern_3D', data, base_plotly_layout);
-  Plotly.relayout(plot_div,{'scene.zaxis.range':[-60,5]})
+  import {updateElementPositions} from './array_designer/js/Array_UI.js';
+  var data = [{x:[1,2,3],y:[0,0,0],z:[0,0,0],
+	type: 'scatter3d',
+  	mode: 'markers',
+	marker: {
+		size: 12,
+		line: {
+		color: 'rgba(217, 217, 217, 0.14)',
+		width: 0.5},
+		opacity: 0.8},}];
+  Plotly.newPlot('element_position_plot', data, base_plotly_layout);
+  updateElementPositions();
   </script>
 
   <div id='user_array_elements' class='par_form'>
@@ -55,13 +64,13 @@ permalink: /:categories/:title:output_ext
 			<td><button>Trash</button></td>
 		</tr>
     </template>
-    <table id='user_element_table'>
+    <table id='user_element_table' class='scroll_table'>
       <thead>
         <tr>
           <th>ID</th><th>X (m)</th><th>Y (m)</th><th>Z (m)</th><th>Phase</th><th>Weight</th><th></th></tr>
         </tr>
       </thead>
-      <tbody>
+      <tbody id='user_element_table_body' class='hide_scrollbar'>
 		<!-- add with add_element_row -->
       </tbody>
     </table>
@@ -93,10 +102,12 @@ permalink: /:categories/:title:output_ext
 )
 </h3>
 <div id="beamformE_2D" style="width:100%;height:50vw;"></div>
-<script>
+<script type='module'>
+	import {updateBeamformedE2D} from './array_designer/js/Array_UI.js';
 	var plot_div = document.getElementById('beamformE_2D');
 	Plotly.newPlot(plot_div, [{x:[0],y:[0]}], base_plotly_layout);
 	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
+	updateBeamformedE2D();
 </script>
 <!--div id="beamformE_2D_polar" style="width:100%;height:50vw;"></div>
 <script>
@@ -109,10 +120,12 @@ permalink: /:categories/:title:output_ext
 <input class='steer_angle_counter' id=h_cut_plot_angle type="number" 
 min="-90" max="90" step="1" value='0' onchange='updateBeamformedE2D()'/>)</h3>
 <div id="beamformH_2D" style="width:100%;height:50vw;"></div>
-<script>
+<script type='module'>
+	import {updateBeamformedH2D} from './array_designer/js/Array_UI.js';
 	var plot_div = document.getElementById('beamformH_2D');
 	Plotly.newPlot(plot_div, [{x:[0],y:[0] }], base_plotly_layout);
 	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
+	updateBeamformedH2D();
 </script>
 
 <h2>3D Radiation Pattern</h2>

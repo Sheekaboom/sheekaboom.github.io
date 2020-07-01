@@ -3,7 +3,7 @@ import { table2json } from "/js/modules/Tabled.js";
 import {frequency2wavelength,lin2db,deg2rad} from './Generic.js';
 import {synthesize_data,beamform} from './Beamform.js';
 
-export {updateBeamformedE2D,updateBeamformedH2D,updateBeamformed2D}
+export {updateBeamformedE2D,updateBeamformedH2D,updateBeamformed2D,updateElementPositions}
 
 /* intialize the ui */
 // set intial table values
@@ -219,3 +219,16 @@ function updateBeamformed3D(){
         cmin:-60,
         cmax:5});
 }
+
+function updateElementPositions(){
+    // get the plot div
+    let plot_div = document.querySelector('#element_position_plot');
+
+    // get our x,y,z positions
+    let elem_info = get_element_info();
+    let xe=elem_info[0],ye=elem_info[1],ze=elem_info[2];
+
+    Plotly.deleteTraces(plot_div,0); //remove trace
+    Plotly.addTraces(plot_div, {x:xe,y:ye,z:ze,type:'scatter3d',mode:'markers'});
+}
+
