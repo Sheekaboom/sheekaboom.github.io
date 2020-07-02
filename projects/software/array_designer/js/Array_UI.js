@@ -1,3 +1,7 @@
+/* @brief array UI functionality       */
+/* @author Alec Weiss               */
+/* @date 6-2020                     */
+
 import {add_row,del_row,del_all_rows,set_table_from_json} from '/js/modules/Tabled.js';
 import { table2json, write_table_to_file } from "/js/modules/Tabled.js";
 import { toggle_display } from "/js/modules/Interfacey.js";
@@ -89,69 +93,13 @@ function get_element_info(){
 }
 
 /*
-@brief Save user color table to localStorage
-*/
-function save_user_colors(user_color_table){
-    var table_data = table2json(user_color_table);
-    delete(table_data['Delete']);
-    var string_data = JSON.stringify(table_data);
-    window.localStorage.setItem('user_color_table_data',string_data);
-}
-
-/*
-@brief Load user colors from localStorage item 'user_color_table_data'
-*/
-function load_user_elements(){
-    var user_colors_obj = JSON.parse(window.localStorage.getItem('user_color_table_data'));
-    var user_table = document.querySelector('#user_colors_table');
-    if(user_colors_obj!=null){
-        var required_len = user_colors_obj[Object.keys(user_colors_obj)[0]].length;
-        //remove all table rows
-        var ut_rows = user_table.querySelector('tbody').querySelectorAll('tr'); 
-        for(r of ut_rows){
-            user_table.querySelector('tbody').removeChild(r);
-        }
-        //now add back as many as needed
-        for(var i=0;i<required_len;i++){
-            add_color_row(); //add a row
-        }
-        //and populate
-        set_table_from_json(user_colors_obj,user_table);
-    }
-}
-
-
-/*
 @brief Update the element phases
 @param[in] phase vals - 
 */
-function update_element_phases(phase_vals){
+function set_element_phases(phase_vals){
     // get each of the numeric inputs on the table
-    var table_vals = table2json(document.querySelector('#user_colors_table'));
-
-    var rsum = 0, gsum=0, bsum=0, count=0;
-    //could probably be done better... but get the weighted average
-    for(var i=0;i<table_vals['Count'].length;i++){
-        if(table_vals['Count'][i].value!=""){
-            // first convert to rgb and get the current weight
-            let cur_rgb = hex2rgb(table_vals['Color'][i]);
-            let cur_count = parseInt(table_vals['Count'][i]);
-            count += cur_count;
-            rsum += cur_rgb[0]*cur_count;
-            gsum += cur_rgb[1]*cur_count;
-            bsum += cur_rgb[2]*cur_count;
-            //console.log("Current Count is " + count);
-            //console.log("Color: "+ rsum + "," + gsum + "," + bsum);
-        }
-    }
-    var rfin = Math.round(rsum/count);
-    var gfin = Math.round(gsum/count);
-    var bfin = Math.round(bsum/count);
-
-    // now set the mixed color
-    var color_div = document.querySelector('#mixed_color');
-    color_div.style.backgroundColor = 'rgb('+rfin+','+gfin+','+bfin+')';
-    console.log(color_div.style.backgroundColor);
+    var table = document.querySelector('#user_element_table');
+    set_table_from_json({'Phase':phase_vals},table);
 }
 
 
@@ -176,6 +124,7 @@ function updateBeamformedE2D(){
         let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
         let cur_el = deg2rad(document.querySelector('#e_cut_plot_angle').valueAsNumber);
         let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+        set_element_phases(math.arg(vals));
 
         // update 1D azimuth sweep
         let az_bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
@@ -190,12 +139,11 @@ function updateBeamformedH2D(){
     let plot_div = document.querySelector('#beamformH_2D');
 
     if(plot_div.style.display!='none'){ 
-        let elem_info = get_element_info();
-        let x=elem_info[0],y=elem_info[1],z=elem_info[2],weights=elem_info[4];
 
         let cur_az = deg2rad(document.querySelector('#h_cut_plot_angle').valueAsNumber);
         let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
         let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+        set_element_phases(math.arg(vals));
 
         // update 2D azimuth sweep
         let el_bf_vals = el_vals.map(el=>beamform(vals,x,y,z,0,el,weights,freq));
@@ -206,7 +154,17 @@ function updateBeamformedH2D(){
         }
 }
 
-function updateBeamformed2D(){updateBeamformedE2D();updateBeamformedH2D();}
+function updateBeamformed2D(){
+    updateBeamformedE2D();updateBeamformedH2D();
+    
+    //update table phase
+    let elem_info = get_element_info();
+    let x=elem_info[0],y=elem_info[1],z=elem_info[2],weights=elem_info[4];
+    let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
+    let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
+    let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+    set_element_phases(math.arg(vals));
+}
 
 // 3D things
 

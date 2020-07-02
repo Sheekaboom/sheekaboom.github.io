@@ -1,3 +1,7 @@
+/* @brief beamforming functions. This should probably be in webassembly       */
+/* @author Alec Weiss               */
+/* @date 6-2020                     */
+
 import {frequency2wavelength,azel2uvw} from './Generic.js';
 
 export {synthesize_data,beamform};
