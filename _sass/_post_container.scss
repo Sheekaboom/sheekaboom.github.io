@@ -38,6 +38,7 @@
 .post_item{
     text-decoration:none;
     display:inline-flex;
+    flex-wrap:wrap;
     justify-content:center;
     height:150px;
     width:150px;
@@ -56,4 +57,22 @@
 
 .post_item:hover{transform:scale(1.2);}
 
-.post_item_title{text-align:center;}
+.post_item_title{
+    display:block;
+    width:100%;
+    text-align:center;
+    margin:0;
+    padding:5px;
+}
+
+.post_item_icon{
+    display:block;
+    border-radius:10px;
+    height:75px;
+    width:120px;
+}
+
+.post_image{
+    width:100%;
+    margin-bottom:30px;
+}

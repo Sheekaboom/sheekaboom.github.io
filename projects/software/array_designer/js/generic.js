@@ -1,5 +1,7 @@
+export {azel2uvw,deg2rad,rad2deg,lin2db,db2lin};
+export {frequency2wavelength,azel2cart};
 
-SPEED_OF_LIGHT = 299792458;
+export const SPEED_OF_LIGHT = 299792458;
 
 /*
 @brief convert azimuth elevation to UVW coordinates
@@ -31,8 +33,8 @@ function db2lin(val){return math.pow(10,math.divide(val,20));}
 
 /*@brief change mag/az/el data to cartesian values*/
 function azel2cart(mag,az,el){
-    var x = math.multiply(mag,math.cos(az),math.cos(el));
-    var y = math.multiply(mag,math.sin(az),math.cos(el));
-    var z = math.multiply(mag,math.sin(el));
+    var x = math.dotMultiply(mag,math.dotMultiply(math.cos(az),math.cos(el)));
+    var y = math.dotMultiply(mag,math.dotMultiply(math.sin(az),math.cos(el)));
+    var z = math.dotMultiply(mag,math.sin(el));
     return [x,y,z];
 }
