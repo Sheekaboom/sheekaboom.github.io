@@ -22,5 +22,27 @@
     width:110px;
 }
 
+.math_exp_input{
+    display:inline-block;
+    font-size:17px;
+    width:150px;
+}
+
+.integer_input{
+    display:inline-block;
+    width:50px;
+    font-size:17px;
+}
+
+.input_with_label{
+    display:inline-block;
+    margin:0 20px;
+}
+
+.input_group{
+    display:block;
+    margin:20px;
+}
 
 #user_array_elements tbody{ height:150px }
+

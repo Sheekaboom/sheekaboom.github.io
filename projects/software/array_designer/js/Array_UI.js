@@ -1,9 +1,13 @@
-import {add_row,del_row,set_table_from_json} from '/js/modules/Tabled.js';
-import { table2json } from "/js/modules/Tabled.js";
+import {add_row,del_row,del_all_rows,set_table_from_json} from '/js/modules/Tabled.js';
+import { table2json, write_table_to_file } from "/js/modules/Tabled.js";
+import { toggle_display } from "/js/modules/Interfacey.js";
 import {frequency2wavelength,lin2db,deg2rad} from './Generic.js';
 import {synthesize_data,beamform} from './Beamform.js';
+import {generate_cartesian_array} from './ArrayBuilder.js';
+import { read_table_from_file } from '../../../../js/modules/Tabled.js';
 
-export {updateBeamformedE2D,updateBeamformedH2D,updateBeamformed2D,updateElementPositions}
+export {updateBeamformedE2D,updateBeamformedH2D,updateBeamformed2D}
+export {updateBeamformed3D,updateElementPositions}
 
 /* intialize the ui */
 // set intial table values
@@ -22,27 +26,45 @@ var weights = math.ones(vals.length).toArray();
 var init_table_vals = {'X (m)':x,'Y (m)':y,'Z (m)':z,'Phase':math.arg(vals),'Weight':weights};
 set_table_from_json(init_table_vals,document.querySelector('#user_element_table'));
 
+//Array Builder handlers
+document.querySelector('#generate_array').addEventListener('click',buildCartesianArray);
+//input/export
+document.querySelector('#user_element_table_export').addEventListener('click',
+    function(){write_table_to_file(document.querySelector('#user_element_table')
+                ,'element_positions.json',[''],true)})
+document.querySelector('#user_element_table_import').addEventListener('click',
+    function(){read_table_from_file(document.querySelector('#user_element_table'))})
+
+//Element Table Handler
+document.querySelector('#user_element_table').addEventListener('change',updateElementPositions);
+
 //add count and slider handlers
 document.querySelector('#az_angle_slider').addEventListener('mouseup' ,function(){updateAzCounter();updateBeamformed2D();})
 document.querySelector('#az_angle_slider').addEventListener('touchend',function(){updateAzCounter();updateBeamformed2D();})
 document.querySelector('#az_angle_count' ).addEventListener('change'  ,function(){updateAzSlider() ;updateBeamformed2D();})
 document.querySelector('#el_angle_slider').addEventListener('mouseup' ,function(){updateElCounter();updateBeamformed2D();})
 document.querySelector('#el_angle_slider').addEventListener('touchend',function(){updateElCounter();updateBeamformed2D();})
-document.querySelector('#el_angle_count' ).addEventListener('change'  ,function(){updateAzSlider() ;updateBeamformed2D();})
+document.querySelector('#el_angle_count' ).addEventListener('change'  ,function(){updateElSlider() ;updateBeamformed2D();})
 
 document.querySelector('#e_cut_plot_angle').addEventListener('change',updateBeamformedE2D);
 document.querySelector('#h_cut_plot_angle').addEventListener('change',updateBeamformedH2D);
 
-/* user interface things*/
+//toggle handlers
+document.querySelector('#show_hide_E2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformE_2D'))});
+document.querySelector('#show_hide_H2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformH_2D'))});
+document.querySelector('#show_hide_3D' ).addEventListener('click',function(){toggle_display(document.querySelector('#beamform3D'))});
+
+
+// counter/slider updates
 function updateAzCounter(){document.querySelector('#az_angle_count').value = document.querySelector('#az_angle_slider').value;}
 function updateAzSlider() {document.querySelector('#az_angle_slider').value = document.querySelector('#az_angle_count').value;}
 function updateElCounter(){document.querySelector('#el_angle_count').value = document.querySelector('#el_angle_slider').value;}
 function updateElSlider() {document.querySelector('#el_angle_slider').value = document.querySelector('#el_angle_count').value;}
 
+// add elements
 function add_element_row(){
     var table = document.querySelector('#user_element_table');
-    var row_template = document.querySelector('#user_element_table_row_template');
-    var elem = add_row(table,row_template);
+    var elem = add_row(table);
     elem.querySelector('button').addEventListener('click',function (){del_element_row(this)});
     elem.querySelector('td').innerText = table.rows.length-2; // we added a row so length is +1 so we get -2
 }
@@ -146,38 +168,42 @@ function updateBeamformedE2D(){
 
     let plot_div = document.querySelector('#beamformE_2D');
 
-    let elem_info = get_element_info();
-    let x=elem_info[0],y=elem_info[1],z=elem_info[2];
+    if(plot_div.style.display!='none'){ //only update if we are displaying
 
-    let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
-    let cur_el = deg2rad(document.querySelector('#e_cut_plot_angle').valueAsNumber);
-    let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+        let elem_info = get_element_info();
+        let x=elem_info[0],y=elem_info[1],z=elem_info[2],weights=elem_info[4];
 
-    // update 1D azimuth sweep
-    let az_bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
-    Plotly.deleteTraces(plot_div,0); //remove trace
-    Plotly.addTraces(plot_div, {x:az_vals.toArray(),y: lin2db(math.abs(az_bf_vals).toArray())});
-    //Plotly.deleteTraces(beamformE_2D_polar,0); //remove trace
-    //Plotly.addTraces( beamformE_2D_polar, {theta:rad2deg(az_vals.toArray()),r:math.abs(az_bf_vals).toArray(),type:'scatterpolar'});
+        let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
+        let cur_el = deg2rad(document.querySelector('#e_cut_plot_angle').valueAsNumber);
+        let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+
+        // update 1D azimuth sweep
+        let az_bf_vals = az_vals.map(az=>beamform(vals,x,y,z,az,0,weights,freq));
+        Plotly.deleteTraces(plot_div,0); //remove trace
+        Plotly.addTraces(plot_div, {x:az_vals.toArray(),y: lin2db(math.abs(az_bf_vals).toArray())});
+
+    }
 }
 
 function updateBeamformedH2D(){
 
     let plot_div = document.querySelector('#beamformH_2D');
 
-    let elem_info = get_element_info();
-    let x=elem_info[0],y=elem_info[1],z=elem_info[2];
+    if(plot_div.style.display!='none'){ 
+        let elem_info = get_element_info();
+        let x=elem_info[0],y=elem_info[1],z=elem_info[2],weights=elem_info[4];
 
-    let cur_az = deg2rad(document.querySelector('#h_cut_plot_angle').valueAsNumber);
-    let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
-    let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+        let cur_az = deg2rad(document.querySelector('#h_cut_plot_angle').valueAsNumber);
+        let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
+        let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
 
-    // update 2D azimuth sweep
-    let el_bf_vals = el_vals.map(el=>beamform(vals,x,y,z,0,el,weights,freq));
-    Plotly.deleteTraces(plot_div,0); //remove trace
-    Plotly.addTraces(plot_div, {
-        x: az_vals.toArray(),
-        y: lin2db(math.abs(el_bf_vals).toArray())});
+        // update 2D azimuth sweep
+        let el_bf_vals = el_vals.map(el=>beamform(vals,x,y,z,0,el,weights,freq));
+        Plotly.deleteTraces(plot_div,0); //remove trace
+        Plotly.addTraces(plot_div, {
+            x: az_vals.toArray(),
+            y: lin2db(math.abs(el_bf_vals).toArray())});
+        }
 }
 
 function updateBeamformed2D(){updateBeamformedE2D();updateBeamformedH2D();}
@@ -197,27 +223,30 @@ for(i=0;i<az_vals_3d.toArray().length;i++){el_mesh = math.concat(el_mesh,math.mu
 
 function updateBeamformed3D(){
 
-    let plot_div = document.querySelector('#beamformPattern_3D');
+    let plot_div = document.querySelector('#beamform3D');
 
-    let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
-    let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
-    let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
+    if(plot_div.style.display!='none'){ 
 
-    // update 2D azimuth sweep
-    var bf_vals = [];
-    for(i=0;i<el_mesh.length;i++){
-        bf_vals.push(beamform(vals,x,y,z,az_mesh[i],el_mesh[i],weights,freq));
-    }  
+        let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
+        let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
+        let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
 
-    var mesh_size = [az_vals_3d.size()[0],el_vals_3d.size()[0]]
-    Plotly.deleteTraces(plot_div,0); //remove trace
-    Plotly.addTraces(plot_div, {
-        x: math.reshape(az_mesh,mesh_size),
-        y: math.reshape(el_mesh,mesh_size),
-        z: math.reshape(lin2db(math.abs(bf_vals)),mesh_size),
-        type:'surface',
-        cmin:-60,
-        cmax:5});
+        // update 2D azimuth sweep
+        var bf_vals = [];
+        for(i=0;i<el_mesh.length;i++){
+            bf_vals.push(beamform(vals,x,y,z,az_mesh[i],el_mesh[i],weights,freq));
+        }  
+
+        var mesh_size = [az_vals_3d.size()[0],el_vals_3d.size()[0]]
+        Plotly.deleteTraces(plot_div,0); //remove trace
+        Plotly.addTraces(plot_div, {
+            x: math.reshape(az_mesh,mesh_size),
+            y: math.reshape(el_mesh,mesh_size),
+            z: math.reshape(lin2db(math.abs(bf_vals)),mesh_size),
+            type:'surface',
+            cmin:-60,
+            cmax:5});
+    }
 }
 
 function updateElementPositions(){
@@ -226,9 +255,34 @@ function updateElementPositions(){
 
     // get our x,y,z positions
     let elem_info = get_element_info();
-    let xe=elem_info[0],ye=elem_info[1],ze=elem_info[2];
+    let xe=elem_info[0],ye=elem_info[1],ze=elem_info[2],weights=elem_info[4];
 
     Plotly.deleteTraces(plot_div,0); //remove trace
     Plotly.addTraces(plot_div, {x:xe,y:ye,z:ze,type:'scatter3d',mode:'markers'});
+}
+
+function buildCartesianArray(){
+    var xn = document.querySelector('#input_cartesian_nx').valueAsNumber;
+    var xe = document.querySelector('#input_cartesian_x_expr').value;
+    var yn = document.querySelector('#input_cartesian_ny').valueAsNumber;
+    var ye = document.querySelector('#input_cartesian_y_expr').value;
+    var zn = document.querySelector('#input_cartesian_nz').valueAsNumber;
+    var ze = document.querySelector('#input_cartesian_z_expr').value;
+
+    var nvals = [xn,yn,zn];
+    var exp_vals = [xe,ye,ze];
+
+    var vals = generate_cartesian_array(nvals,exp_vals)
+    var val_obj = {'X (m)':vals[0],'Y (m)':vals[1],'Z (m)':vals[2]};
+    
+    //now delete all rows in array and add the number we want back
+    var mytable = document.querySelector('#user_element_table');
+    //delete all
+    del_all_rows(mytable); 
+    //add the number we need back
+    for(i=0;i<vals[0].length;i++){add_element_row()}
+    //and fill
+    set_table_from_json(val_obj,mytable);
+    updateElementPositions();
 }
 

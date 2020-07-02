@@ -25,67 +25,80 @@ permalink: /:categories/:title:output_ext
 <h1>Phased Array Design Tool</h1>
 
 <h2>Array Builder</h2>
+<div id='array_construction' >
+
+  <h3>Cartesian Array</h3>
+  <!--div id='operating_frequency_div' class='input_with_label par_form'>
+	<label for='operating_frequency' class='input_label'>Frequency: </label>
+	<input type=number id='operating_frequency' class='freq_input' value=28e9>
+  </div-->
+ 
+  {% include inputs/cartesian_input.html %}
+
+  <button id='generate_array' class='par_form' >Generate</button>
+
+
+</div> <!-- End Array Builder -->
   
-  <h3>Build From Template</h3>
-  <div id='operating_frequency_div' class='input_div'>
-	<label for='operating_frequency' class='input_label'>F</label>
-	<input type=number id='operating_frequency' class='large_input' value=28e9>
-  </div>
+<h2>Current Array</h2>
 
+<div id='current_array'>
 
-  <h3>Element Positions</h3>
-
-  <div id="element_position_plot" style="width:100%px;height:50vw;"></div>
-  <script type='module'>
-  import {updateElementPositions} from './array_designer/js/Array_UI.js';
-  var data = [{x:[1,2,3],y:[0,0,0],z:[0,0,0],
+	<div id="element_position_plot" style="width:90%px;height:50vw;"></div>
+	<script type='module'>
+	import {updateElementPositions} from './array_designer/js/Array_UI.js';
+	var data = [{x:[1,2,3],y:[0,0,0],z:[0,0,0],
 	type: 'scatter3d',
-  	mode: 'markers',
+	mode: 'markers',
 	marker: {
 		size: 12,
 		line: {
 		color: 'rgba(217, 217, 217, 0.14)',
 		width: 0.5},
 		opacity: 0.8},}];
-  Plotly.newPlot('element_position_plot', data, base_plotly_layout);
-  updateElementPositions();
-  </script>
+	Plotly.newPlot('element_position_plot', data, base_plotly_layout);
+	updateElementPositions();
+	</script>
 
-  <div id='user_array_elements' class='par_form'>
-    <!-- Color Table -->
-    <template id='user_element_table_row_template'>
-		<tr>
-			<td >0</td>
-			<td><input type='number' placeholder='###'></td> <!-- X -->
-			<td><input type='number' placeholder='###'></td> <!-- Y -->
-			<td><input type='number' placeholder='###'></td> <!-- Z -->
-			<td><input type='number' placeholder='###'></td> <!-- Phase -->
-			<td><input type='number' placeholder='###'></td> <!-- Weight -->
-			<td><button>Trash</button></td>
-		</tr>
-    </template>
-    <table id='user_element_table' class='scroll_table'>
-      <thead>
-        <tr>
-          <th>ID</th><th>X (m)</th><th>Y (m)</th><th>Z (m)</th><th>Phase</th><th>Weight</th><th></th></tr>
-        </tr>
-      </thead>
-      <tbody id='user_element_table_body' class='hide_scrollbar'>
-		<!-- add with add_element_row -->
-      </tbody>
-    </table>
+	<div id='user_array_elements' class='par_form'> <!--user array elements-->
+	<!-- Color Table -->
+	
+	<table id='user_element_table' class='scroll_table'>
+		<thead>
+		<tr><th>ID</th><th>X (m)</th><th>Y (m)</th><th>Z (m)</th><th>Phase</th><th>Weight</th><th></th></tr></tr>
+		</thead>
+		<tbody id='user_element_table_body' class='hide_scrollbar'>
+			<template id='user_element_table_row_template'>
+				<tr>
+					<td >0</td>
+					<td><input type='number' placeholder='###'></td> <!-- X -->
+					<td><input type='number' placeholder='###'></td> <!-- Y -->
+					<td><input type='number' placeholder='###'></td> <!-- Z -->
+					<td><input type='number' value='0' placeholder='###'></td> <!-- Phase -->
+					<td><input type='number' value='1' placeholder='###'></td> <!-- Weight -->
+					<td><button>Trash</button></td>
+				</tr>
+			</template>
+		</tbody>
+	</table>
 
-    <!-- Add/Save Colors -->
-    <div id='user_element_buttons'>
-      <button id='add_element_button'>Add</button>
+	<div id='user_element_buttons'>
+		<button id='add_element_button'>Add Element</button>
+		<button id='user_element_table_import''>Import</button>
+		<input type="file" id="import_elements_input" style='visibility:hidden;display:none'>
+		<button id='user_element_table_export''>Export</button>
 	</div>
-  </div>
+
+	</div><!--user array elements-->
+	
+
+</div> <!-- End Current Array -->
 
 <h2>Steering Angle Control</h2>
 
 <div id='array_steering_input' class='par_form'>
 	<label for='az_angle_slider' class='slider_label'>Operating Frequency </label>
-	<input class='freq_input' id='operating_frequency' type="number" min="0" step="1" value='0'>
+	<input class='freq_input' id='operating_frequency' type="number" min="0" step="1" value='28e9'>
 	<br><br>
 	<label for='az_angle_slider' class='slider_label'>Azimuth Angle </label>
 	<input class='steer_angle_counter' id='az_angle_count' type="number" min="-90" max="90" step="1" value='0'>
@@ -100,8 +113,8 @@ permalink: /:categories/:title:output_ext
 <h3>Azimuth Cut (El=
 <input class='steer_angle_counter' id='e_cut_plot_angle' type="number" min="-90" max="90" step="1" value='0'>
 )
-</h3>
-<div id="beamformE_2D" style="width:100%;height:50vw;"></div>
+<button id='show_hide_E2D'>Show/Hide</button></h3>
+<div id="beamformE_2D" style="width:90%;height:50vw;"></div>
 <script type='module'>
 	import {updateBeamformedE2D} from './array_designer/js/Array_UI.js';
 	var plot_div = document.getElementById('beamformE_2D');
@@ -118,8 +131,9 @@ permalink: /:categories/:title:output_ext
 
 <h3>Elevation Cut (Az=
 <input class='steer_angle_counter' id=h_cut_plot_angle type="number" 
-min="-90" max="90" step="1" value='0' onchange='updateBeamformedE2D()'/>)</h3>
-<div id="beamformH_2D" style="width:100%;height:50vw;"></div>
+min="-90" max="90" step="1" value='0' onchange='updateBeamformedE2D()'/>)
+<button id='show_hide_H2D'>Show/Hide</button></h3>
+<div id="beamformH_2D" style="width:90%;height:50vw;"></div>
 <script type='module'>
 	import {updateBeamformedH2D} from './array_designer/js/Array_UI.js';
 	var plot_div = document.getElementById('beamformH_2D');
@@ -128,18 +142,17 @@ min="-90" max="90" step="1" value='0' onchange='updateBeamformedE2D()'/>)</h3>
 	updateBeamformedH2D();
 </script>
 
-<h2>3D Radiation Pattern</h2>
+<h2>3D Radiation Pattern <button id='show_hide_3D'>Show/Hide</button></h2>
 
-<!--div id="beamformPattern_3D" style="width:100%px;height:50vw;"></div>
+<div id="beamform3D" style="width:100%px;height:50vw;display:none;"></div>
 <script>
 var data = [{z: [[0,0],[0,0]],type: 'surface'}];
-Plotly.newPlot('beamformPattern_3D', data, base_plotly_layout);
-Plotly.relayout(plot_div,{'scene.zaxis.range':[-60,5]})
-updateBeamformed3D();
+Plotly.newPlot('beamform3D', data, base_plotly_layout);
+Plotly.relayout('beamform3D',{'scene.zaxis.range':[-60,5]})
 </script>
-<button onclick="updateBeamformed3D()">Calculate 3D Pattern</button-->
 
 <script type='module'>
-	import {updateBeamformed2D} from './array_designer/js/Array_UI.js';
+	import {updateBeamformed2D,updateBeamformed3D} from './array_designer/js/Array_UI.js';
 	updateBeamformed2D();
+	updateBeamformed3D();
 </script>
