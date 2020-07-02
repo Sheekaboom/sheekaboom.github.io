@@ -131,14 +131,14 @@ permalink: /:categories/:title:output_ext
 
 <h3>Elevation Cut (Az=
 <input class='steer_angle_counter' id=h_cut_plot_angle type="number" 
-min="-90" max="90" step="1" value='0' onchange='updateBeamformedE2D()'/>)
+min="-90" max="90" step="1" value='0'/>)
 <button id='show_hide_H2D'>Show/Hide</button></h3>
 <div id="beamformH_2D" style="width:90%;height:50vw;"></div>
 <script type='module'>
 	import {updateBeamformedH2D} from './array_designer/js/Array_UI.js';
 	var plot_div = document.getElementById('beamformH_2D');
 	Plotly.newPlot(plot_div, [{x:[0],y:[0] }], base_plotly_layout);
-	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
+	//Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
 	updateBeamformedH2D();
 </script>
 
@@ -148,7 +148,7 @@ min="-90" max="90" step="1" value='0' onchange='updateBeamformedE2D()'/>)
 <script>
 var data = [{z: [[0,0],[0,0]],type: 'surface'}];
 Plotly.newPlot('beamform3D', data, base_plotly_layout);
-Plotly.relayout('beamform3D',{'scene.zaxis.range':[-60,5]})
+//Plotly.relayout('beamform3D',{'xaxis.range':[-40,40],'yaxis.range':[-40,40],'scene.zaxis.range':[0,40]})
 </script>
 
 <script type='module'>

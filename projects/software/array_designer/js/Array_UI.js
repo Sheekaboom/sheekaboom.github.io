@@ -1,7 +1,7 @@
 import {add_row,del_row,del_all_rows,set_table_from_json} from '/js/modules/Tabled.js';
 import { table2json, write_table_to_file } from "/js/modules/Tabled.js";
 import { toggle_display } from "/js/modules/Interfacey.js";
-import {frequency2wavelength,lin2db,deg2rad} from './Generic.js';
+import {frequency2wavelength,lin2db,deg2rad,azel2cart} from './Generic.js';
 import {synthesize_data,beamform} from './Beamform.js';
 import {generate_cartesian_array} from './ArrayBuilder.js';
 import { read_table_from_file } from '../../../../js/modules/Tabled.js';
@@ -39,20 +39,20 @@ document.querySelector('#user_element_table_import').addEventListener('click',
 document.querySelector('#user_element_table').addEventListener('change',updateElementPositions);
 
 //add count and slider handlers
-document.querySelector('#az_angle_slider').addEventListener('mouseup' ,function(){updateAzCounter();updateBeamformed2D();})
-document.querySelector('#az_angle_slider').addEventListener('touchend',function(){updateAzCounter();updateBeamformed2D();})
-document.querySelector('#az_angle_count' ).addEventListener('change'  ,function(){updateAzSlider() ;updateBeamformed2D();})
-document.querySelector('#el_angle_slider').addEventListener('mouseup' ,function(){updateElCounter();updateBeamformed2D();})
-document.querySelector('#el_angle_slider').addEventListener('touchend',function(){updateElCounter();updateBeamformed2D();})
-document.querySelector('#el_angle_count' ).addEventListener('change'  ,function(){updateElSlider() ;updateBeamformed2D();})
+document.querySelector('#az_angle_slider').addEventListener('mouseup' ,function(){updateAzCounter();updateBeamformed2D();updateBeamformed3D();})
+document.querySelector('#az_angle_slider').addEventListener('touchend',function(){updateAzCounter();updateBeamformed2D();updateBeamformed3D();})
+document.querySelector('#az_angle_count' ).addEventListener('change'  ,function(){updateAzSlider() ;updateBeamformed2D();updateBeamformed3D();})
+document.querySelector('#el_angle_slider').addEventListener('mouseup' ,function(){updateElCounter();updateBeamformed2D();updateBeamformed3D();})
+document.querySelector('#el_angle_slider').addEventListener('touchend',function(){updateElCounter();updateBeamformed2D();updateBeamformed3D();})
+document.querySelector('#el_angle_count' ).addEventListener('change'  ,function(){updateElSlider() ;updateBeamformed2D();updateBeamformed3D();})
 
 document.querySelector('#e_cut_plot_angle').addEventListener('change',updateBeamformedE2D);
 document.querySelector('#h_cut_plot_angle').addEventListener('change',updateBeamformedH2D);
 
 //toggle handlers
-document.querySelector('#show_hide_E2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformE_2D'))});
-document.querySelector('#show_hide_H2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformH_2D'))});
-document.querySelector('#show_hide_3D' ).addEventListener('click',function(){toggle_display(document.querySelector('#beamform3D'))});
+document.querySelector('#show_hide_E2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformE_2D'));updateBeamformedE2D();});
+document.querySelector('#show_hide_H2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformH_2D'));updateBeamformedH2D();});
+document.querySelector('#show_hide_3D' ).addEventListener('click',function(){toggle_display(document.querySelector('#beamform3D'));updateBeamformed3D();});
 
 
 // counter/slider updates
@@ -229,6 +229,8 @@ function updateBeamformed3D(){
 
         let cur_az = deg2rad(document.querySelector('#az_angle_slider').valueAsNumber);
         let cur_el = deg2rad(document.querySelector('#el_angle_slider').valueAsNumber);
+        let elem_info = get_element_info();
+        let x=elem_info[0],y=elem_info[1],z=elem_info[2],weights=elem_info[4];
         let vals = synthesize_data(1,x,y,z,cur_az,cur_el,freq);
 
         // update 2D azimuth sweep
@@ -237,15 +239,29 @@ function updateBeamformed3D(){
             bf_vals.push(beamform(vals,x,y,z,az_mesh[i],el_mesh[i],weights,freq));
         }  
 
+        // calculate adjusted dB values
+        var bf_db = lin2db(math.abs(bf_vals));
+        var max_db = math.max(bf_db);
+        var mean_db = math.mean(bf_db);
+        var range_db = math.abs(mean_db*2);
+
+        //adjust our db values. Add our minimum desired and cut the rest at 0
+        var bf_db_adj = math.subtract(bf_db,max_db-range_db).map((a)=>{return a*(a>0)})
+        var bf_db_color_vals_adj = bf_db.map((a)=>{return a*(a>(max_db-range_db))})
+
+        // calculate in cartesian
+        var cart_vals = azel2cart(bf_db_adj,az_mesh,el_mesh);
+
+
+
         var mesh_size = [az_vals_3d.size()[0],el_vals_3d.size()[0]]
         Plotly.deleteTraces(plot_div,0); //remove trace
         Plotly.addTraces(plot_div, {
-            x: math.reshape(az_mesh,mesh_size),
-            y: math.reshape(el_mesh,mesh_size),
-            z: math.reshape(lin2db(math.abs(bf_vals)),mesh_size),
-            type:'surface',
-            cmin:-60,
-            cmax:5});
+            x: math.reshape(cart_vals[1],mesh_size),
+            y: math.reshape(cart_vals[2],mesh_size),
+            z: math.reshape(cart_vals[0],mesh_size),
+            surfacecolor: math.reshape(bf_db_color_vals_adj,mesh_size),
+            type:'surface',});
     }
 }
 

@@ -33,8 +33,8 @@ function db2lin(val){return math.pow(10,math.divide(val,20));}
 
 /*@brief change mag/az/el data to cartesian values*/
 function azel2cart(mag,az,el){
-    var x = math.multiply(mag,math.cos(az),math.cos(el));
-    var y = math.multiply(mag,math.sin(az),math.cos(el));
-    var z = math.multiply(mag,math.sin(el));
+    var x = math.dotMultiply(mag,math.dotMultiply(math.cos(az),math.cos(el)));
+    var y = math.dotMultiply(mag,math.dotMultiply(math.sin(az),math.cos(el)));
+    var z = math.dotMultiply(mag,math.sin(el));
     return [x,y,z];
 }
