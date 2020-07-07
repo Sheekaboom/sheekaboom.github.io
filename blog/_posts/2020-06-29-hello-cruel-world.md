@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  "Hello /*cruel*/ World!"
-tags: [news]
+tags: ['opinion','current-events','quarantine','COVID-19','personal-experience']
 icon: /blog/assets/icons/hello-cruel-world.png
 ---
 
