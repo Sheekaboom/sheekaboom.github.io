@@ -4,6 +4,7 @@ type: BlogPosting
 title:  "Hello /*cruel*/ World!"
 tags: ['opinion','current-events','quarantine','COVID-19','personal-experience']
 authors: [aweiss]
+description: My first ever blog post. Boy is it a strange time in the world...
 icon: /blog/assets/icons/hello-cruel-world.png
 ---
 
