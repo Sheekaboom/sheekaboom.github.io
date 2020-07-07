@@ -19,10 +19,58 @@ permalink: /:categories/:title:output_ext
 	margin: { t: 0 },
 	paper_bgcolor: 'rgba(0,0,0,0)',
 	plot_bgcolor: 'rgba(0,0,0,0)',
+	autosize: true,
 	};
+	var base_plotly_config = {responsive: true}
 </script>
 
 <h1>Phased Array Design Tool</h1>
+
+<h2>Instructions <button id='show_hide_instructions'>Show/Hide More</button></h2>
+
+<div id='instructions'>
+	<p id='instructions_intro'>
+		This is a free web based phased array design tool. 
+		It provides the ability to quickly create phased arrays and see their radiation pattern.
+	</p>
+	<div id='instructions_list' class='par_form' style='display:none;'>
+		<ul>
+			<li>Create a Phased array:
+				<ol>
+					<li>In the array section enter the desired number of x,y, and z elements</li>
+					<li>Then enter a mathematical expression to construct the array. The variables <i>nx,ny,nz,n</i>
+					are all available to use in these expressions where <i>xn,yn,zn</i> are meshgridded:
+						<ul>
+							<li>xn=repeat([0,1,...,xn.length-1],yn.length*zn.length)</li>
+							<li>yn=repeat([repeat([0],xn.length)],...,[repeat([yn.length-1],xn.length)],zn.length)</li>
+							<li>zn=[repeat([0],xn.length*yn.length),...,repeat([zn.length-1],xn.length*yn.length)]</li>
+							<li>n=[0,1,...,xn.length*yn.length,zn.length]</li>
+						</ul>
+					</li>
+					<li>Click 'Generate' to generate the array</li>
+					<li>Check the array shape in the Scatter Plot</li>
+				</ol>
+			</li>
+			<li>Steer the Array:
+				<ul><li>Use the Azimuth/Elevation sliders or manually set the steering direction.</li></ul>
+			</li>
+			<li>View the plots
+				<ul>
+					<li>View the interactive 2D and 3D plots</li>
+					<li>Plots can be shown/hidden. Hidden plots will not be calculated for faster calculations</li>
+				</ul>
+			</li>
+			<li>Save/Load array positions
+				<ul>
+					<li>Array values can be exported with the 'export' button below the array value table</li>
+					<li>Array values can be imported (x,y,z element positions) with json files with the keys 'X (m)','Y (m)', and 'Z (m)' with lists of positions.</li>
+				</ul>
+			</li>
+		</ul>
+	</div> <!-- instructions list -->
+
+</div>
+
 
 <h2>Array Builder</h2>
 <div id='array_construction' >
@@ -44,9 +92,11 @@ permalink: /:categories/:title:output_ext
 
 <div id='current_array'>
 
-	<div id="element_position_plot" style="width:90%px;height:50vw;"></div>
+<div class='par_form'>
+	<div id="element_position_plot" class='plot_div'></div>
 	<script type='module'>
 	import {updateElementPositions} from './array_designer/js/Array_UI.js';
+	var plot_div = document.querySelector('#element_position_plot');
 	var data = [{x:[1,2,3],y:[0,0,0],z:[0,0,0],
 	type: 'scatter3d',
 	mode: 'markers',
@@ -56,12 +106,16 @@ permalink: /:categories/:title:output_ext
 		color: 'rgba(217, 217, 217, 0.14)',
 		width: 0.5},
 		opacity: 0.8},}];
-	Plotly.newPlot('element_position_plot', data, base_plotly_layout);
+	Plotly.newPlot(plot_div, data, base_plotly_layout,base_plotly_config);
+	Plotly.relayout(plot_div,{'scene.xaxis.auto':true,
+							  'scene.yaxis.auto':true,
+							  'scene.zaxis.auto':true,
+					'scene.aspectmode':'manual','scene.aspectratio':{x:1,y:1,z:.5}});
 	updateElementPositions();
 	</script>
+</div>
 
 	<div id='user_array_elements' class='par_form'> <!--user array elements-->
-	<!-- Color Table -->
 	
 	<table id='user_element_table' class='scroll_table'>
 		<thead>
@@ -80,6 +134,7 @@ permalink: /:categories/:title:output_ext
 				</tr>
 			</template>
 		</tbody>
+		<div class='shim' sytle='height:20px;width:100%'></div>
 	</table>
 
 	<div id='user_element_buttons'>
@@ -114,14 +169,16 @@ permalink: /:categories/:title:output_ext
 <input class='steer_angle_counter' id='e_cut_plot_angle' type="number" min="-90" max="90" step="1" value='0'>
 )
 <button id='show_hide_E2D'>Show/Hide</button></h3>
-<div id="beamformE_2D" style="width:90%;height:50vw;"></div>
-<script type='module'>
-	import {updateBeamformedE2D} from './array_designer/js/Array_UI.js';
-	var plot_div = document.getElementById('beamformE_2D');
-	Plotly.newPlot(plot_div, [{x:[0],y:[0]}], base_plotly_layout);
-	Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
-	updateBeamformedE2D();
-</script>
+<div class='par_form'>
+	<div id="beamformE_2D" class='plot_div'></div>
+	<script type='module'>
+		import {updateBeamformedE2D} from './array_designer/js/Array_UI.js';
+		var plot_div = document.getElementById('beamformE_2D');
+		Plotly.newPlot(plot_div, [{x:[0],y:[0]}], base_plotly_layout,base_plotly_config);
+		Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
+		updateBeamformedE2D();
+	</script>
+</div>
 <!--div id="beamformE_2D_polar" style="width:100%;height:50vw;"></div>
 <script>
 	beamformE_2D_polar = document.getElementById('beamformE_2D_polar');
@@ -133,23 +190,34 @@ permalink: /:categories/:title:output_ext
 <input class='steer_angle_counter' id=h_cut_plot_angle type="number" 
 min="-90" max="90" step="1" value='0'/>)
 <button id='show_hide_H2D'>Show/Hide</button></h3>
-<div id="beamformH_2D" style="width:90%;height:50vw;"></div>
-<script type='module'>
-	import {updateBeamformedH2D} from './array_designer/js/Array_UI.js';
-	var plot_div = document.getElementById('beamformH_2D');
-	Plotly.newPlot(plot_div, [{x:[0],y:[0] }], base_plotly_layout);
-	//Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
-	updateBeamformedH2D();
-</script>
+<div class='par_form'>
+	<div id="beamformH_2D" class='plot_div'></div>
+	<script type='module'>
+		import {updateBeamformedH2D} from './array_designer/js/Array_UI.js';
+		var plot_div = document.getElementById('beamformH_2D');
+		Plotly.newPlot(plot_div, [{x:[0],y:[0] }], base_plotly_layout,base_plotly_config);
+		//Plotly.relayout(plot_div,{'yaxis.range':[-60,5]})
+		updateBeamformedH2D();
+	</script>
+</div>
 
 <h2>3D Radiation Pattern <button id='show_hide_3D'>Show/Hide</button></h2>
-
-<div id="beamform3D" style="width:100%px;height:50vw;display:none;"></div>
-<script>
-var data = [{z: [[0,0],[0,0]],type: 'surface'}];
-Plotly.newPlot('beamform3D', data, base_plotly_layout);
-//Plotly.relayout('beamform3D',{'xaxis.range':[-40,40],'yaxis.range':[-40,40],'scene.zaxis.range':[0,40]})
-</script>
+<div class='par_form'>
+	<div id="beamform3D" class='plot_div'></div>
+	<script>
+	//var data = [{x:[[0,0],[0,0]],y:[[0,0],[0,0]],z:[[0,0],[0,0]],type: 'surface'}];
+	var data = [{z:[[0,0],[0,0]],type: 'surface'}];
+	var plot_div = document.querySelector('#beamform3D');
+	Plotly.newPlot(plot_div, data, Object.assign(base_plotly_layout,{'scene.aspectmode':'manual','scene.aspectratio':{x:1,y:1,z:.5}})
+		,base_plotly_config);
+	//must be shown on page render https://github.com/plotly/plotly.js/issues/2769
+	/*Plotly.relayout(plot_div,{'scene.xaxis.range':[-40,40],
+							  'scene.yaxis.range':[-40,40],
+							  'scene.zaxis.range':[0,40],
+					'scene.aspectmode':'manual','scene.aspectratio':{x:1,y:1,z:.5}});*/
+	//Plotly.relayout(plot_div,{'scene.aspectmode':'manual','scene.aspectratio':{x:1,y:1,z:.5}});
+	</script>
+</div>
 
 <script type='module'>
 	import {updateBeamformed2D,updateBeamformed3D} from './array_designer/js/Array_UI.js';

@@ -46,3 +46,11 @@
 
 #user_array_elements tbody{ height:150px }
 
+.plot_div{
+    width:95%;
+    height:50vw;
+    max-height:400px;
+}
+
+#instructions_list   li{padding:3px;}
+#instructions_list > li{padding:10px;}
