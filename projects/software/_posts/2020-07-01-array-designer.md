@@ -1,8 +1,8 @@
 ---
 title: Phased Array Designer
+layout: default
 type: WebApplication
 author: [aweiss]
-layout: default
 permalink: /:categories/:title:output_ext
 ---
 
