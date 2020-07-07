@@ -1,0 +1,52 @@
+########## Woodworking tools ################
+
+# Tape Measure
+tape-measure: 
+  name: Tape Measure
+  description: Tape measure with metric or standard markings
+
+# Common Drill
+drill:
+  name: Drill
+  description: Common Drill with adjustable chuck
+
+# Common Driver
+driver:
+  name: Driver
+  description: Common Driver for high torque screw driving.
+  alternative: drill
+
+# Circular Saw
+circular-saw: 
+  name: Circular Saw
+  description: Handheld circular saw. In some cases a miter saw or table saw may be preferable
+
+# Miter Saw
+miter-saw:
+  name: Miter Saw
+  description: Tabletop miter saw for precision cuts. In some cases may be replaceable with a circular saw.
+  alternative: circular-saw
+
+# Table saw
+table-saw:
+  name: Table Saw
+  description: Table saw for ripping lumber. In some cases may be replaceable with circular saw.
+  alternative: circular-saw
+
+# Random orbital sander
+random-orbital-sander:
+  name: Random Orbital Sander
+  description: Motorized sander that leaves minimal marks for finishing wood
+  alternative: sandpaper
+
+# Sandpaper
+sandpaper:
+  name: Sandpaper
+  description: Rough paper for smoothing and finishing materials
+
+
+########## Electronics tools ################
+
+oscilliscope:
+  name: Oscilliscope
+  description: Device capable of measuring time varying electronic waveforms
