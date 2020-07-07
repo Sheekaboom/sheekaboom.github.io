@@ -12,6 +12,6 @@
         },
       {% endfor %}
       "datePublished": {{ page.date | date: "%Y-%m-%d" }},
-      "description": {{ page.excerpt }},
+      {% if page.description %} "description": {{ page.description }}, {% endif %}
     }
 </script>
