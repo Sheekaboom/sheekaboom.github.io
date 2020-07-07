@@ -2,16 +2,22 @@
 <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
-      {% if page.type %} "@type": {{ page.type }}, {% endif %}
+      {% if page.type %} "@type": "{{ page.type }}", {% endif %}
       {% if page.title %} "name": "{{ page.title }}", {% endif %}
-      {% for author in page.authors %}
-        "author": {
+
+      "author":[ {% for author in page.authors %}
+         {
           "@type": "Person",
-          "shortName": {{ author }}
-          {% if site.data.authors[author].name %}"name": {{ site.data.authors[author].name }} {% endif %}
-        },
+          {% if site.data.authors[author].name %}"name": "{{ site.data.authors[author].name }}",{% endif %}
+          "alternateName": "{{ page.authors | last }}"
+        }{% if forloop.index != page.authors.size %},{% endif %}
+      {% endfor %}],
+
+      {% for schema_str in page.schema %}
+      {{ schema_str }},
       {% endfor %}
-      "datePublished": {{ page.date | date: "%Y-%m-%d" }},
-      {% if page.description %} "description": {{ page.description }}, {% endif %}
+
+      {% if page.description %}"description": "{{ page.description }}",{% endif %}
+      "datePublished": "{{ page.date | date: "%Y-%m-%d" }}"
     }
 </script>
