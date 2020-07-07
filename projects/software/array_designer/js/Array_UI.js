@@ -54,6 +54,7 @@ document.querySelector('#e_cut_plot_angle').addEventListener('change',updateBeam
 document.querySelector('#h_cut_plot_angle').addEventListener('change',updateBeamformedH2D);
 
 //toggle handlers
+document.querySelector('#show_hide_instructions' ).addEventListener('click',function(){toggle_display(document.querySelector('#instructions_list'));updateBeamformed3D();});
 document.querySelector('#show_hide_E2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformE_2D'));updateBeamformedE2D();});
 document.querySelector('#show_hide_H2D').addEventListener('click',function(){toggle_display(document.querySelector('#beamformH_2D'));updateBeamformedH2D();});
 document.querySelector('#show_hide_3D' ).addEventListener('click',function(){toggle_display(document.querySelector('#beamform3D'));updateBeamformed3D();});
@@ -181,7 +182,7 @@ for(i=0;i<az_vals_3d.toArray().length;i++){el_mesh = math.concat(el_mesh,math.mu
 
 function updateBeamformed3D(){
 
-    let plot_div = document.querySelector('#beamform3D');
+    var plot_div = document.querySelector('#beamform3D');
 
     if(plot_div.style.display!='none'){ 
 

@@ -14,7 +14,7 @@ function generate_cartesian_array(nvals,exp_vals){ //meshgrid the values
     var out_vals = [];
 
     // now evaluate
-    var scope = {nx:nmesh[0],ny:nmesh[1],nz:nmesh[2]};
+    var scope = {nx:nmesh[0],ny:nmesh[1],nz:nmesh[2],n:math.range(0,nmesh[0].length).toArray()};
     for(var i=0;i<nmesh.length;i++){
         var out_val = math.evaluate(exp_vals[i],scope)
         out_vals.push(out_val)
@@ -24,6 +24,9 @@ function generate_cartesian_array(nvals,exp_vals){ //meshgrid the values
 
 // create 1D lists of meshgridded values ()
 // input must be javascript arrays
+// returns 1D arrays a=repeat([a1,a2,...an],b.length*c.length)
+//                   b=repeat([repeat([b1],a.length)],...,[repeat([bn],a.length)],c.length)
+//                   c= [repeat([c1],a.length*b.length),...,repeat([cn],a.length*b.length)]
 function meshgrid3d(a,b,c){
     // meshgrid the values
     var A=[],B=[],C=[]
