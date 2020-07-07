@@ -1,0 +1,15 @@
+<div id='common_footer_theme_setting'>
+    Theme: <br>
+    <select id='common_navbar_theme_selector'>
+      <option value='system'>System</option>
+      <option value='light'>Light</option>
+      <option value='dark'>Dark</option>
+      <option value='matrix'>Matrix</option>
+      <option value='contrast'>Contrast</option>
+    </select>
+    <script>
+      // update the selector to the correct value
+      var theme_value = document.querySelector('html').getAttribute('data-theme');
+      document.getElementById('common_navbar_theme_selector').value = theme_value;
+    </script>
+  </div>

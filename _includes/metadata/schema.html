@@ -1,0 +1,17 @@
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      {% if page.type %} "@type": {{ page.type }}, {% endif %}
+      {% if page.title %} "name": "{{ page.title }}", {% endif %}
+      {% for author in page.authors %}
+        "author": {
+          "@type": "Person",
+          "shortName": {{ author }}
+          {% if site.data.authors[author].name %}"name": {{ site.data.authors[author].name }} {% endif %}
+        },
+      {% endfor %}
+      "datePublished": {{ page.date | date: "%Y-%m-%d" }},
+      "description": {{ page.excerpt }},
+    }
+</script>

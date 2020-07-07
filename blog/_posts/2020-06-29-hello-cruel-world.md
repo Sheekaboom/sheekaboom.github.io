@@ -1,7 +1,9 @@
 ---
-layout: default
+layout: blog_post
+type: BlogPosting
 title:  "Hello /*cruel*/ World!"
-tags: [news]
+tags: ['opinion','current-events','quarantine','COVID-19','personal-experience']
+authors: [aweiss]
 icon: /blog/assets/icons/hello-cruel-world.png
 ---
 
