@@ -12,7 +12,7 @@ icon: /blog/assets/icons/hello-cruel-world.png
 
 # Hello /\*cruel\*/ World!
 
-<img src='/blog/assets/hello-cruel-world.png' class='post_image'>
+<img src='/blog/assets/hello-cruel-world.png' class='post_image' alt='hello cruel world graphic'>
 Hello! This is my very first ever blog post and I am very excited to start sharing some of my knowledge and experience with the world! This post is meant as a test post for me, a welcome for you, and a blast from the past for those reading this in the future. I also feel it's important to note, this is NOT an article to be cited for statistics and number information. There are many reports that can be found with a quick internet search that will give a much more reliable timeline and quantitative information. With that, I am not sure when you are reading this post, but the world right now is figurative and literal in flames. But lets get back to that after a quick introduction.
 
 ## A Bit About Myself

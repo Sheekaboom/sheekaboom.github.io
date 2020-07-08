@@ -1,6 +1,8 @@
 ---
-title: Blog
+title: Blog Posts
+description: Home page of the WeissWorks blog. Look for specific posts here!
 layout: default
+authors: [aweiss]
 ---
 
 # Blog Posts
