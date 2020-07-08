@@ -1,6 +1,8 @@
 ---
-title: About
+title: About Me
 layout: default
+description: Some background, my hobbies, and what drives me.
+authors: [aweiss]
 ---
 
 # About Me

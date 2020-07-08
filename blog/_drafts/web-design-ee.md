@@ -1,6 +1,7 @@
 ---
 layout: default
 title:  "Web Design for Electrical Engineer"
+description: Currently a DRAFT
 ---
 
 Im an ee, my take on how getting into web design went.

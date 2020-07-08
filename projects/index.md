@@ -1,6 +1,8 @@
 ---
 title: Projects
 layout: default
+description: Find all projects on WeissWorks! There is everything from woodworking to software projects to browse here.
+authors: [aweiss]
 ---
 
 {% assign my_category_name = 'projects' %}
@@ -36,28 +38,4 @@ layout: default
     {% endfor %}
 </ul>
 
-## Academic
 
-<ul>
-    {% assign cat_name = 'academic' %}
-    {% for post in my_categories %}
-        {% if post.categories contains cat_name %}
-            <li>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-</ul>
-
-## Other
-
-<ul>
-    {% assign cat_name = 'other' %}
-    {% for post in my_categories %}
-        {% if post.categories contains cat_name %}
-            <li>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-            </li>
-        {% endif %}
-    {% endfor %}
-</ul>

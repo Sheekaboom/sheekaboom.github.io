@@ -1,6 +1,8 @@
 ---
-title: Home
+title: Homepage
 layout: default
+description: Welcome to the home page of WeissWorks! Explore the various electronics, software, and woodworking projects and blog posts from a fellow nerdy human.
+authors: [aweiss]
 ---
 
 # Welcome
