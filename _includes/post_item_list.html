@@ -6,7 +6,7 @@
       <a href="{{ post_item.url }}" class='post_item'>
         <p class='post_item_title'>{{ post_item.title }}</p>
         {% if post_item.icon %}
-        <img src='{{ post_item.icon }}' class='post_item_icon'>
+        <img src='{{ post_item.icon }}' class='post_item_icon' alt='{{ post_item.title }} icon'>
         {% endif %}
       </a>
     {% endfor %}
