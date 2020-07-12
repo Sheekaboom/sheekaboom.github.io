@@ -22,5 +22,5 @@ am here to learn just as much as you are! Feel free to contact me with any quest
 corrections, or to just say hi at {% include email.html %}.
 </p>
 
-While most of the posts in here are informational and family friendly, I don't mind using profanity to get my point across. So, if you don't like that... well I guess don't read the blog. Enjoy!
+While most of the posts in here are informational and family friendly, I don't mind using profanity to get my point across. If this really grinds your gears, go ahead and turn on the language filter in the settings menu (sawblade at bottom right of page). This will try and replace any profanity with a nicer set of words. Enjoy!
 
