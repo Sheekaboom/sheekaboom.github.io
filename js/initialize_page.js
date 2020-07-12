@@ -1,3 +1,5 @@
+//import some things
+import {get_user_data} from '/js/modules/Generic.js';
 
 // initialize the user settings
 initializeUserSettings();
@@ -8,36 +10,13 @@ initializeUserSettings();
 function initializeUserSettings(){
     
     // list of user settings and default values
-    var user_settings = ['data-theme','data-language-filter'];
-    var default_user_setting_values = ['default',false];
+    var user_settings = ['data-theme','data-language-filter','data-transition'];
+    var default_user_setting_values = ['default',false,true];
 
     // set the values from storage
-    for(i=0;i<user_settings.length;i++){
-      if (typeof(Storage) !== "undefined") { // set the user values
-        var setting_value = sessionStorage.getItem(user_settings[i]) || default_user_setting_values[i];
-      } else {
-        var setting_value = get_cookie(user_settings);
-      }
+    for(var i=0;i<user_settings.length;i++){
+      var setting_value = get_user_data(user_settings[i]) || default_user_setting_values[i];
       document.getElementsByTagName('html')[0].setAttribute(user_settings[i],setting_value);
     }
 }
 
- /*
-  @brief get a cookie value
-  @cite https://www.w3schools.com/js/js_cookies.asp
-  */
- function get_cookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}

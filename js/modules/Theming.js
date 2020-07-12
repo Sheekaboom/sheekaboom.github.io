@@ -4,6 +4,8 @@
 
 export {set_theme,get_theme,themeEventListener}
 
+import {set_user_data} from './Generic.js';
+
 /*
 @brief Set the website theme by setting 'data-theme' attribute of <html>
 @param[in] theme_value - value to set the theme. can be 'dark','light','default'
@@ -12,11 +14,7 @@ function set_theme(theme_value){
     // set the current value
     document.getElementsByTagName('html')[0].setAttribute('data-theme',theme_value); 
     // store to viable location
-    if (typeof(Storage) !== "undefined") { // set the user values
-        sessionStorage.setItem('data-theme',theme_value);
-    } else { //otherwise use cookies
-        document.cookie = "data-theme="+theme_value+";path=/";
-    }
+    set_user_data('data-theme',theme_value)
 }
 
 /*@brief extract our theme information colors into a dictionary*/
@@ -48,10 +46,9 @@ function get_theme(){
 
 /*
 @brief Change the current theme from a <select> item
-@param[in] select_item - <select> html item to set theme from
+@param[in] select_elem - <select> html item to set theme from
 */
-function themeEventListener(){
-    var select_item = document.querySelector('#common_navbar_theme_selector');
-    var theme_str = select_item.value;
+function themeEventListener(select_elem){
+    var theme_str = select_elem.value;
     set_theme(theme_str);
 }

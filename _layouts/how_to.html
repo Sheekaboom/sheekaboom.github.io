@@ -4,6 +4,10 @@
 
     {% include common_head.html %}
 
+    <!-- Other MetaData -->
+    <script type="application/ld+json">{"@type":"HowTo"}</script>
+
+
   </head>
   
   <body><div id=body_div style='overflow-x:hidden'>
@@ -12,6 +16,16 @@
     <header>
       {% include nav.html %} 
     </header>
+
+    <!-- Material List -->
+    <div>
+      {% include how_to/material_list.html %}
+    </div>
+
+    <!-- Tool List -->
+    <div>
+      {% include how_to/tool_list.html %}
+    </div>
     
     <!-- Main Page Content -->
     <main role="main">

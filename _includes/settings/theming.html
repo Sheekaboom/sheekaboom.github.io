@@ -7,9 +7,13 @@
       <option value='matrix'>Matrix</option>
       <option value='contrast'>Contrast</option>
     </select>
-    <script>
+    <script type='module'>
+      import {themeEventListener} from '/js/modules/Theming.js';
+      // add the event listener
+      var select_elem = document.querySelector('#common_navbar_theme_selector');
+      select_elem.addEventListener('change',function(){themeEventListener(this)});
       // update the selector to the correct value
       var theme_value = document.querySelector('html').getAttribute('data-theme');
-      document.getElementById('common_navbar_theme_selector').value = theme_value;
+      document.querySelector('#common_navbar_theme_selector').value = theme_value;
     </script>
   </div>

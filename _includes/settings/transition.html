@@ -1,0 +1,19 @@
+<div id='transition_setting'>
+    Animations
+    <div class='switch-container'>
+      <label class="switch">
+        <input id='transition_checkbox' type="checkbox" >
+        <span class="slider"></span>
+      </label>
+    </div>
+    <script type='module'>
+      // imports
+      import {transitionEventListener} from '/js/modules/Transition.js';
+      //add the listener
+      var trans_check = document.querySelector('#transition_checkbox')
+      trans_check.addEventListener('change',function(){transitionEventListener(this)});
+      //set the checked value
+      var trans_state = (document.querySelector('html').getAttribute('data-transition')=='true');
+      document.querySelector('#transition_checkbox').checked = trans_state;
+    </script>
+  </div>

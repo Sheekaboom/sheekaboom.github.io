@@ -1,8 +1,44 @@
----
----
+{% assign total_cost=0 %}
+<table>
+    <thead>
+        <tr><th>Material</th><th>Quantity Required</th><th>Unit Cost</th></tr>
+    </thead>
+    <tbody>
+    {% for material in page.materials %}
+        {% assign mat_name = material[0] %}
+        {% assign mat_qty  = material[1] %}
+        <tr>
+            <td
+            class='tooltip' data-tooltip-text='{{ site.data.materials[mat_name].description }}'>
+            {{ site.data.materials[mat_name].name }}</td>
+            <td>{{ mat_qty }}</td>
+            <td>${{ site.data.materials[mat_name].cost }}</td>
+        </tr>
+        {% assign total_cost= total_cost | plus:site.data.materials[mat_name].cost %}
+    {% endfor %}
+    <tr><td></td><td>Total = </td><td>${{ total_cost }}</td></tr>
+    </tbody>
+</table>
 
-<ul>
-{% for mat in page.materials %}
-
-{% endfor %}
-</ul>
+<!-- Schema.org -->
+<script type="application/ld+json">
+    {
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "{{ total_cost }}"
+      },
+      "supply": [
+      {% for material in page.materials %}
+        {% assign mat_name = material[0] %}
+        {% assign mat_qty  = material[1] %}
+        {
+        "@type": "HowToSupply",
+        "name": "{{ site.data.materials[mat_name].name }}",
+        "estimatedCost": "{{ site.data.materials[mat_name].cost }}",
+        "requiredQuantity": {{ mat_qty }}
+        }{% if forloop.index != page.materials.size %},{% endif %}
+      {% endfor %}
+      ]
+    }
+</script>
