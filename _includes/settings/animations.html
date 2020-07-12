@@ -1,0 +1,14 @@
+<div id='transition_setting'>
+    Animations
+    <div class='switch-container'>
+      <label class="switch">
+        <input id='transition_checkbox' type="checkbox" >
+        <span class="slider"></span>
+      </label>
+    </div>
+    <script>
+      var trans_state = (document.querySelector('html').getAttribute('data-transition')=='true');
+      document.querySelector('#transition_checkbox').checked = trans_state;
+      set_language_filter(lang_filt_state);
+    </script>
+  </div>

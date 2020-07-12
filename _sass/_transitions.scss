@@ -1,0 +1,14 @@
+
+/*https://stackoverflow.com/questions/11131875/what-is-the-cleanest-way-to-disable-css-transition-effects-temporarily*/
+/* Turn off all transitions if set to false*/
+:root[data-transition='false'] {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+@keyframes fadeInAndUp {
+    0% {transform: translateY(50px); opacity:0}
+    100% {transform: translateY(0); opacity:100%}
+}

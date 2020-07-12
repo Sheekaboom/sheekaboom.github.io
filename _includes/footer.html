@@ -27,13 +27,13 @@
     <!-- Copyright -->
     <div id='common_footer_copyright'>© 2020 Copyright |
       <a href="https://www.WeissWorks.dev/"> WeissWorks.dev</a>
-    </div>
+    </div> <!-- Copyright -->
 
     <div id='common_footer_settings_button_div'>
       <button id="common_footer_settings_button" onclick="toggleFooterSettings()"  aria-controls="common_footer_settings" aria-expanded="false" aria-label="Toggle settings menu">
       {% include assets/settings_icon_optimized.svg %}
       </button>
-    </div>
+    </div> <!-- Button div -->
 
     <div id='common_footer_settings' class='common-footer-settings-closed'>
       <!-- add our event listeners-->
@@ -43,24 +43,18 @@
         import {languageFilterEventListener} from '/js/modules/LanguageFilter.js';
         document.querySelector('#language_filter_checkbox').addEventListener('change',languageFilterEventListener);
       </script>
+
       <!-- Settings for the theme -->
       {% include settings/theming.html %}
       <hr>
-      <div id='language_filter_setting'>
-        Language<br>Filter: <br>
-        <div class='switch-container'>
-          <label class="switch">
-            <input id='language_filter_checkbox' type="checkbox" >
-            <span class="slider"></span>
-          </label>
-        </div>
-        <script type='module'>
-          import {set_language_filter} from '/js/modules/LanguageFilter.js'
-          var lang_filt_state = (document.querySelector('html').getAttribute('data-language-filter')=='true');
-          document.querySelector('#language_filter_checkbox').checked = lang_filt_state;
-          set_language_filter(lang_filt_state);
-        </script>
-      </div>
+
+      {% include settings/language_filter.html %}
+
+      <hr>
+
+      {% include settings/animations.html %}
+
+
     </div>
 
   </div>

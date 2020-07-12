@@ -1,0 +1,15 @@
+<div id='language_filter_setting'>
+    Language<br>Filter: <br>
+    <div class='switch-container'>
+      <label class="switch">
+        <input id='language_filter_checkbox' type="checkbox" >
+        <span class="slider"></span>
+      </label>
+    </div>
+    <script type='module'>
+      import {set_language_filter} from '/js/modules/LanguageFilter.js'
+      var lang_filt_state = (document.querySelector('html').getAttribute('data-language-filter')=='true');
+      document.querySelector('#language_filter_checkbox').checked = lang_filt_state;
+      set_language_filter(lang_filt_state);
+    </script>
+  </div>
