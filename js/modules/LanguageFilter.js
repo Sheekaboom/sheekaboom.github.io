@@ -4,6 +4,8 @@
 
 export {languageFilterEventListener,set_language_filter};
 
+import {set_user_data} from './Generic.js';
+
 var filter_dict_nice = { // this contains RegExp():'replace' values
       'fudge'            : /\bfuck/ig,
       'darn'             : /\bdamn/ig,
@@ -41,13 +43,9 @@ function filter_language(element,filter_dict){
 
 function set_language_filter(filter_state){
     // set the current value
-    document.getElementsByTagName('html')[0].setAttribute('data-language-filter',theme_value); 
+    document.getElementsByTagName('html')[0].setAttribute('data-language-filter',filter_state); 
     //write to storage
-    if (typeof(Storage) !== "undefined") { // set the user values
-        sessionStorage.setItem('data-language-filter',filter_state);
-    } else { //otherwise use cookies
-        document.cookie = "data-language-filter="+filter_state+";path=/";
-    }
+    set_user_data('data-language-filter',filter_state);
 
     // now run the filter if we turned on the value
     if(filter_state==true){
@@ -57,9 +55,9 @@ function set_language_filter(filter_state){
 
 /*
 @brief handler for language filter selector
+@param[in] elem - checkbox element to get the filter state from (checked value)
 */
-function languageFilterEventListener(){
-    var lang_filt_state = document.querySelector('#language_filter_checkbox').checked;
-    set_language_filter(lang_filt_state);
+function languageFilterEventListener(elem){
+    set_language_filter(elem.checked);
   }
   

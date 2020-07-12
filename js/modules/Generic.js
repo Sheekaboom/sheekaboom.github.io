@@ -1,5 +1,6 @@
 /* Generic functionality for some javascript things */
 
+export { get_user_data, set_user_data };
 
 /*
 @brief get user data from either sessionStorage or cookies (whatever is supported)
@@ -12,6 +13,19 @@ function get_user_data(key){
         var user_data = get_cookie(user_settings);
     }
     return user_data
+}
+
+/*
+@brief set user data to either sessionStorage or cookies (if session not supported)
+@param[in] key - data name to set
+@param[in] val - value to set
+*/
+function set_user_data(key,val){
+    if (typeof(Storage) !== "undefined") { // set the user values
+        sessionStorage.setItem(key,val);
+    } else { //otherwise use cookies
+        document.cookie = key+"="+theme_value+";path=/";
+    }
 }
 
 

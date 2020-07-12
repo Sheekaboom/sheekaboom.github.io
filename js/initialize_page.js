@@ -1,5 +1,5 @@
 
-import get_user_data from './Generic.js'
+import {get_user_data} from './modules/Generic.js'
 
 // initialize the user settings
 initializeUserSettings();
@@ -14,7 +14,7 @@ function initializeUserSettings(){
     var default_user_setting_values = ['default',false,true];
 
     // set the values from storage
-    for(i=0;i<user_settings.length;i++){
+    for(var i=0;i<user_settings.length;i++){
       var setting_value = get_user_data(user_settings[i]) || default_user_setting_values[i];
       document.getElementsByTagName('html')[0].setAttribute(user_settings[i],setting_value);
     }

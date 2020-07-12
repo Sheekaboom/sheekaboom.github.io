@@ -7,9 +7,15 @@
       </label>
     </div>
     <script type='module'>
-      import {set_language_filter} from '/js/modules/LanguageFilter.js'
+      //import module
+      import {set_language_filter,languageFilterEventListener} from '/js/modules/LanguageFilter.js'
+      //add the event listener
+      var lang_filt_state_elem = document.querySelector('#language_filter_checkbox');
+      lang_filt_state_elem.addEventListener('change',function(){languageFilterEventListener(this);});
+      //init the box value
       var lang_filt_state = (document.querySelector('html').getAttribute('data-language-filter')=='true');
       document.querySelector('#language_filter_checkbox').checked = lang_filt_state;
+      //now filter if we are set already
       set_language_filter(lang_filt_state);
     </script>
   </div>
