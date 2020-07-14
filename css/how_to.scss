@@ -44,7 +44,7 @@
 // Instructions
 
 .how_to_steps{
-    padding:0 20px 20px 20px;
+    padding-bottom:20px;
     list-style-type: decimal;
 }
 
@@ -58,6 +58,17 @@
         left: 0px;
         top:5px;
         bottom:5px;
+    }
+}
+
+.how_to_step_image{
+    width:calc(100% - 10px);
+    height:auto;
+    margin:10px 0px;
+    border:{
+        width:5px;
+        color:var(--border-color);
+        style:solid;
     }
 }
 

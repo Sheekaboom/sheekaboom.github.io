@@ -4,9 +4,10 @@
 {% for step in page.steps %}
 <div class='how_to_step'>
     <h3 class='how_to_step_header'>
-        <span class='how_to_step_number'>{{ forloop.index | plus:1 }}</span>
+        <span class='how_to_step_number'>{{ forloop.index }}</span>
         {{ step.name }}
     </h3><hr>
+    {% if step.image %}<img src='{{ step.image | absolute_url }}' class='how_to_step_image'>{% endif %}
     {% if step.text %}<p>{{ step.text }}</p>{% endif %}
     <ol class='how_to_directions'>
     {% for dir in step.directions %}
