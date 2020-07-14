@@ -1,7 +1,7 @@
 {% assign total_cost=0 %}
-<table>
+<table class='material_table'>
     <thead>
-        <tr><th>Material</th><th>Quantity Required</th><th>Unit Cost</th></tr>
+        <tr><th>Material</th><th>Qty.</th><th>Cost</th></tr>
     </thead>
     <tbody>
     {% for material in page.materials %}
@@ -11,8 +11,8 @@
             <td
             class='tooltip' data-tooltip-text='{{ site.data.materials[mat_name].description }}'>
             {{ site.data.materials[mat_name].name }}</td>
-            <td>{{ mat_qty }}</td>
-            <td>${{ site.data.materials[mat_name].cost }}</td>
+            <td class='table_number'>{{ mat_qty }}</td>
+            <td class='table_cost'>${{ site.data.materials[mat_name].cost }}</td>
         </tr>
         {% assign total_cost= total_cost | plus:site.data.materials[mat_name].cost %}
     {% endfor %}

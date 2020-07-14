@@ -1,0 +1,63 @@
+---
+---
+
+// Materials
+
+.material_table{
+    border-spacing: 15px 10px;
+    border-collapse: collapse;
+    border-style:dotted;
+    border-color:var(--border-color);
+    border-width:1px;
+}
+
+.material_table table,th,td{
+    padding:15px 10px;
+    border-collapse: separate;
+    border-style:dotted;
+    border-color:var(--border-color);
+    border-width:1px;
+    text-decoration:none;
+}
+
+.material_table th{
+    border-bottom-width:3px;
+    border-bottom-style:solid;
+}
+
+.table_cost{
+    text-align:right;
+}
+
+.table_number{
+    text-align:right;
+}
+
+
+// Tools
+
+.tool_list{
+    text-decoration:none;
+}
+
+
+// Instructions
+
+.how_to_steps{
+    padding:20px;
+    list-style-type: decimal;
+}
+
+.how_to_steps li{
+    padding:20px;
+}
+
+
+.how_to_directions{
+    list-style-type: upper-alpha;
+    padding:5px;
+}
+
+.how_to_directions li{
+    padding:5px;
+}

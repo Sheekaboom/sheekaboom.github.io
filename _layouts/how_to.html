@@ -4,6 +4,9 @@
 
     {% include common_head.html %}
 
+    <!-- Specific CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/how_to.css">
+
     <!-- Other MetaData -->
     <script type="application/ld+json">{"@type":"HowTo"}</script>
 
@@ -17,20 +20,29 @@
       {% include nav.html %} 
     </header>
 
-    <!-- Material List -->
-    <div>
-      {% include how_to/material_list.html %}
-    </div>
+    <h1>{{ page.title }}</h1>
 
-    <!-- Tool List -->
-    <div>
-      {% include how_to/tool_list.html %}
-    </div>
-    
-    <!-- Main Page Content -->
+    <!-- Main Page Content (e.g. intro) -->
     <main role="main">
       {{ content }}
     </main>
+
+    <!-- Tool List -->
+    <h2>Tools</h2>
+    <div class='par_form'>
+      {% include how_to/tool_list.html %}
+    </div>
+
+    <!-- Material List -->
+    <h2>Materials</h2>
+    <div class='par_form'>
+      {% include how_to/material_list.html %}
+    </div>
+    
+    <h2>Instructions</h2>
+    <div class='par_form'>
+      {% include how_to/instructions.html %}
+    </div>
 
     <!-- Autofilled footer -->
     <footer>
