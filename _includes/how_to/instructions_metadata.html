@@ -11,7 +11,7 @@
         {
             "@type": "HowToDirection",
             "text": "{{ dir.text }}"
-        }{% if forloop.index != step.directions.size %},{% endif %}
+        }{% if forloop.last %},{% endif %}
         {% endfor %}
         ]
         {% endif %}
@@ -21,7 +21,7 @@
             "url": {{ step.image }},
         }
         {% endif %}
-    }{% if forloop.index != page.steps.size %},{% endif %}
+    }{% if forloop.last %},{% endif %}
     {% endfor %}
     ],
 {% endcapture %}

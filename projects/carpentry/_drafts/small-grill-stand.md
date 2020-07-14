@@ -15,6 +15,17 @@ tools: [drill,driver,circular-saw,tape-measure]
 materials: [[lumber_generic_2x6x8,2],[lumber_generic_2x3x8,2],[lumber_generic_4x4x8,2],[screws_deck_1.5in,1]]
 
 steps: [ # list of steps
+    { name: Cut lumber to size,
+      text: We will begin by cutting all of the required size lumber we need before putting anything together.,
+      directions: [
+        { text: Cut 5 x 20” boards from the 2”x6” lumber (or 18” length for no overhang on top surface) },
+        { text: Cut 3 x 18” boards from the 2”x6” lumber },
+        { text: Cut 4 x 18” boards from the 2”x3” lumber (an 8’ board will produce 4 x 18” boards plus a single board just about 23.5” after accounting for the kerf) },
+        { text: Cut 4 x 23.5” boards from the 2”x3” lumber },
+        { text: Cut 4 x 26.5” boards from the 4”x4” lumber }
+      ]
+    },
+
     { name: Create the frame,
     directions: [
         { text: Connect 2 x (2”x3”x23.5”) beams between the legs (4”x4”x26.5” pieces) flush with (or slightly above) the top of the 4”x4” beams at a 23.5” distance to create two sides. },
@@ -41,6 +52,8 @@ steps: [ # list of steps
         { text: This may just be the hardest step of the whole project... (This is sarcasm if that didn't make it across) You now have to place your grill on your beautiful new stand!}
     ]}
 ]
+downloads: [small_grill_stand.stl]
+icon: /projects/carpentry/assets/icons/small-grill-stand.png
 ---
 
 So I live in a very small apartment. We have a deck and are allowed to have grills, but the size of the deck really prohibits a full size grill.
