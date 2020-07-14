@@ -1,7 +1,8 @@
 ---
 title: Cheap Portable Grill Stand
 description: How to build a low cost stand for a portable grill (like the Weber Q122)
-author: [aweiss]
+type: HowTo
+authors: [aweiss]
 
 layout: how_to
 permalink: /:categories/:title:output_ext
