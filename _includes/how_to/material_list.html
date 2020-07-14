@@ -20,27 +20,3 @@
     </tbody>
 </table>
 
-<!-- Schema.org -->
-<script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "HowTo",
-      "estimatedCost": {
-        "@type": "MonetaryAmount",
-        "currency": "USD",
-        "value": "{{ total_cost }}"
-      },
-      "supply": [
-      {% for material in page.materials %}
-        {% assign mat_name = material[0] %}
-        {% assign mat_qty  = material[1] %}
-        {
-        "@type": "HowToSupply",
-        "name": "{{ site.data.materials[mat_name].name }}",
-        "estimatedCost": "{{ site.data.materials[mat_name].cost }}",
-        "requiredQuantity": {{ mat_qty }}
-        }{% if forloop.index != page.materials.size %},{% endif %}
-      {% endfor %}
-      ]
-    }
-</script>

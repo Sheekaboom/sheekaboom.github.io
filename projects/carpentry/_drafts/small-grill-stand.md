@@ -7,6 +7,10 @@ authors: [aweiss]
 layout: how_to
 permalink: /:categories/:title:output_ext
 
+schema: {
+    totalTime: PT2H30M
+}
+
 tools: [drill,driver,circular-saw,tape-measure]
 materials: [[lumber_generic_2x6x8,2],[lumber_generic_2x3x8,2],[lumber_generic_4x4x8,2],[screws_deck_1.5in,1]]
 

@@ -5,19 +5,3 @@
         </li>
     {% endfor %}
 </ul>
-
-<!-- Schema.org -->
-<script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "HowTo",
-      "tool": [
-      {% for tool in page.tools %}
-        {
-        "@type": "HowToTool",
-        "name": "{{ site.data.tools[tool].name }}"
-        }{% if forloop.index != page.tools.size %},{% endif %}
-      {% endfor %}
-      ]
-    }
-</script>
