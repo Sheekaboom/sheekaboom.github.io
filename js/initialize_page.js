@@ -3,6 +3,7 @@ import {get_user_data} from '/js/modules/Generic.js';
 
 // initialize the user settings
 initializeUserSettings();
+document.body.style.visibility = 'visible'; //only make visible after setting user settings
 
 /*
 @brief Initialize user settings on each page
