@@ -5,9 +5,6 @@ description: Find all projects on WeissWorks! There is everything from woodworki
 authors: [aweiss]
 ---
 
-{% assign my_category_name = 'projects' %}
-{% assign my_categories = site.categories[my_category_name] %}
-
 # Projects
 
 ## Software
