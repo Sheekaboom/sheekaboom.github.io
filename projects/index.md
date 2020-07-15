@@ -12,32 +12,15 @@ authors: [aweiss]
 
 ## Software
 
-<div class='post_item_list'>
-  <span class='post_item_list_shim'></span>
-  {% assign cat_name = 'software' %}
-  {% for post in my_categories %}
-    {% if post.categories contains cat_name %}
-        <a href="{{ post.url }}" class='post_item'>
-        <p class='post_item_title'>{{ post.title }}</p>
-        </a>
-    {% endif %}
-  {% endfor %}
-  <span class='post_item_list_shim'></span>
-</div>
+{% assign post_item_list = site.categories['projects'] | where_exp:"post","post.categories contains 'software'" %}
+{% include post_item_list.html %}
 
 ## Carpentry
 
-<div class='post_item_list'>
-  <span class='post_item_list_shim'></span>
-  {% assign cat_name = 'carpentry' %}
-  {% for post in my_categories %}
-    {% if post.categories contains cat_name %}
-        <a href="{{ post.url }}" class='post_item'>
-        <p class='post_item_title'>{{ post.title }}</p>
-        </a>
-    {% endif %}
-  {% endfor %}
-  <span class='post_item_list_shim'></span>
-</div>
+{% assign post_item_list = site.categories['projects'] | where_exp:"post","post.categories contains 'carpentry'" %}
+{% include post_item_list.html %}
+
+
+
 
 
