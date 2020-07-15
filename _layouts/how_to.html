@@ -32,33 +32,34 @@
     </main>
 
     <!-- Tool List -->
-    <div class='par_form'>
+    <div id='tool_list' class='par_form'>
       <h2>Tools</h2>
       {% include how_to/tool_list.html %}
-    </div>
+    </div><!-- End Tool List -->
 
     <!-- Material List -->
-    <div class='par_form'>
+    <div id='material_list' class='par_form'>
       <h2>Materials</h2>
       {% include how_to/material_list.html %}
-    </div>
+    </div><!-- End Material List -->
     
-    
-    <div class='par_form'>
-      <h2>Instructions</h2>
-      {% include how_to/instructions.html %}
-    </div>
-
+    <!-- Downloads-->
     {% if page.downloads %}
-    <div class='par_form'>
+    <div id='downloads' class='par_form how_to_downloads'>
       <h2>Downloads</h2>
       <ul>
         {% for dl in page.downloads %}
-        <a href='{{ dl | absolute_url }}' download>{{ dl }}</a>
+        <a href='{{ dl | absolute_url }}' download>{{ dl | split:'/' | last }}</a>
         {% endfor %}
       </ul>
-    </div>
+    </div> <!-- End Downloads-->
     {% endif %}
+
+    <!-- Instructions -->
+    <div id='instructions' class='par_form'>
+      <h2>Instructions</h2>
+      {% include how_to/instructions.html %}
+    </div><!-- End Instructions -->
 
 
     <!-- Autofilled footer -->

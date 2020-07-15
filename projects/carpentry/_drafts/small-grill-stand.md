@@ -51,8 +51,9 @@ steps: [ # list of steps
         { text: This may just be the hardest step of the whole project... (This is sarcasm if that didn't make it across) You now have to place your grill on your beautiful new stand!}
     ]}
 ]
-downloads: [small_grill_stand.stl]
-icon: /projects/carpentryg/assets/icons/grill_table_icon.png
+downloads: [/projects/carpentry/small_grill_stand/small_grill_stand.stl,
+    /projects/carpentry/small_grill_stand/small_grill_stand.skp]
+icon: /projects/carpentry/assets/icons/small_grill_stand_icon.png
 ---
 
 
