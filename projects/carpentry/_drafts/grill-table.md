@@ -24,11 +24,12 @@ steps: [ # list of steps
         { text: Cut 4 x 18” pieces from the 2”x3” lumber (an 8’ board will produce 4 x 18” pieces plus a single board just about 23.5” after accounting for the kerf) },
         { text: Cut 4 x 23.5” pieces from the 2”x3” lumber },
         { text: Cut 4 x 26.5” pieces from the 4”x4” lumber }
-    ]},
+      ]
+    },
 
-    { name: Build the Frame Sides,
-    image: /projects/carpentry/grill_table/sides_formatted.png,
-    text: "!!!Now we will take the pieces we cut out in the last step and assemble the frame of the stand. Here we could drill pilot holes to be exact, but self tapping deck screws and a driver make quick work of the assembly.",
+    { name: Create the frame,
+    image: /projects/carpentry/grill_table/build_frame.png,
+    text: "Now we will take the pieces we cut out in the last step and assemble the frame of the stand. Here we could drill pilot holes to be exact, but self tapping deck screws and a driver make quick work of the assembly.",
     directions: [
         { text: Connect 2 x (2”x3”x23.5”) beams between the legs (4”x4”x26.5” pieces) flush with (or slightly above) the top of the 4”x4” beams at a 23.5” distance to create two sides. },
         { text: Add 2 x (2”x3”x24”) to each of the sides at a height of 1.5” inches from the bottom of the 4”x4” beams. },
@@ -36,25 +37,8 @@ steps: [ # list of steps
         { text: Add 2 x (2”x3”x18”) pieces just below the (2”x3”x23.5”) sections added in part A }
     ]},
 
-    { name: Connect the Frame Sides,
-    image: /projects/carpentry/grill_table/full_frame_formatted.png,
-    text: "!!!Now we will take the pieces we cut out in the last step and assemble the frame of the stand. Here we could drill pilot holes to be exact, but self tapping deck screws and a driver make quick work of the assembly.",
-    directions: [
-        { text: Connect 2 x (2”x3”x23.5”) beams between the legs (4”x4”x26.5” pieces) flush with (or slightly above) the top of the 4”x4” beams at a 23.5” distance to create two sides. },
-        { text: Add 2 x (2”x3”x24”) to each of the sides at a height of 1.5” inches from the bottom of the 4”x4” beams. },
-        { text: Connect each of these sides at an 18” distance by 2 x (2”x3”x18”) pieces at a height of 12” },
-        { text: Add 2 x (2”x3”x18”) pieces just below the (2”x3”x23.5”) sections added in part A }
-    ]},
-    
-    { name: Create the Propane Shelf,
+    { name: Create the Flat Surfaces,
     image: /projects/carpentry/grill_table/propane_shelf_formatted.png,
-    text: "!!!With the frame together, we can now create our top surface for the grill bottom shelf which will hold the propane bottle. Again some self tapping deck screws and a driver make quick work of this job.",
-    directions: [
-        { text: Add 3 x (2”x3”x18”) across the 24” span at the bottom of the frame to create a flat surface between the legs.},
-        { text: Add 5 x (2”x3”x18”) across the top of the frame. It is recommended these are only screwed into the (2”x3”x23.5”) cross-beams and NOT the 4”x4” legs. This provides for easier dissasembly for moving}
-    ]},
-    { name: Create the Table Top,
-    image: /projects/carpentry/grill_table/grill_table_final_formatted.png,
     text: "With the frame together, we can now create our top surface for the grill bottom shelf which will hold the propane bottle. Again some self tapping deck screws and a driver make quick work of this job.",
     directions: [
         { text: Add 3 x (2”x3”x18”) across the 24” span at the bottom of the frame to create a flat surface between the legs.},
@@ -73,7 +57,7 @@ icon: /projects/carpentry/assets/icons/grill_table_icon.png
 
 endmatter: "And you now have a great place to put a portable grill for small space living! Keep in mind that there are downloadable CAD (computer aided design) files for 3D viewing of this design near the top of this page. The *.stl files can be opened using the Windows 10 3D viewer and the *.skp files can be opened and edited using the sketchup cad software. Feel free to contact me with any necessary comments, questions, or clarifications!"
 
-other-photos: [/projects/carpentry/grill_table/build_frame.png,/projects/carpentry/grill_table/propane_shelf.png]
+other-photos: [/projects/carpentry/grill_table/final_product.png,/projects/carpentry/grill_table/build_frame.png,/projects/carpentry/grill_table/propane_shelf.png]
 ---
 
 
