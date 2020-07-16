@@ -14,9 +14,27 @@
     - Post on website design from an EE point of view
     - Post on simple language filtering on your website 
 
+- How to Posts 
+    - Cat corner litter box
+        - CAD design 
+        - Instructions
+        - Sizes
+
 - Recipes 
-    - Add layouts for recipes 
+    - Add layout for recipes (based mostly on how-to)
     - Add quick single serve egg salad recipes
+
+- User Comments
+    - Staticman? (for now)
 
 - Themes
     - Add crazy rainbow theme (pride)
+    - Custom theme? (for user customizable)
+
+- Share 
+    - OpenGraph tags 
+    - Twitter Cards 
+    - Facebook/twitter/pinterest share buttons 
+
+- Contact 
+    - Add github/linkedin/etc
