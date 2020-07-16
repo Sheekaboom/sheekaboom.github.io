@@ -1,6 +1,6 @@
 ---
-title: Cheap Portable Grill Stand
-description: How to build a low cost stand for a portable grill (like the Weber Q122)
+title: Cheap Portable Grill Table
+description: How to build a low cost table for a portable grill (like the Weber Q1200).
 type: HowTo
 authors: [aweiss]
 
@@ -16,7 +16,7 @@ materials: [[lumber_generic_2x6x8,2],[lumber_generic_2x3x8,2],[lumber_generic_4x
 
 steps: [ # list of steps
     { name: Cut the lumber to size,
-      image: /projects/carpentry/small_grill_stand/cut_wood.png,
+      image: /projects/carpentry/grill_table/cut_wood.png,
       text: "We will begin by cutting all of the required size lumber needed for the stand. While I used a circular saw for this step, I must say that I really wished I'd had a miter saw. This is especially useful for the 4x4 lumber because my circular saw cant cut deep enough to make it through in a single cut.",
       directions: [
         { text: Cut 5 x 20” pieces from the 2”x6” lumber (or 18” length if you don't want the top surface to overhang) },
@@ -28,7 +28,7 @@ steps: [ # list of steps
     },
 
     { name: Create the frame,
-    image: /projects/carpentry/small_grill_stand/build_frame.png,
+    image: /projects/carpentry/grill_table/build_frame.png,
     text: "Now we will take the pieces we cut out in the last step and assemble the frame of the stand. Here we could drill pilot holes to be exact, but self tapping deck screws and a driver make quick work of the assembly.",
     directions: [
         { text: Connect 2 x (2”x3”x23.5”) beams between the legs (4”x4”x26.5” pieces) flush with (or slightly above) the top of the 4”x4” beams at a 23.5” distance to create two sides. },
@@ -38,7 +38,7 @@ steps: [ # list of steps
     ]},
 
     { name: Create the Flat Surfaces,
-    image: /projects/carpentry/small_grill_stand/propane_shelf.png,
+    image: /projects/carpentry/grill_table/propane_shelf_formatted.png,
     text: "With the frame together, we can now create our top surface for the grill bottom shelf which will hold the propane bottle. Again some self tapping deck screws and a driver make quick work of this job.",
     directions: [
         { text: Add 3 x (2”x3”x18”) across the 24” span at the bottom of the frame to create a flat surface between the legs.},
@@ -46,20 +46,22 @@ steps: [ # list of steps
     ]},
 
     { name: 'Add the Grill, Propane, and any Extras',
-    image: /projects/carpentry/small_grill_stand/final_product.png,
+    image: /projects/carpentry/grill_table/final_product.png,
     text: "This may just be the hardest step of the whole project... (This is sarcasm if that didn't make it across) You now have to place your grill on your beautiful new stand! A standard propane tank should fit nicely on the bottom shelf of the stand. While it is definitely optional, during this step I also added a bottle opener and some hook screws to mine to allow me to hang my grilling utensils and have a nice cold beer without having to go inside. These can be seen in the final product and should be placed wherever they fit best for your setup!",
     directions: [
     ]}
 ]
-downloads: [/projects/carpentry/small_grill_stand/small_grill_stand.stl,
-    /projects/carpentry/small_grill_stand/small_grill_stand.skp]
-icon: /projects/carpentry/assets/icons/small_grill_stand_icon.png
+downloads: [/projects/carpentry/grill_table/grill_table.stl,
+    /projects/carpentry/grill_table/grill_table.skp]
+icon: /projects/carpentry/assets/icons/grill_table_icon.png
 
-endmatter: And you now have a great place to put a portable grill for small space living! Keep in mind that there are downloadable CAD (computer aided design) files for 3D viewing of this design near the top of this page. The *.stl files can be opened using the Windows 10 3D viewer and the *.skp files can be opened and edited using the sketchup cad software. Feel free to contact me with any necessary comments, questions, or clarifications!
+endmatter: "And you now have a great place to put a portable grill for small space living! Keep in mind that there are downloadable CAD (computer aided design) files for 3D viewing of this design near the top of this page. The *.stl files can be opened using the Windows 10 3D viewer and the *.skp files can be opened and edited using the sketchup cad software. Feel free to contact me with any necessary comments, questions, or clarifications!"
+
+other-photos: [/projects/carpentry/grill_table/final_product.png,/projects/carpentry/grill_table/build_frame.png,/projects/carpentry/grill_table/propane_shelf.png]
 ---
 
 
-<img src='/projects/carpentry/small_grill_stand/grill_table.png' class='post_image' alt='small grill stand completed'>
+<img src='/projects/carpentry/grill_table/grill_table.png' class='post_image' alt='small grill stand completed'>
 
 So I live in a very small apartment. We have a deck and are allowed to have grills, but the size of the deck really prohibits a full size grill.
 I recently then bought the small and portable Weber Q1200 grill and I love it. It is robust, reliable and cooks very well.
