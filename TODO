@@ -3,6 +3,7 @@
     - update 3D file to use separate parts
     - Expand steps and use 3D model to generate figures
     - Add 3D viewer of the stl model to browser (and how_to layout)
+    - other photo support
 
 - How to layout
     - Add 3D model view (if provided, use tonybox.net code for quick building)
