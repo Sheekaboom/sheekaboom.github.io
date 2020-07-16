@@ -31,29 +31,33 @@
       {{ content }}
     </main>
 
+    <hr>
+
     <!-- Tool List -->
     <div id='tool_list' class='par_form'>
       <h2>Tools</h2>
       {% include how_to/tool_list.html %}
     </div><!-- End Tool List -->
 
+    <hr>
+
     <!-- Material List -->
     <div id='material_list' class='par_form'>
       <h2>Materials</h2>
       {% include how_to/material_list.html %}
     </div><!-- End Material List -->
+
+    <hr>
     
     <!-- Downloads-->
     {% if page.downloads %}
     <div id='downloads' class='par_form how_to_downloads'>
       <h2>Downloads</h2>
-      <ul>
-        {% for dl in page.downloads %}
-        <a href='{{ dl | absolute_url }}' download>{{ dl | split:'/' | last }}</a>
-        {% endfor %}
-      </ul>
+      {% include how_to/downloads.html %}
     </div> <!-- End Downloads-->
     {% endif %}
+
+    <hr>
 
     <!-- Instructions -->
     <div id='instructions' class='par_form'>
@@ -61,6 +65,13 @@
       {% include how_to/instructions.html %}
     </div><!-- End Instructions -->
 
+    <hr>
+
+    {% if page.endmatter %}
+    <div id='endmatter'>
+      <p>{{ page.endmatter }}</p>
+    </div>
+    {% endif %}
 
     <!-- Autofilled footer -->
     <footer>
