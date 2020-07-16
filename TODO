@@ -1,0 +1,22 @@
+- Small grill table
+    - Change 'stand' to 'table'
+    - update 3D file to use separate parts
+    - Expand steps and use 3D model to generate figures
+    - Add 3D viewer of the stl model to browser (and how_to layout)
+
+- How to layout
+    - Add 3D model view (if provided, use tonybox.net code for quick building)
+
+- Blog posts
+    - post on array builder (with example of linear,planar,circular,3D antenna arrays)
+    - Post on user settings for the website
+    - Post on protecting contact information on your website 
+    - Post on website design from an EE point of view
+    - Post on simple language filtering on your website 
+
+- Recipes 
+    - Add layouts for recipes 
+    - Add quick single serve egg salad recipes
+
+- Themes
+    - Add crazy rainbow theme (pride)
