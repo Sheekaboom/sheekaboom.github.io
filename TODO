@@ -39,3 +39,6 @@
 
 - Contact 
     - Add github/linkedin/etc
+
+- other
+    - Add scrolling fanciness to logo (using animated dashed line with offset)
