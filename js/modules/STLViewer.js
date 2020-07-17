@@ -42,6 +42,10 @@ function STLViewer(elem, model) {
     controls.enablePan = false;
     controls.autoRotate = true;
     controls.autoRotateSpeed = .75;
+    
+    // set our initial view angle
+    camera.position.set( 0, 25, 0 );
+    controls.update();
 
     var scene = new THREE.Scene();
 
@@ -50,7 +54,6 @@ function STLViewer(elem, model) {
     (new STLLoader()).load(model, function (geometry) {
         var material = new THREE.MeshPhongMaterial({ color: elem.getAttribute('data-stl-color'), specular: 100, shininess: 100 });
         var mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
 
         // Compute the middle
         var middle = new THREE.Vector3();
@@ -58,15 +61,20 @@ function STLViewer(elem, model) {
         geometry.boundingBox.getCenter(middle);
 
         // Center it
-        mesh.position.x = -1 * middle.x;
-        mesh.position.y = -1 * middle.y;
-        mesh.position.z = -1 * middle.z;
+        //mesh.rotation.set(- Math.PI / 2, 0,  0); //rotate for our orientation
+        // rotated to match z in sketchup/windows stl viewer
+        mesh.rotateX(-Math.PI/2);
+        mesh.translateX( -1 * middle.x );
+        mesh.translateY( -1 * middle.y );
+        mesh.translateZ( -1 * middle.z );
+
+        // add the mesh to the scene
+        scene.add(mesh);
 
         // Pull the camera away as needed
         var largestDimension = Math.max(geometry.boundingBox.max.x,
             geometry.boundingBox.max.y, geometry.boundingBox.max.z)
         camera.position.z = largestDimension * 1.5;
-
 
         var animate = function () {
             requestAnimationFrame(animate);

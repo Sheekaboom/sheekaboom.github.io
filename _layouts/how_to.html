@@ -59,12 +59,11 @@
     {% endif %}
 
     {% if page.cad-model %}
-    <div class='par form cad_model' data-stl-src='{{ page.cad-model.path }}' 
-      data-stl-color='{{ page.cad-model.color }}' style='width:100%;height:300px;'></div>
-    <script type='module'>
-    import {STLViewerEnable} from '/js/modules/STLViewer.js';
-    STLViewerEnable('cad_model');
-    </script>
+    <div id='cad_model' class='par_form'>
+      <h2>Interactive CAD Model</h2>
+      {% include how_to/cad_model.html %}
+    </div>
+    <hr>
     {% endif %}
 
     <!-- Instructions -->
@@ -77,6 +76,7 @@
 
     {% if page.endmatter %}
     <div id='endmatter'>
+      <h2>And That's It!</h2>
       <p>{{ page.endmatter }}</p>
     </div>
     {% endif %}
