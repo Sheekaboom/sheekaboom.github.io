@@ -69,6 +69,7 @@ steps: [ # list of steps
 ]
 downloads: [/projects/carpentry/grill_table/grill_table.stl,
     /projects/carpentry/grill_table/grill_table.skp]
+cad-model: { path: /projects/carpentry/grill_table/grill_table.stl,color: '#cebb9e' }
 icon: /projects/carpentry/assets/icons/grill_table_icon.png
 
 endmatter: "And you now have a great place to put a portable grill for small space living! Keep in mind that there are downloadable CAD (computer aided design) files for 3D viewing of this design near the top of this page. The *.stl files can be opened using the Windows 10 3D viewer and the *.skp files can be opened and edited using the sketchup cad software. Feel free to contact me with any necessary comments, questions, or clarifications!"
