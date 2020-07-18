@@ -56,17 +56,20 @@
 
 .how_to_steps > li {
     counter-increment: step-counter;
-    margin: 0 0 25px 0;
+    margin: 0 0 100px 0;
+}
+.how_to_steps > li:last-of-type{
+    margin-bottom:25px;
 }
 .how_to_steps .step_header{
     font:{
         family:var(--header-font);
         size:150%;
     }
-    padding:{left: 0px;bottom: 3px;}
+    padding:{left: 0px;bottom: 3px; right: 10px;}
     margin:{left: 0px;top:5px;bottom:5px;}
     border:{
-        width: 0 0 2px 0;
+        width: 0 2px 2px 0;
         style: solid;
         image: linear-gradient(90deg,#0000 0%,var(--text-color) 20%);
         image-slice: 1;
