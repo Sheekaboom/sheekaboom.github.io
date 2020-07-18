@@ -2,35 +2,94 @@
 <html lang="en">
   <head>
 
+    <!-- Other MetaData -->
+    <!--script type="application/ld+json">{"@type":"HowTo"}</script-->
+
+    {% include how_to/tool_list_metadata.html %}
+    {% include how_to/material_list_metadata.html %}
+    {% include how_to/instructions_metadata.html %}
+
     {% include common_head.html %}
 
-    <!-- Other MetaData -->
-    <script type="application/ld+json">{"@type":"HowTo"}</script>
+    <!-- Specific CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/how_to.css">
 
 
   </head>
   
-  <body><div id=body_div style='overflow-x:hidden'>
+  <body  style='visibility:hidden;'><div id=body_div style='overflow-x:hidden'>
     
     <!-- Autofilled header -->
     <header>
       {% include nav.html %} 
     </header>
 
-    <!-- Material List -->
-    <div>
-      {% include how_to/material_list.html %}
-    </div>
 
-    <!-- Tool List -->
-    <div>
-      {% include how_to/tool_list.html %}
-    </div>
-    
-    <!-- Main Page Content -->
+    <!-- Main Page Content (e.g. intro) -->
     <main role="main">
+      <h1>{{ page.title }}</h1>
       {{ content }}
     </main>
+
+    <hr>
+
+    <!-- Tool List -->
+    <h2>Tools</h2>
+    <div id='tool_list' class='par_form'>
+      {% include how_to/tool_list.html %}
+    </div><!-- End Tool List -->
+
+    <hr>
+
+    <!-- Material List -->
+    <h2>Materials</h2>
+    <div id='material_list' class='par_form'>
+      {% include how_to/material_list.html %}
+    </div><!-- End Material List -->
+
+    <hr>
+    
+    <!-- Downloads-->
+    {% if page.downloads %}
+    <h2>Downloads</h2>
+    <div id='downloads' class='par_form how_to_downloads'>
+      {% include how_to/downloads.html %}
+    </div> <!-- End Downloads-->
+    <hr>
+    {% endif %}
+
+    {% if page.cad-model %}
+    <h2>Interactive CAD Model</h2>
+    <div id='cad_model' class='par_form'>
+      {% include how_to/cad_model.html %}
+    </div>
+    <hr>
+    {% endif %}
+
+    <!-- Instructions -->
+    <h2>Instructions</h2>
+    <div id='instructions' class='par_form'>
+      {% include how_to/instructions.html %}
+    </div><!-- End Instructions -->
+
+    <hr>
+
+    {% if page.endmatter %}
+    <h2>And That's It!</h2>
+    <div id='endmatter'>
+      <p>{{ page.endmatter }}</p>
+    </div>
+    {% endif %}
+
+    {% if page.other-images %}
+    <hr>
+    <h2>Other Images</h2>
+    <div id='other_images' class='par_form'>
+      {% for image in page.other-images %}
+      <div><img src='{{ image }}' alt='{{ image | split:"/" | last }}' ></div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
     <!-- Autofilled footer -->
     <footer>

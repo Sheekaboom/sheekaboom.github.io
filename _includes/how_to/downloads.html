@@ -1,0 +1,5 @@
+<ul class='how_to_downloads'>
+    {% for dl in page.downloads %}
+    <li><a href='{{ dl | absolute_url }}' download>{{ dl | split:'/' | last }}</a></li>
+    {% endfor %}
+</ul>

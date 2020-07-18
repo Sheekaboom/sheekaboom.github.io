@@ -1,0 +1,15 @@
+<!-- Put all of the instructions defined in our YAML frontmatter -->
+<ol class='how_to_steps'>
+{% for step in page.steps %}
+<li>
+    <div class='step_header'>{{ step.name }}</div><br>
+    {% if step.image %}<img src='{{ step.image | absolute_url }}' class='step_image'>{% endif %}
+    {% if step.text %}<p class='step_text'>{{ step.text }}</p>{% endif %}
+    <ol class='step_directions'>
+    {% for dir in step.directions %}
+        <li> {{ dir.text }} </li>
+    {% endfor %}
+    </ol>
+</li>
+{% endfor %}
+</ol>

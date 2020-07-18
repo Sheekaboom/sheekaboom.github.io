@@ -7,7 +7,7 @@ authors: [aweiss]
 
 # Welcome
 
-Hello! Welcome to my site. This site serves as a place to hold blog posts, my previous projects, and serves as a platform to learn web development. This site isare continuously being improved, so check back in the future for new features, projects, and blog posts!
+Hello! Welcome to my site. This site serves as a place to hold blog posts, various projects, and as a platform to learn web development. This site is continuously being improved, so check back in the future for new features, projects, and blog posts!
 
 # Latest Posts
 

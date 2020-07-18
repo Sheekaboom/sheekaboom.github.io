@@ -1,0 +1,114 @@
+---
+---
+
+// Materials
+
+.material_table{
+    border-spacing: 15px 10px;
+    border-collapse: collapse;
+    border-style:dotted;
+    border-color:var(--border-color);
+    border-width:1px;
+}
+
+.material_table table,th,td{
+    padding:15px 10px;
+    border-collapse: separate;
+    border-style:dotted;
+    border-color:var(--border-color);
+    border-width:1px;
+    text-decoration:none;
+}
+
+.material_table th{
+    border-bottom-width:3px;
+    border-bottom-style:solid;
+}
+
+.table_cost{
+    text-align:right;
+}
+
+.table_number{
+    text-align:right;
+}
+
+
+// Tools
+
+.tool_list{
+    text-decoration:none;
+}
+
+/* Downloads */
+.how_to_downloads a{
+    text-decoration:underline;
+}
+
+
+// Instructions
+
+.how_to_steps{
+    list-style:none;
+    padding:0 0 20px 0;
+    counter-reset:step-counter;
+}
+
+.how_to_steps > li {
+    counter-increment: step-counter;
+    margin: 0 0 100px 0;
+}
+.how_to_steps > li:last-of-type{
+    margin-bottom:25px;
+}
+.how_to_steps .step_header{
+    font:{
+        family:var(--header-font);
+        size:150%;
+    }
+    padding:{left: 0px;bottom: 3px; right: 10px;}
+    margin:{left: 0px;top:5px;bottom:5px;}
+    border:{
+        width: 0 2px 2px 0;
+        style: solid;
+        image: linear-gradient(90deg,#0000 0%,var(--text-color) 20%);
+        image-slice: 1;
+    }
+}
+.how_to_steps .step_header::before {
+    content: counter(step-counter);
+    font-size:200%;
+    border:{
+        width:1px;
+        style:solid;
+        color:var(--border-color);
+    }
+    margin-right:20px;
+    background-color:var(--background-accent-color);
+    padding:5px;
+  }
+
+.how_to_steps p { padding: 0; margin:0; }
+
+.how_to_steps .step_image{
+    width:calc(100% - 10px);
+    height:auto;
+    margin:10px 0px;
+    border:{
+        width:5px;
+        color:var(--border-color);
+        style:solid;
+    }
+}
+
+
+.how_to_steps .step_directions{
+    list-style-type: upper-alpha;
+    //list-style-position: inside;
+    padding:5px;
+}
+
+.how_to_steps .step_directions li{
+    padding:5px;
+}
+

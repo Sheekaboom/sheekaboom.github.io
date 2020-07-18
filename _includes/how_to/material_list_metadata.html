@@ -1,0 +1,25 @@
+{% assign total_cost=0 %}
+{% for material in page.materials %}
+    {% assign total_cost= total_cost | plus:site.data.materials[mat_name].cost %}
+{% endfor %}
+
+{% capture material_schema %}
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": "{{ total_cost }}"
+    },
+    "supply": [
+    {% for material in page.materials %}
+      {% assign mat_name = material[0] %}
+      {% assign mat_qty  = material[1] %}
+      {
+      "@type": "HowToSupply",
+      "name": "{{ site.data.materials[mat_name].name }}",
+      "estimatedCost": "{{ site.data.materials[mat_name].cost }}",
+      "requiredQuantity": {{ mat_qty }}
+      }{% if forloop.index != page.materials.size %},{% endif %}
+    {% endfor %}
+    ],
+{% endcapture %}
+{% assign more_schema = more_schema | append:material_schema %}

@@ -13,11 +13,16 @@
         }{% if forloop.index != page.authors.size %},{% endif %}
       {% endfor %}],
 
-      {% for schema_str in page.schema %}
-      {{ schema_str }},
+      {% for fm_schema in page.schema %}
+      "{{ fm_schema[0] }}":"{{ fm_schema[1] }}",
       {% endfor %}
+
+      {% if more_schema %}
+      {{ more_schema }}
+      {% endif %}
 
       {% if page.description %}"description": "{{ page.description }}",{% endif %}
       "datePublished": "{{ page.date | date: "%Y-%m-%d" }}"
+
     }
 </script>

@@ -1,0 +1,12 @@
+<!-- Schema.org -->
+{% capture tool_schema %}
+      "tool": [
+      {% for tool in page.tools %}
+        {
+        "@type": "HowToTool",
+        "name": "{{ site.data.tools[tool].name }}"
+        }{% if forloop.index != page.tools.size %},{% endif %}
+      {% endfor %}
+      ],
+{% endcapture %}
+{% assign more_schema = more_schema | append:tool_schema %}

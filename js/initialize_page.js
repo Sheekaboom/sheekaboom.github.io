@@ -2,7 +2,10 @@
 import {get_user_data} from '/js/modules/Generic.js';
 
 // initialize the user settings
+//document.body.classList.add('stop_all_transition');
 initializeUserSettings();
+//document.body.classList.remove('stop_all_transition');
+document.body.style.visibility = 'visible'; //only make visible after setting user settings
 
 /*
 @brief Initialize user settings on each page

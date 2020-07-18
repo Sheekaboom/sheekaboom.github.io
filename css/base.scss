@@ -70,6 +70,7 @@ h1,h2,h3,h4,h5{
     margin:{
         left:5%;
         right:5%;
+        bottom:0px;
     }
     max-width:700px;
 }
@@ -91,7 +92,7 @@ p {
     line-height:1.5;
     padding:20px;
     margin:{
-        bottom:20px;
+        bottom:60px;
         left:5%;
         right:5%;
     }
@@ -104,7 +105,7 @@ p {
     line-height:1.5;
     padding:20px;
     margin:{
-        bottom:20px;
+        bottom:60px;
         left:5%;
         right:5%;
     }
@@ -188,11 +189,7 @@ input{
 //@cite https://blog.logrocket.com/creating-beautiful-tooltips-with-only-css/
 .tooltip{
     position:relative;
-    border:{
-        style:dotted;
-        width:0 0 1px 0;
-        color:var(--text-color);
-    }
+    text-decoration:underline;
 }
 .tooltip::after{
     display:block;
@@ -209,10 +206,10 @@ input{
         size:1px;
         style:dashed;
     };
-    opacity:0;
+    opacity:0%;
     transition-duration:0.25s;
 }
-.tooltip:hover::after{opacity:100;}
+.tooltip:hover::after{opacity:100%;z-index:10;}
 
 
 /* navbar config */ 

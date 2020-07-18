@@ -1,0 +1,28 @@
+{% capture instr_schema %}
+    "step": [
+    {% for step in page.steps %}
+    {
+        "@type": "HowToStep",
+        "url": "{{ page.url | absolute_url }}",
+        "name": "{{ step.name }}",
+        {% if step.directions %}
+        "itemListElement": [
+        {% for dir in step.directions %}
+        {
+            "@type": "HowToDirection",
+            "text": "{{ dir.text }}"
+        }{% if forloop.last %},{% endif %}
+        {% endfor %}
+        ]
+        {% endif %}
+        {% if step.image %}
+        ,"image": {
+            "@type": "ImageObject",
+            "url": {{ step.image }},
+        }
+        {% endif %}
+    }{% if forloop.last %},{% endif %}
+    {% endfor %}
+    ],
+{% endcapture %}
+{% assign more_schema = more_schema | append:instr_schema %}

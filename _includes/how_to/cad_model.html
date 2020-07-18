@@ -1,0 +1,6 @@
+<div class='cad_model' data-stl-src='{{ page.cad-model.path }}' 
+        data-stl-color='{{ page.cad-model.color }}' style='width:100%;height:50vw'></div>
+<script type='module'>
+import {STLViewerEnable} from '/js/modules/STLViewer.js';
+STLViewerEnable('cad_model');
+</script>
