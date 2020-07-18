@@ -3,6 +3,7 @@ title: Cheap Portable Grill Table
 description: How to build a low cost table for a portable grill (like the Weber Q1200).
 type: HowTo
 authors: [aweiss]
+tags: [furniture,outdoor,grill]
 
 layout: how_to
 permalink: /:categories/:title:output_ext
