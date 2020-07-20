@@ -86,7 +86,7 @@
     <h2>Other Images</h2>
     <div id='other_images' class='par_form'>
       {% for image in page.other-images %}
-      <div><img src='{{ image }}' alt='{{ image | split:"/" | last }}' ></div>
+      <div><img src='{{ image }}' alt='{{ image | split:"/" | last }}' style='width:100%'></div>
       {% endfor %}
     </div>
     {% endif %}

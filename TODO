@@ -11,6 +11,10 @@
         - CAD design 
         - Instructions
         - Sizes
+    - Free (cardboard box) litter box holder
+        - Instructions 
+        - Materials
+        - Cost
 
 - Recipes 
     - Add layout for recipes (based mostly on how-to)
@@ -18,10 +22,6 @@
 
 - User Comments
     - Staticman? (for now)
-
-- Themes
-    - Add crazy rainbow theme (pride)
-    - Custom theme? (for user customizable)
 
 - Share 
     - OpenGraph tags 
@@ -33,4 +33,7 @@
 
 - other
     - Add oscope fanciness to logo (using animated dashed line with offset)
-    - 404 page
+
+- Themes
+    - Add crazy rainbow theme (pride)
+    - Custom theme? (for user customizable)
