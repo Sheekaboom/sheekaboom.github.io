@@ -57,7 +57,7 @@ oscilliscope:
 
 scissors:
   name: Scissors
-  description: The things you shouldn't run with
+  description: The things you shouldnt run with
 
 box-cutter:
   name: Box Cutter
