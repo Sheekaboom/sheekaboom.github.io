@@ -17,6 +17,11 @@ authors: [aweiss]
 {% assign post_item_list = site.categories['projects'] | where_exp:"post","post.categories contains 'carpentry'" %}
 {% include post_item_list.html %}
 
+## Extras Bin
+
+{% assign post_item_list = site.categories['projects'] | where_exp:"post","post.categories contains 'other'" %}
+{% include post_item_list.html %}
+
 
 
 

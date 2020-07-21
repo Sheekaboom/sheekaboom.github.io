@@ -3,17 +3,17 @@ title: Free and Simple Litter Box Enclosure
 description: How to make a simple litter box enclosure with cardboard and tape.
 type: HowTo
 authors: [aweiss]
-tags: [cat,litter-box]
+tags: [cat,litter-box,free,cardboard]
 
 layout: how_to
 permalink: /:categories/:title:output_ext
 
 schema: {
-    totalTime: PT15M
+    totalTime: PT30M
 }
 
-tools: [scissors,box_cutter]
-materials: [[tape_packing,2],[box_cardboard,1]]
+tools: [box-cutter,scissors]
+materials: [[tape_generic_2in,2],[box_cardboard_large,1]]
 
 steps: [ # list of steps
     { name: Find a Cardboard Box,
@@ -55,13 +55,13 @@ steps: [ # list of steps
 
     { name: 'Get Artsy with It',
     image: /assets/mycats_sweaters.png,
-    text: "Ok... So truth be told, I am not super artistic. I just left my enclosure looking like an amazon box, but you could always paint, color, cover in fabric, or even bedazzle your new litter box enclosure. Because mine is very boring, I have provided a picture of my cats in sweaters when they were still kittens."
+    text: "Ok... So truth be told, I am not super artistic. I just left my enclosure looking like an taped up cardboard box, but like most people they think this looks like trash and don't want that in their house. The cardboard and paper can always paint, color, cover in fabric, or even bedazzle your new litter box enclosure to make it fit in better with the home decor. Because mine is very boring, I have provided a picture of my cats in sweaters when they were still kittens."
     }
 ]
 
 icon: /projects/other/assets/icons/litter_box_enclosure_icon.png
 
-endmatter: "And that's it! You now will have a lot less litter spread around without having to spend money on a purpose built enclosure. I even tend to build a new one every few times I order litter (and get a new box) to keep everything extra clean."
+endmatter: "You did it! You now will have a lot less litter spread around without having to spend money on a purpose built enclosure (which can get expensive... we have one). I even tend to build a new one of these every few times I order litter (and get a new box) to keep everything extra clean."
 
 ---
 
@@ -69,4 +69,8 @@ endmatter: "And that's it! You now will have a lot less litter spread around wit
 <img src='/projects/other/litter_box_enclosure/final_0.png' class='post_image' alt='litter box enclosure completed'>
 
 Introduction here
+
+- not necessarily free, but things you probably already have around the house.
+
+also fix tools and materials
 
