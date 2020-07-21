@@ -35,7 +35,7 @@ steps: [ # list of steps
     text: "Once the top flaps have been secured together, we now have a very tall and large box. We need to now cut a nice doorway for our little kitties to be able to get in and out! For these steps we will use a box-cutter",
     directions: [
         { text: Place your litter pan into the cardboard box. },
-        { text: Using the box cutter, cut a 'U' shape out of the front of the box large enough for your cat (or other animal) to make it in and out and slightly above the top of the litter pan. },
+        { text: "Using the box cutter, cut a 'U' shape out of the front of the box large enough for your cat (or other animal) to make it in and out and slightly above the top of the litter pan." },
         { text: Round the upper edges for a smoother look. }
     ]},
     
@@ -61,16 +61,13 @@ steps: [ # list of steps
 
 icon: /projects/other/assets/icons/litter_box_enclosure_icon.png
 
-endmatter: "You did it! You now will have a lot less litter spread around without having to spend money on a purpose built enclosure (which can get expensive... we have one). I even tend to build a new one of these every few times I order litter (and get a new box) to keep everything extra clean."
+endmatter: "You did it! You now will have a lot less litter spread around without having to spend lots of money on a purpose built enclosure (which can get expensive...). I even tend to build a new one of these every few times I order litter (and get a new box) to keep everything extra clean."
 
 ---
 
 
 <img src='/projects/other/litter_box_enclosure/final_0.png' class='post_image' alt='litter box enclosure completed'>
+If you are like me and have cats, you know the fun past-time of walking on litter everywhere in the house. We live in a small apartment so it was litter-ally (it's funny, don't lie) everywhere. For one of the litter boxes, we originally purchased litter mats which worked a little bit, but could not cover enough of the floor to keep in the litter. We then splurged and bought a nice(ish) cabinet that held one of our litter boxes. This works pretty nicely but was about $100. It also was pretty big (which is nice but we have a small apartment).
 
-Introduction here
-
-- not necessarily free, but things you probably already have around the house.
-
-also fix tools and materials
+I ventured to then take some items I had around the house and build a second enclosure to hold our second box. This design requires items that typically are found around the house. I had the packaging supplies from online orders (A large box comes when I order litter online) and the tape was something I just had lying around the house. If you do not have these items laying around, all of the supplies can be purchased at a shipping or hardware store for under $5. Good luck! And feel free to contact me with any improvements, issues, or questions!
 
