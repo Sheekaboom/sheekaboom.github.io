@@ -31,3 +31,19 @@ screws_deck_1.5in:
 
 
 ## Accesories
+
+
+
+########## Household Items ############
+
+tape_generic_2in:
+  name: Tape (2" wide)
+  description: "Tape that is 2 inches wide. The type doesn't really matter, but I prefer general purpose masking tape."
+  url: https://www.homedepot.com/s/tape%25202%2520inches?NCNI-5
+  cost: 3.50
+
+box_cardboard_large:
+  name: Large Cardboard Box
+  description: A box made of cardboard that is large.
+  url: https://www.homedepot.com/b/Storage-Organization-Moving-Supplies-Moving-Boxes/Medium/Cardboard/N-5yc1vZchncZ1z0jlmoZ1z0sqak
+  cost: 1.50

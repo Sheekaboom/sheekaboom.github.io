@@ -50,3 +50,17 @@ sandpaper:
 oscilliscope:
   name: Oscilliscope
   description: Device capable of measuring time varying electronic waveforms
+
+
+
+########### Household Tools ##############
+
+scissors:
+  name: Scissors
+  description: The things you shouldnt run with
+
+box-cutter:
+  name: Box Cutter
+  description: Small bladed sharp knife typically used for cutting cardboard and similar materials.
+
+  
